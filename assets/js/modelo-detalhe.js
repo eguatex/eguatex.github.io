@@ -23,7 +23,7 @@
     alvo.innerHTML = `<section class="modelo-erro" aria-labelledby="erro-titulo">
       <h1 id="erro-titulo">Modelo não encontrado</h1>
       <p>${esc(texto)}</p>
-      <a class="botao botao-fogo" href="templates.html#galeria-modelos">Ver todos os modelos</a>
+      <a class="botao botao-fogo" href="templates.html">Ver as categorias</a>
     </section>`;
   };
 
@@ -47,7 +47,7 @@
 
   const montar = (indice, m) => {
     const categoria = nomeCategoria(indice, m.categoria);
-    const linkCategoria = `templates.html?categoria=${encodeURIComponent(m.categoria)}#galeria-modelos`;
+    const linkCategoria = `categoria.html?id=${encodeURIComponent(m.categoria)}`;
     const [licenca, linkLicenca] = LICENCAS[m.licenca] || [m.licenca, ""];
     document.title = `${m.nome} | ÉguaTex`;
     document.querySelector('meta[name="description"]').setAttribute("content", m.descricao);

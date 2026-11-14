@@ -1,9 +1,8 @@
 // ÉguaTex: galeria de modelos LaTeX (lê modelos/indice.json, monta os cartões, filtros na URL).
-// Também serve a página modelo.html: as funções comuns ficam em window.EGUATEX_MODELOS.
+// Templates: cada cartão de categoria abre o álbum (categoria.html?id=...). Também serve modelo.html: as funções comuns ficam em window.EGUATEX_MODELOS.
 
 (() => {
   const INDICE = "modelos/indice.json";
-  const calmo = document.documentElement.classList.contains("calmo");
 
   /* ---------- funções comuns às duas páginas ---------- */
   const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -36,102 +35,116 @@
 
   window.EGUATEX_MODELOS = { carregar, cartao, esc, plural, nomeCategoria };
 
-  /* ---------- grade da página de templates ---------- */
-  const secao = document.getElementById("galeria-modelos");
-  if (!secao) return;
+  const DESCRICOES = {
+      "tcc": "Capa, folha de rosto, sumário e referências no padrão da ABNT.",
+      "artigo": "Para revistas, periódicos e anais de congresso, em uma ou duas colunas.",
+      "tese": "Capítulos, listas de figuras e tabelas, apêndices e anexos.",
+      "resumo": "Resumo simples e expandido para congressos e semanas acadêmicas.",
+      "apresentacao": "Slides em Beamer para defesas, aulas e seminários.",
+      "poster": "Banners acadêmicos para apresentar sua pesquisa em eventos.",
+      "relatorio": "Relatórios de estágio, de iniciação científica e técnicos.",
+      "prova": "Questões numeradas, alternativas, espaço para resposta e gabarito.",
+      "curriculo": "Currículo acadêmico e profissional, para bolsas, seleções e empregos.",
+      "oficio": "Ofícios, requerimentos, memorandos e declarações no padrão de órgão público.",
+      "livro": "Capítulos, exercícios no fim de cada parte e materiais de curso.",
+      "fichamento": "Fichamento com citações e páginas, resenha crítica e resumo de leitura."
+  };
+  const linkAlbum = (id) => `categoria.html?id=${encodeURIComponent(id)}`;
 
-  const grade = document.getElementById("modelos-grade");
-  const contagem = document.getElementById("modelos-contagem");
-  const vazio = document.getElementById("modelos-vazio");
-  const campoBusca = document.getElementById("modelos-busca");
-  const campoCategoria = document.getElementById("modelos-categoria");
-  const campoCurso = document.getElementById("modelos-curso");
+  /* ---------- templates.html: cada categoria vira a capa de um álbum ---------- */
+  const cartoesCategoria = [...document.querySelectorAll(".categoria")];
+  if (cartoesCategoria.length) {
+    carregar().then((indice) => {
+      const porNome = new Map(indice.categorias.map((c) => [c.nome, c.id]));
+      const publicados = indice.modelos.filter((m) => m.publicado);
+      cartoesCategoria.forEach((card) => {
+        const titulo = card.querySelector("h3").textContent.trim();
+        const id = porNome.get(titulo);
+        const n = publicados.filter((m) => m.categoria === id).length;
+        if (!id || !n) return;
+        const rodape = card.querySelector(".cat-rodape");
+        const antigo = card.querySelector(".em-breve");
+        const link = document.createElement("a");
+        link.className = "em-breve cat-contagem";
+        link.href = linkAlbum(id);
+        link.textContent = `Ver ${plural(n, "modelo", "modelos")}`;
+        link.setAttribute("aria-label", `Ver ${plural(n, "modelo", "modelos")} de ${titulo}`);
+        if (antigo) antigo.replaceWith(link); else rodape.prepend(link);
+        card.classList.add("tem-modelos");
+        card.addEventListener("click", (e) => {
+          // No celular, tocar no desenho vira o cartão (galeria.js); o resto do cartão abre o álbum.
+          if (matchMedia("(hover: none)").matches && e.target.closest(".cat-giro")) return;
+          if (e.target.closest("a")) return;
+          location.href = linkAlbum(id);
+        });
+      });
+    }).catch(() => {});
+    return;
+  }
+
+  /* ---------- categoria.html: o álbum com todos os modelos da categoria ---------- */
+  const album = document.getElementById("album");
+  if (!album) return;
+
+  const grade = document.getElementById("album-grade");
+  const contagem = document.getElementById("album-contagem");
+  const vazio = document.getElementById("album-vazio");
+  const busca = document.getElementById("album-busca");
+  const cursos = document.getElementById("album-cursos");
   let modelos = [];
-
-  const lerUrl = () => {
-    const p = new URLSearchParams(location.search);
-    return { categoria: p.get("categoria") || "", curso: p.get("curso") || "", q: p.get("q") || "" };
-  };
-
-  const gravarUrl = () => {
-    const p = new URLSearchParams();
-    if (campoCategoria.value) p.set("categoria", campoCategoria.value);
-    if (campoCurso.value) p.set("curso", campoCurso.value);
-    if (campoBusca.value.trim()) p.set("q", campoBusca.value.trim());
-    const qs = p.toString();
-    history.replaceState(null, "", `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`);
-  };
+  let curso = "";
 
   const aplicar = () => {
-    const termos = semAcento(campoBusca.value).split(/\s+/).filter(Boolean);
-    const visiveis = modelos.filter((m) =>
-      (!campoCategoria.value || m.categoria === campoCategoria.value) &&
-      (!campoCurso.value || m.curso === campoCurso.value) &&
-      termos.every((t) => m._busca.includes(t)));
+    const termos = semAcento(busca.value).split(/\s+/).filter(Boolean);
+    const visiveis = modelos.filter((m) => (!curso || m.curso === curso) && termos.every((t) => m._busca.includes(t)));
     grade.innerHTML = visiveis.map(cartao).join("");
-    contagem.textContent = `Mostrando ${visiveis.length} de ${plural(modelos.length, "modelo", "modelos")}`;
+    contagem.textContent = visiveis.length === modelos.length
+      ? plural(modelos.length, "modelo", "modelos")
+      : `Mostrando ${visiveis.length} de ${plural(modelos.length, "modelo", "modelos")}`;
     vazio.hidden = visiveis.length > 0;
+    vazio.textContent = "Nenhum modelo com esse filtro.";
   };
-
-  const mudou = () => { gravarUrl(); aplicar(); };
-
-  // Cartões de categoria: "Em breve" vira a contagem, e um clique filtra a grade.
-  const ligarCategorias = (indice) => {
-    const porNome = new Map(indice.categorias.map((c) => [c.nome, c.id]));
-    document.querySelectorAll(".categoria").forEach((card) => {
-      const id = porNome.get(card.querySelector("h3").textContent.trim());
-      const selo = card.querySelector(".em-breve");
-      const n = modelos.filter((m) => m.categoria === id).length;
-      if (!id || !selo || !n) return;
-      const botao = document.createElement("button");
-      botao.type = "button";
-      botao.className = "em-breve cat-contagem";
-      botao.textContent = plural(n, "modelo", "modelos");
-      botao.setAttribute("aria-label", `Ver ${plural(n, "modelo", "modelos")} de ${card.querySelector("h3").textContent.trim()}`);
-      selo.replaceWith(botao);
-      card.classList.add("tem-modelos");
-      card.addEventListener("click", (e) => {
-        // No celular, tocar no desenho vira o cartão (galeria.js); o resto do cartão filtra.
-        if (matchMedia("(hover: none)").matches && e.target.closest(".cat-giro")) return;
-        campoCategoria.value = id;
-        campoCurso.value = "";
-        campoBusca.value = "";
-        mudou();
-        history.replaceState(null, "", `${location.pathname}${location.search}#galeria-modelos`);
-        secao.scrollIntoView({ behavior: calmo ? "auto" : "smooth", block: "start" });
-      });
-    });
-  };
-
-  document.getElementById("modelos-filtros").addEventListener("submit", (e) => e.preventDefault());
-  campoBusca.addEventListener("input", mudou);
-  campoCategoria.addEventListener("change", mudou);
-  campoCurso.addEventListener("change", mudou);
-  document.getElementById("modelos-limpar").addEventListener("click", () => {
-    campoCategoria.value = "";
-    campoCurso.value = "";
-    campoBusca.value = "";
-    mudou();
-    campoBusca.focus();
-  });
 
   carregar().then((indice) => {
-    modelos = indice.modelos.filter((m) => m.publicado).map((m) => ({
+    const id = new URLSearchParams(location.search).get("id") || "";
+    const cat = indice.categorias.find((c) => c.id === id);
+    const migalha = document.getElementById("migalha-atual");
+    if (!cat) {
+      document.title = "Categoria não encontrada | ÉguaTex";
+      migalha.textContent = "Categoria não encontrada";
+      document.getElementById("album-titulo").textContent = "Categoria não encontrada";
+      document.getElementById("album-descricao").innerHTML = 'Volte para a <a href="templates.html">página de templates</a> e escolha uma categoria.';
+      contagem.textContent = "";
+      album.querySelector(".album-controles").hidden = true;
+      return;
+    }
+    document.title = `${cat.nome} | ÉguaTex`;
+    migalha.textContent = cat.nome;
+    document.getElementById("album-titulo").textContent = cat.nome;
+    document.getElementById("album-descricao").textContent = DESCRICOES[cat.id] || "";
+    modelos = indice.modelos.filter((m) => m.publicado && m.categoria === cat.id).map((m) => ({
       ...m,
-      _busca: semAcento([m.nome, m.descricao, m.curso, m.classe, nomeCategoria(indice, m.categoria), ...(m.destaques || [])].join(" ")),
+      _busca: semAcento([m.nome, m.descricao, m.curso, m.classe, ...(m.destaques || [])].join(" ")),
     }));
-    campoCategoria.insertAdjacentHTML("beforeend", indice.categorias
-      .map((c) => `<option value="${esc(c.id)}">${esc(c.nome)}</option>`).join(""));
-    campoCurso.insertAdjacentHTML("beforeend", indice.cursos
-      .map((c) => `<option value="${esc(c)}">${esc(c)}</option>`).join(""));
-    const estado = lerUrl();
-    if (indice.categorias.some((c) => c.id === estado.categoria)) campoCategoria.value = estado.categoria;
-    if (indice.cursos.includes(estado.curso)) campoCurso.value = estado.curso;
-    campoBusca.value = estado.q;
-    secao.classList.add("pronta");
+    const presentes = indice.cursos.filter((c) => modelos.some((m) => m.curso === c));
+    cursos.innerHTML = [["", "Todos"], ...presentes.map((c) => [c, c])]
+      .map(([v, r]) => `<button type="button" data-curso="${esc(v)}" aria-pressed="${v === "" ? "true" : "false"}">${esc(r)}</button>`).join("");
+    cursos.addEventListener("click", (e) => {
+      const b = e.target.closest("button");
+      if (!b) return;
+      curso = b.dataset.curso;
+      cursos.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      aplicar();
+    });
+    busca.addEventListener("input", aplicar);
+    if (!modelos.length) {
+      album.querySelector(".album-controles").hidden = true;
+      contagem.textContent = "";
+      vazio.hidden = false;
+      vazio.innerHTML = 'Os modelos desta categoria estão a caminho. <a href="contato.html">Sugira um modelo</a>.';
+      return;
+    }
     aplicar();
-    ligarCategorias(indice);
-    if (location.hash === "#galeria-modelos") secao.scrollIntoView({ block: "start" });
   }).catch(() => {
     contagem.textContent = "Não foi possível carregar os modelos agora. Tente recarregar a página.";
   });
