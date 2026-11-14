@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="https://egua-tex.github.io/">
+  <a href="https://eguatex.github.io/">
     <img src="assets/img/banner.jpg" alt="ÉguaTex: Escreva LaTeX de qualquer lugar, mesmo sem internet. Feito na Amazônia. Ao lado, a logo do curupira de perfil, com cabelo em chamas e colar de folhas." width="100%">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://egua-tex.github.io/"><strong>egua-tex.github.io</strong></a>
+  <a href="https://eguatex.github.io/"><strong>eguatex.github.io</strong></a>
 </p>
 
 <p align="center">

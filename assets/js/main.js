@@ -1,6 +1,6 @@
 // ÉguaTex: editor de fórmulas ao vivo e busca da versão mais recente dos instaladores (Windows, Android e Linux).
 
-const REPO = "egua-tex/egua-tex.github.io";
+const REPO = "eguatex/eguatex.github.io";
 
 /* ---------------- Experimente: LaTeX ao vivo ---------------- */
 const EXEMPLOS = {
@@ -93,6 +93,11 @@ function aguardando(id) {
 }
 
 async function buscarVersao() {
+  // Antes do lançamento o site não consulta nem oferece os instaladores.
+  if (!(window.EGUATEX && window.EGUATEX.lancado)) return;
+  const notaVersoes = document.getElementById("nota-versoes");
+  if (notaVersoes) notaVersoes.hidden = false;
+  estado.textContent = "Procurando a versão mais recente…";
   try {
     const resp = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, {
       headers: { Accept: "application/vnd.github+json" },
