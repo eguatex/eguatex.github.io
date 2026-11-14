@@ -210,7 +210,7 @@ def compilar_um(pasta, distro, forcar=False):
     chave = {"sha256_fonte": sha256_fonte(pasta), "receita": RECEITA}
     if not forcar and cache.exists() and (destino / "main.pdf").exists():
         if json.loads(cache.read_text(encoding="utf-8")) == chave:
-            problemas = conferir_log(destino)
+            problemas = conferir_log(destino, avisos_do_modelo(pasta))
             return not problemas, problemas, True
 
     if destino.exists():
@@ -229,13 +229,19 @@ def compilar_um(pasta, distro, forcar=False):
     problemas = []
     if r.returncode != 0:
         problemas.append(f"latexmk terminou com código {r.returncode} (veja {destino / 'latexmk-saida.txt'})")
-    problemas += conferir_log(destino)
+    problemas += conferir_log(destino, avisos_do_modelo(pasta))
     if not problemas:
         cache.write_text(json.dumps(chave), encoding="utf-8")
     return not problemas, problemas, False
 
 
-def conferir_log(destino):
+def avisos_do_modelo(pasta):
+    """Regex de avisos inofensivos próprios do modelo (campo opcional avisos_ignorados do meta.json)."""
+    meta = json.loads((pasta / "meta.json").read_text(encoding="utf-8"))
+    return [re.compile(x) for x in meta.get("avisos_ignorados", [])]
+
+
+def conferir_log(destino, extras=()):
     """Aplica as regras do validador ao main.log e ao main.blg de uma pasta de build."""
     log = destino / "main.log"
     if not log.exists():
@@ -259,7 +265,7 @@ def conferir_log(destino):
             motivo = next((rotulo for rx, rotulo in REPROVA_AVISO if rx.search(linha)), None)
             if motivo:
                 problemas.append(f"{motivo}: {linha.strip()}")
-            elif not any(rx.search(linha) for rx in LISTA_BRANCA):
+            elif not any(rx.search(linha) for rx in [*LISTA_BRANCA, *extras]):
                 problemas.append(f"aviso fora da lista branca: {linha.strip()}")
     blg = destino / "main.blg"
     if blg.exists():
@@ -401,7 +407,7 @@ def conferir_arquivos(pasta, distros):
         if not cache.exists() or json.loads(cache.read_text(encoding="utf-8")).get("sha256_fonte") != sha:
             problemas.append(f"[{distro}] compilação ausente ou desatualizada: rode compilar")
             continue
-        problemas += [f"[{distro}] {p}" for p in conferir_log(destino)]
+        problemas += [f"[{distro}] {p}" for p in conferir_log(destino, avisos_do_modelo(pasta))]
     pdf = pasta / f"{pasta.name}.pdf"
     if not pdf.exists():
         problemas.append(f"falta {pdf.name}")
