@@ -1,0 +1,283 @@
+% Relatório de laboratório de Física básica
+% Modelo do ÉguaTex (https://eguatex.github.io), em domínio público pela licença CC0 1.0:
+% use, modifique e distribua sem pedir permissão e sem citar a origem.
+%
+% Compile com pdfLaTeX e BibTeX (o ÉguaTex faz isso sozinho).
+% Arquivos: main.tex (este texto), dados.dat (medidas) e referencias.bib (bibliografia).
+
+\documentclass[12pt,a4paper]{report}
+
+% ---------- idioma, fontes e página ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ---------- matemática, unidades, tabelas e figuras ----------
+\usepackage{amsmath}
+\usepackage{siunitx}
+\sisetup{locale=FR, output-decimal-marker={,}, separate-uncertainty=true, per-mode=symbol}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, patterns, angles, quotes, calc, babel}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+% ---------- links e referências no padrão ABNT ----------
+% O hyperref vem antes do abntex2cite, senão as citações quebram.
+\usepackage[hidelinks]{hyperref}
+\usepackage[alf]{abntex2cite}
+
+% ---------- as seções são numeradas 1, 2, 3 (sem capítulos) ----------
+\renewcommand{\thesection}{\arabic{section}}
+
+% Título da lista de referências usado pela ABNT.
+\addto\captionsbrazilian{\renewcommand{\bibname}{Referências}}
+
+% ---------- instruções de preenchimento ----------
+% Os textos em cinza explicam o que escrever em cada parte.
+% Troque \instrucoestrue por \instrucoesfalse para esconder todos de uma vez.
+\newif\ifinstrucoes
+\instrucoestrue
+\newcommand{\instrucao}[1]{\ifinstrucoes{\color{gray}\small\itshape #1\par}\fi}
+
+% ---------- dados da capa: preencha aqui ----------
+\newcommand{\universidade}{Universidade Federal Exemplo}
+\newcommand{\unidade}{Instituto de Ciências Exatas}
+\newcommand{\curso}{Curso de Física}
+\newcommand{\disciplina}{Física Experimental I}
+\newcommand{\experimento}{Experimento 3}
+\newcommand{\titulo}{Determinação da aceleração da gravidade com um pêndulo simples}
+\newcommand{\integrantes}{Nome do integrante 1\\ Nome do integrante 2\\ Nome do integrante 3}
+\newcommand{\professor}{Nome do professor ou da professora}
+\newcommand{\local}{Cidade}
+\newcommand{\data}{Ano}
+
+\hypersetup{pdftitle={\titulo}, pdfsubject={\disciplina}}
+
+% ---------- cálculos a partir das medidas (arquivo dados.dat) ----------
+% O LaTeX calcula T^2, a incerteza de T^2 e o ajuste linear ponderado de T^2 em função de L.
+% Os valores aparecem no resumo, na tabela, no gráfico e nos resultados.
+\pgfplotstableread{dados.dat}\medidas
+\pgfplotstablecreatecol[create col/expr={\thisrow{T}^2}]{T2}\medidas
+\pgfplotstablecreatecol[create col/expr={2*\thisrow{T}*\thisrow{sT}}]{sT2}\medidas
+% A chave variance recebe a incerteza de cada ponto; o peso do ponto é 1/incerteza^2.
+\pgfplotstablecreatecol[linear regression={x=L, y=T2, variance=sT2}]{ajuste}\medidas
+\pgfmathsetmacro{\inclinacao}{\pgfplotstableregressiona}
+% Incerteza do coeficiente angular: calcule com as equações do Apêndice A e escreva aqui.
+\newcommand{\incertezaInclinacao}{0.061}
+\pgfmathsetmacro{\gravidade}{4*pi^2/\inclinacao}
+\pgfmathsetmacro{\incertezaGravidade}{\gravidade*\incertezaInclinacao/\inclinacao}
+\pgfmathsetmacro{\incertezaRelativa}{100*\incertezaInclinacao/\inclinacao}
+
+\begin{document}
+
+% ======================================================================
+% Capa
+% ======================================================================
+\begin{titlepage}
+  \centering
+  {\large\bfseries\MakeUppercase{\universidade}\par}
+  \vspace{2pt}
+  {\unidade\par\curso\par}
+  \vspace{4cm}
+  {\small\MakeUppercase{\disciplina}, \experimento\par}
+  \vspace{1em}
+  {\LARGE\bfseries\titulo\par}
+  \vspace{3cm}
+  {\large\integrantes\par}
+  \vfill
+  {Professor(a): \professor\par}
+  \vspace{2cm}
+  {\local\par\data\par}
+\end{titlepage}
+
+% ======================================================================
+% Resumo
+% ======================================================================
+\begin{abstract}
+  \instrucao{Em um só parágrafo de 100 a 250 palavras: objetivo, método, principal resultado com a incerteza e a conclusão. Escreva por último.}
+  Este relatório descreve a determinação da aceleração da gravidade local a partir do período de um pêndulo simples. O período foi medido para seis comprimentos do fio, e a relação linear entre o quadrado do período e o comprimento foi ajustada pelo método dos mínimos quadrados ponderados. O coeficiente angular da reta fornece $g = \qty[round-mode=uncertainty]{\gravidade \pm \incertezaGravidade}{\metre\per\second\squared}$, compatível com o valor de referência dentro da incerteza.
+
+  \medskip
+  \noindent\textbf{Palavras-chave:} pêndulo simples. Aceleração da gravidade. Propagação de incertezas.
+\end{abstract}
+
+\tableofcontents
+
+% ======================================================================
+\section{Introdução}
+% ======================================================================
+\instrucao{Situe o experimento: qual grandeza se quer medir, por que ela importa e qual é o objetivo do trabalho. Feche com uma frase que diga o que o relatório apresenta.}
+
+O pêndulo simples é um dos sistemas mais usados para medir a aceleração da gravidade em laboratórios didáticos, porque o período de oscilação depende apenas do comprimento do fio e de $g$ quando a amplitude é pequena \cite{halliday2016}. O objetivo deste experimento é determinar $g$ a partir da relação entre o período e o comprimento, e expressar o resultado com a incerteza avaliada segundo o Guia para a Expressão da Incerteza de Medição \cite{jcgm2008}.
+
+% ======================================================================
+\section{Fundamentação teórica}
+% ======================================================================
+\instrucao{Apresente só as equações que serão usadas, numeradas, com cada símbolo definido logo abaixo. Cite a fonte de cada resultado.}
+
+Para pequenas amplitudes, o período de um pêndulo simples de comprimento $L$ é
+\begin{equation}
+  T = 2\pi\sqrt{\frac{L}{g}},
+  \label{eq:periodo}
+\end{equation}
+em que $g$ é a aceleração da gravidade local. Elevando a Equação~\eqref{eq:periodo} ao quadrado, obtém-se uma relação linear entre $T^2$ e $L$:
+\begin{equation}
+  T^2 = a\,L, \qquad a = \frac{4\pi^2}{g}.
+  \label{eq:linear}
+\end{equation}
+Assim, o coeficiente angular $a$ do gráfico de $T^2$ em função de $L$ determina $g = 4\pi^2/a$.
+
+A incerteza de uma grandeza calculada $f(x_1, \dots, x_n)$ a partir de medidas independentes é obtida pela propagação
+\begin{equation}
+  \sigma_f^2 = \sum_{i=1}^{n} \left(\frac{\partial f}{\partial x_i}\right)^{\!2} \sigma_{x_i}^2,
+  \label{eq:propagacao}
+\end{equation}
+como descrevem \citeonline{vuolo1996} e \citeonline{taylor1997}. Aplicada a $T^2$ e a $g$, ela dá
+\begin{equation}
+  \sigma_{T^2} = 2T\,\sigma_T, \qquad \sigma_g = g\,\frac{\sigma_a}{a}.
+  \label{eq:incertezas}
+\end{equation}
+
+% ======================================================================
+\section{Materiais e métodos}
+% ======================================================================
+\instrucao{Liste os materiais com a resolução de cada instrumento. Depois descreva o procedimento no passado e na voz impessoal, com detalhe suficiente para outra pessoa repetir o experimento.}
+
+\subsection{Materiais}
+\begin{itemize}
+  \item suporte com haste e fixador;
+  \item fio inextensível e massa esférica de \qty{50}{\gram};
+  \item trena com resolução de \qty{1}{\milli\metre};
+  \item cronômetro digital com resolução de \qty{0.01}{\second}.
+\end{itemize}
+
+\subsection{Montagem e procedimento}
+A Figura~\ref{fig:montagem} mostra a montagem. O comprimento $L$ foi medido do ponto de suspensão ao centro da massa. Para cada comprimento, o pêndulo foi solto com amplitude menor que \ang{10} e o tempo de dez oscilações completas foi medido cinco vezes. O período $T$ é a média desses tempos dividida por dez.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=1.1, >=Stealth]
+    % suporte
+    \fill[pattern=north east lines] (-1.6,0) rectangle (1.6,0.25);
+    \draw[thick] (-1.6,0) -- (1.6,0);
+    % fio e massa
+    \coordinate (O) at (0,0);
+    \coordinate (M) at (-62:4);
+    \coordinate (V) at (0,-4);
+    \draw[dashed, gray] (O) -- (V);
+    \draw[thick] (O) -- (M);
+    \shade[ball color=gray!40] (M) circle (0.25);
+    % ângulo
+    \pic[draw, "$\theta$", angle radius=1.1cm, angle eccentricity=1.3] {angle = V--O--M};
+    % comprimento L
+    \draw[<->] ($(O) + (28:0.45)$) -- ($(M) + (28:0.45)$)
+      node[midway, above right] {$L$};
+    % trajetória
+    \draw[->, gray] (-118:4.45) arc[start angle=-118, end angle=-62, radius=4.45];
+  \end{tikzpicture}
+  \caption{Montagem do pêndulo simples: fio de comprimento $L$ preso ao suporte e massa solta com amplitude $\theta$ pequena.}
+  \label{fig:montagem}
+\end{figure}
+
+% ======================================================================
+\section{Resultados e discussão}
+% ======================================================================
+\instrucao{Apresente os dados em tabela, com unidades no cabeçalho e incertezas. Mostre o gráfico, diga como foi feito o ajuste e compare o resultado com um valor de referência. Discuta as fontes de erro mais importantes.}
+
+A Tabela~\ref{tab:dados} reúne os comprimentos, os períodos e os valores de $T^2$ com as incertezas obtidas pela Equação~\eqref{eq:incertezas}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Comprimento do fio, período e quadrado do período (dados de exemplo).}
+  \label{tab:dados}
+  \pgfplotstabletypeset[
+    columns={L,T,sT,T2,sT2},
+    every head row/.style={before row=\toprule, after row=\midrule},
+    every last row/.style={after row=\bottomrule},
+    columns/L/.style={column name={$L$ (\unit{\metre})}, fixed, fixed zerofill, precision=3, use comma},
+    columns/T/.style={column name={$T$ (\unit{\second})}, fixed, fixed zerofill, precision=3, use comma},
+    columns/sT/.style={column name={$\sigma_T$ (\unit{\second})}, fixed, fixed zerofill, precision=3, use comma},
+    columns/T2/.style={column name={$T^2$ (\unit{\second\squared})}, fixed, fixed zerofill, precision=3, use comma},
+    columns/sT2/.style={column name={$\sigma_{T^2}$ (\unit{\second\squared})}, fixed, fixed zerofill, precision=3, use comma},
+  ]\medidas
+\end{table}
+
+O gráfico da Figura~\ref{fig:ajuste} mostra $T^2$ em função de $L$ com as barras de incerteza e a reta ajustada pelo método dos mínimos quadrados ponderados \cite{vuolo1996}. O coeficiente angular obtido é $a = \qty[round-mode=uncertainty]{\inclinacao \pm \incertezaInclinacao}{\second\squared\per\metre}$.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.8\linewidth, height=0.55\linewidth,
+      xlabel={$L$ (\unit{\metre})}, ylabel={$T^2$ (\unit{\second\squared})},
+      xmin=0.1, xmax=0.8, ymin=0.4, ymax=3.2,
+      grid=major, grid style={gray!25},
+      legend pos=north west, legend cell align=left,
+      /pgf/number format/use comma,
+    ]
+      \addplot[only marks, mark=*, mark size=1.6pt, color=black,
+        error bars/.cd, y dir=both, y explicit]
+        table[x=L, y=T2, y error=sT2] {\medidas};
+      \addlegendentry{medidas}
+      \addplot[thick, color=blue!70!black] table[x=L, y=ajuste] {\medidas};
+      \addlegendentry{ajuste linear}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Quadrado do período em função do comprimento, com barras de incerteza e reta ajustada.}
+  \label{fig:ajuste}
+\end{figure}
+
+Pela Equação~\eqref{eq:linear}, o resultado para a aceleração da gravidade é
+\begin{equation}
+  g = \frac{4\pi^2}{a} = \qty[round-mode=uncertainty]{\gravidade \pm \incertezaGravidade}{\metre\per\second\squared}.
+\end{equation}
+\instrucao{Compare com um valor de referência para a sua cidade, calcule a discrepância relativa e diga se os valores são compatíveis dentro de duas incertezas.}
+O valor obtido é compatível com o valor de referência de \qty{9.78}{\metre\per\second\squared}. As principais fontes de incerteza são o tempo de reação ao acionar o cronômetro e a medida do comprimento até o centro da massa.
+
+% ======================================================================
+\section{Conclusão}
+% ======================================================================
+\instrucao{Responda ao objetivo em poucas frases: o valor encontrado, a incerteza, a comparação com a referência e uma sugestão concreta para melhorar a medida.}
+
+O experimento determinou $g$ com incerteza relativa de \qty[round-mode=figures, round-precision=2]{\incertezaRelativa}{\percent}. Medir mais oscilações por série e usar um sensor de passagem no lugar do cronômetro manual reduziria a incerteza do período, que domina o resultado.
+
+% ======================================================================
+% Referências
+% ======================================================================
+% As referências entram como seção sem número, na mesma página, e aparecem no sumário.
+\begingroup
+\let\chapter\section
+\phantomsection
+\addcontentsline{toc}{section}{\bibname}
+\bibliography{referencias}
+\endgroup
+
+% ======================================================================
+% Os apêndices começam em página nova e são numerados A, B, C.
+\clearpage
+\appendix
+\setcounter{section}{0}
+\renewcommand{\thesection}{\Alph{section}}
+\section{Ajuste linear ponderado}
+% ======================================================================
+\instrucao{Use os apêndices para cálculos longos, dados brutos e demonstrações que interromperiam a leitura do texto principal.}
+
+Para uma reta $y = a x + b$ ajustada a $n$ pontos $(x_i, y_i)$ com incertezas $\sigma_i$, os pesos são $w_i = 1/\sigma_i^2$. Com as somas $S = \sum w_i$, $S_x = \sum w_i x_i$, $S_y = \sum w_i y_i$, $S_{xx} = \sum w_i x_i^2$ e $S_{xy} = \sum w_i x_i y_i$, e com $\Delta = S\,S_{xx} - S_x^2$, os coeficientes e suas incertezas são \cite{taylor1997}
+\begin{equation}
+  a = \frac{S\,S_{xy} - S_x S_y}{\Delta}, \qquad
+  b = \frac{S_{xx} S_y - S_x S_{xy}}{\Delta}, \qquad
+  \sigma_a = \sqrt{\frac{S}{\Delta}}, \qquad
+  \sigma_b = \sqrt{\frac{S_{xx}}{\Delta}}.
+\end{equation}
+
+\end{document}

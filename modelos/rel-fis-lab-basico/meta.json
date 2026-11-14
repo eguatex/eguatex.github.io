@@ -1,0 +1,21 @@
+{
+  "id": "rel-fis-lab-basico",
+  "nome": "Relatório de laboratório de Física básica",
+  "categoria": "relatorio",
+  "curso": "Física",
+  "classe": "report",
+  "motor": "pdflatex",
+  "bibliografia": "abntex2cite",
+  "descricao": "Relatório de experimento de Física básica com capa, resumo, fundamentação, materiais e métodos, resultados e conclusão. O exemplo do pêndulo simples lê as medidas de um arquivo de dados, propaga as incertezas e faz o ajuste linear ponderado direto no LaTeX.",
+  "destaques": [
+    "Tabela e gráfico gerados do mesmo arquivo de dados (dados.dat)",
+    "Ajuste linear ponderado com barras de erro em pgfplots",
+    "Unidades e incertezas com siunitx",
+    "Desenho da montagem em TikZ",
+    "Citações no padrão ABNT com abntex2cite",
+    "Instruções de preenchimento que somem com uma linha"
+  ],
+  "licenca": "CC0-1.0",
+  "publicado": true,
+  "previas_paginas": [1, 5, 6]
+}

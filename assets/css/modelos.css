@@ -1,0 +1,100 @@
+/* ÉguaTex: galeria de modelos LaTeX (templates.html) e página de um modelo (modelo.html).
+   Usa as variáveis e os componentes de style.css (botões, .cat-rodape, .cat-classe, .galeria-vazia). */
+
+/* ---------- seção de modelos em templates.html ---------- */
+.modelos { margin-top: clamp(48px, 7vw, 80px); scroll-margin-top: 84px; }
+.modelos-filtros { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 12px 16px; margin-bottom: 14px; }
+.modelos-campo { display: grid; gap: 6px; min-width: 0; }
+.modelos-campo label { font-size: .9rem; font-weight: 700; color: var(--texto-suave); }
+.modelos-campo input, .modelos-campo select {
+  width: 100%; min-height: 48px; font: inherit; font-size: 1rem; color: var(--texto);
+  background-color: var(--noite-2); border: 1.5px solid var(--noite-3); border-radius: 999px; padding: 10px 18px;
+}
+.modelos-campo select {
+  appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a6f0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 16px center; background-size: 18px;
+}
+.modelos-campo select option { background: var(--noite-2); color: var(--texto); }
+.modelos-campo input:focus-visible, .modelos-campo select:focus-visible { outline: 3px solid var(--chama); outline-offset: 2px; border-color: var(--roxo-claro); }
+.modelos-contagem { color: var(--texto-suave); font-size: .95rem; margin: 0 0 20px; }
+.modelos-limpar { font: inherit; color: var(--chama); background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+
+/* ---------- grade de cartões (também usada nos relacionados) ---------- */
+.modelos-grade { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: clamp(20px, 3vw, 32px) clamp(14px, 2.4vw, 28px); }
+.modelo-cartao { display: grid; grid-template-rows: auto 1fr auto; min-width: 0; }
+.modelo-link { display: grid; gap: 12px; color: var(--texto); text-decoration: none; border-radius: 16px; }
+.modelo-link:hover { color: var(--chama); }
+.modelo-miniatura {
+  display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 14px;
+  background: #fbf7ff; border: 1.5px solid var(--noite-3);
+  box-shadow: 0 10px 22px rgba(0,0,0,.3);
+  transition: transform .25s cubic-bezier(.2,.7,.2,1), border-color .2s ease;
+}
+.modelo-miniatura img { width: 100%; height: 100%; object-fit: contain; }
+.modelo-link:hover .modelo-miniatura { transform: translateY(-4px); border-color: var(--roxo-claro); }
+.modelo-nome { font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.08rem; line-height: 1.2; }
+.modelo-resumo {
+  color: var(--texto-suave); font-size: .92rem; line-height: 1.5; margin: 8px 0 10px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.modelo-curso { font-size: .82rem; font-weight: 700; color: var(--verde-claro); border: 1.5px solid rgba(143,212,127,.45); border-radius: 999px; padding: 2px 10px; }
+
+/* ---------- cartões de categoria com modelos ---------- */
+.categoria.tem-modelos { cursor: pointer; }
+.cat-contagem { font: inherit; font-size: .82rem; font-weight: 700; background: transparent; cursor: pointer; }
+.cat-contagem:hover { color: var(--noite); background: var(--verde-claro); }
+
+/* ---------- página de um modelo ---------- */
+.migalhas ol { list-style: none; margin: 0 0 clamp(20px, 4vw, 36px); padding: 0; display: flex; flex-wrap: wrap; gap: 4px 0; font-size: .95rem; color: var(--texto-suave); }
+.migalhas li { min-width: 0; overflow-wrap: anywhere; }
+.migalhas li + li::before { content: "/"; margin: 0 10px; color: var(--noite-3); }
+.migalhas [aria-current="page"] { color: var(--texto); }
+
+.modelo-topo { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.modelo-previas {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  padding-bottom: 12px; border-radius: 16px; scroll-behavior: smooth;
+  scrollbar-color: var(--roxo) var(--noite-2);
+}
+.modelo-previa { flex: 0 0 100%; margin: 0; scroll-snap-align: center; }
+.modelo-previa img { width: 100%; height: auto; border-radius: 12px; background: #fbf7ff; border: 1.5px solid var(--noite-3); }
+.modelo-previa figcaption { margin-top: 8px; font-size: .88rem; color: var(--texto-suave); text-align: center; }
+
+.modelo-info h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: .4em; overflow-wrap: anywhere; }
+.modelo-descricao { color: var(--texto-suave); font-size: 1.05rem; }
+.modelo-acoes { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 6px; }
+.modelo-acoes button:disabled { opacity: .6; cursor: progress; }
+.modelo-aviso { min-height: 1.6em; font-size: .95rem; color: var(--verde-claro); margin: 0 0 14px; }
+.modelo-dados { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; margin: 0 0 24px; border-top: 1px solid var(--noite-3); }
+.modelo-dados div { padding: 10px 0; border-bottom: 1px solid var(--noite-3); min-width: 0; }
+.modelo-dados dt { font-size: .82rem; font-weight: 700; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .04em; }
+.modelo-dados dd { margin: 2px 0 0; overflow-wrap: anywhere; }
+.modelo-subtitulo { font-size: 1.25rem; margin: 0 0 10px; }
+.modelo-destaques { margin: 0; padding-left: 1.2em; color: var(--texto-suave); }
+.modelo-destaques li { margin-bottom: 4px; }
+.modelo-destaques li::marker { color: var(--chama); }
+.modelo-relacionados { margin-top: clamp(48px, 7vw, 80px); }
+.modelo-erro { max-width: 640px; margin: 0 auto; text-align: center; }
+.modelo-erro h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 800; margin-bottom: .4em; }
+.modelo-erro p { color: var(--texto-suave); }
+
+/* ---------- telas estreitas ---------- */
+@media (max-width: 960px) {
+  .modelo-topo { grid-template-columns: minmax(0, 1fr); }
+  .modelo-previa { flex-basis: min(100%, 520px); }
+}
+@media (max-width: 640px) {
+  .modelos-filtros { grid-template-columns: minmax(0, 1fr); }
+  .modelos-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .modelo-previa { flex-basis: 86%; }
+  .modelo-dados { grid-template-columns: minmax(0, 1fr); }
+  .modelo-acoes .botao { flex: 1 1 100%; }
+}
+
+/* ---------- menos movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .modelo-miniatura { transition: none; }
+  .modelo-link:hover .modelo-miniatura { transform: none; }
+  .modelo-previas { scroll-behavior: auto; }
+}

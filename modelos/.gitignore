@@ -1,0 +1,15 @@
+# Restos de compilação do LaTeX: o build roda fora do repositório, mas isto evita que entrem por engano.
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.out
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.lof
+*.lot
