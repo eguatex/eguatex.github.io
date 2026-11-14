@@ -70,6 +70,582 @@
   ],
   "modelos": [
     {
+      "id": "tcc-fis-experimental",
+      "nome": "TCC de Física experimental",
+      "categoria": "tcc",
+      "filtro": "pesquisa",
+      "curso": "Física",
+      "classe": "abntex2",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Trabalho de conclusão de curso em Física experimental no padrão ABNT, com capa, folha de rosto, folha de aprovação, resumo, abstract, listas e um arquivo por capítulo. O exemplo do tubo de ressonância lê as medidas de um arquivo de dados e calcula o ajuste e a velocidade do som no próprio LaTeX.",
+      "destaques": [
+        "Elementos pré-textuais completos da NBR 14724 com abntex2",
+        "Capítulos separados em capitulos/*.tex",
+        "Medidas e incertezas com siunitx",
+        "Ajuste ponderado com barras de erro em pgfplots",
+        "Montagem experimental desenhada em TikZ",
+        "Listas de siglas e de símbolos"
+      ],
+      "paginas": 22,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/tcc-fis-experimental/fonte/main.tex",
+        "zip": "modelos/tcc-fis-experimental/tcc-fis-experimental.zip",
+        "pdf": "modelos/tcc-fis-experimental/tcc-fis-experimental.pdf",
+        "miniatura": "modelos/tcc-fis-experimental/miniatura.webp",
+        "previas": [
+          "modelos/tcc-fis-experimental/previa-1.webp",
+          "modelos/tcc-fis-experimental/previa-2.webp",
+          "modelos/tcc-fis-experimental/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 325451,
+        "zip": 14063
+      },
+      "sha256_fonte": "505749a6c28926854ef8c50a68a9e1d58d6f7d88669969b536b1c0f10165368b",
+      "publicado": true
+    },
+    {
+      "id": "art-bib-revisao-integrativa",
+      "nome": "Artigo de revisão integrativa em Biblioteconomia",
+      "categoria": "artigo",
+      "filtro": "pesquisa",
+      "curso": "Biblioteconomia",
+      "classe": "article",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Artigo de revisão integrativa com pergunta norteadora, etapas do método, fluxograma da seleção dos estudos, quadro síntese, tabela de características em página horizontal e discussão por categorias temáticas. Citações ABNT no sistema numérico.",
+      "destaques": [
+        "Fluxograma da seleção dos estudos em TikZ",
+        "Quadro síntese com bordas fechadas, como pede a ABNT",
+        "Tabela de características em página na horizontal (pdflscape)",
+        "Citações numéricas ABNT com abntex2cite",
+        "Resumo e abstract com palavras-chave",
+        "Instruções de preenchimento que somem com uma linha"
+      ],
+      "paginas": 5,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/art-bib-revisao-integrativa/fonte/main.tex",
+        "zip": "modelos/art-bib-revisao-integrativa/art-bib-revisao-integrativa.zip",
+        "pdf": "modelos/art-bib-revisao-integrativa/art-bib-revisao-integrativa.pdf",
+        "miniatura": "modelos/art-bib-revisao-integrativa/miniatura.webp",
+        "previas": [
+          "modelos/art-bib-revisao-integrativa/previa-1.webp",
+          "modelos/art-bib-revisao-integrativa/previa-2.webp",
+          "modelos/art-bib-revisao-integrativa/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 275695,
+        "zip": 7990
+      },
+      "sha256_fonte": "41ae890c1fb3c75fc88ceebb2a29cc24ab2daec1e1426c3acc2e880554099abe",
+      "publicado": true
+    },
+    {
+      "id": "dis-bib-mestrado-profissional",
+      "nome": "Dissertação de mestrado profissional em Biblioteconomia",
+      "categoria": "tese",
+      "filtro": "pesquisa",
+      "curso": "Biblioteconomia",
+      "classe": "abntex2",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Dissertação de mestrado profissional com todos os elementos pré-textuais da NBR 14724, um arquivo por capítulo e o produto técnico completo em apêndice. O exemplo é um guia de política de desenvolvimento de coleções para bibliotecas escolares, com diagnóstico, descrição e validação do produto.",
+      "destaques": [
+        "Capa, folha de rosto, ficha catalográfica, errata e folha de aprovação",
+        "Produto técnico em apêndice, com ficha técnica e formulário",
+        "Listas de figuras, quadros, tabelas, siglas e símbolos",
+        "Ciclo do desenvolvimento de coleções desenhado em TikZ",
+        "Um arquivo por capítulo na pasta capitulos",
+        "Instruções de preenchimento que somem com uma linha"
+      ],
+      "paginas": 31,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/dis-bib-mestrado-profissional/fonte/main.tex",
+        "zip": "modelos/dis-bib-mestrado-profissional/dis-bib-mestrado-profissional.zip",
+        "pdf": "modelos/dis-bib-mestrado-profissional/dis-bib-mestrado-profissional.pdf",
+        "miniatura": "modelos/dis-bib-mestrado-profissional/miniatura.webp",
+        "previas": [
+          "modelos/dis-bib-mestrado-profissional/previa-1.webp",
+          "modelos/dis-bib-mestrado-profissional/previa-2.webp",
+          "modelos/dis-bib-mestrado-profissional/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 218583,
+        "zip": 17437
+      },
+      "sha256_fonte": "93a0c671f4cc290e534d337aee49cb41dfeb99c4ef071a31b7fc86566a52048c",
+      "publicado": true
+    },
+    {
+      "id": "dis-bib-tese-doutorado",
+      "nome": "Tese de doutorado em Ciência da Informação",
+      "categoria": "tese",
+      "filtro": "pesquisa",
+      "curso": "Biblioteconomia",
+      "classe": "abntex2",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Tese de doutorado em frente e verso, dividida em partes com \\part, com resumos em três idiomas e lista de siglas do abntex2. O exemplo propõe um modelo de avaliação da interoperabilidade de metadados em repositórios institucionais.",
+      "destaques": [
+        "Partes com \\part e conclusão fora delas com \\phantompart",
+        "Lista de abreviaturas e siglas e lista de símbolos do abntex2",
+        "Resumo, abstract e resumen",
+        "Folha de aprovação com banca de cinco membros",
+        "Tabela com cabeçalho agrupado e modelo conceitual em TikZ",
+        "Fonte EB Garamond com títulos em maiúsculas"
+      ],
+      "paginas": 55,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/dis-bib-tese-doutorado/fonte/main.tex",
+        "zip": "modelos/dis-bib-tese-doutorado/dis-bib-tese-doutorado.zip",
+        "pdf": "modelos/dis-bib-tese-doutorado/dis-bib-tese-doutorado.pdf",
+        "miniatura": "modelos/dis-bib-tese-doutorado/miniatura.webp",
+        "previas": [
+          "modelos/dis-bib-tese-doutorado/previa-1.webp",
+          "modelos/dis-bib-tese-doutorado/previa-2.webp",
+          "modelos/dis-bib-tese-doutorado/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 300760,
+        "zip": 15366
+      },
+      "sha256_fonte": "718e3eb8b01bc5a2ae9654057a15ad54e22bb33169b9a0011fbcd7f0bf353b46",
+      "publicado": true
+    },
+    {
+      "id": "apr-bib-aula-catalogacao",
+      "nome": "Aula de catalogação em MARC 21",
+      "categoria": "apresentacao",
+      "filtro": "eventos",
+      "curso": "Biblioteconomia",
+      "classe": "beamer",
+      "motor": "pdflatex",
+      "bibliografia": "nenhuma",
+      "descricao": "Slides de aula sobre catalogação descritiva em MARC 21: objetivos, estrutura do registro, anatomia de um campo, registro completo de um livro e exercício para a sala. Os registros ficam em blocos verbatim com fonte monoespaçada, que preservam o alinhamento de etiquetas, indicadores e subcampos.",
+      "destaques": [
+        "Registros MARC em blocos verbatim com fundo próprio",
+        "Tema Boadilla com cores beaver e fonte TeX Gyre Schola",
+        "Inconsolata para etiquetas e subcampos",
+        "Exercício com dica revelada no clique seguinte",
+        "Notas de preenchimento que somem com uma linha"
+      ],
+      "paginas": 9,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/apr-bib-aula-catalogacao/fonte/main.tex",
+        "zip": "modelos/apr-bib-aula-catalogacao/apr-bib-aula-catalogacao.zip",
+        "pdf": "modelos/apr-bib-aula-catalogacao/apr-bib-aula-catalogacao.pdf",
+        "miniatura": "modelos/apr-bib-aula-catalogacao/miniatura.webp",
+        "previas": [
+          "modelos/apr-bib-aula-catalogacao/previa-1.webp",
+          "modelos/apr-bib-aula-catalogacao/previa-2.webp",
+          "modelos/apr-bib-aula-catalogacao/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          270
+        ],
+        "previas": [
+          [
+            900,
+            675
+          ],
+          [
+            900,
+            675
+          ],
+          [
+            900,
+            675
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 91638,
+        "zip": 5907
+      },
+      "sha256_fonte": "53a9aa2fc8c75eb8bdc4fbf1f3f8ab0eeacf86289d11e4c5a09f87c103bf6fa7",
+      "publicado": true
+    },
+    {
+      "id": "apr-bib-defesa-tcc",
+      "nome": "Defesa de TCC em Biblioteconomia (tema Madrid)",
+      "categoria": "apresentacao",
+      "filtro": "eventos",
+      "curso": "Biblioteconomia",
+      "classe": "beamer",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Slides para a defesa do TCC com capa, objetivos, referencial, metodologia, resultados e considerações finais. O tema Madrid ganha cores próprias definidas em três linhas, e um slide de sumário abre cada seção com a parte atual em destaque.",
+      "destaques": [
+        "Tema Madrid com cores trocadas em três linhas",
+        "Sumário automático no início de cada seção",
+        "Gráfico de barras em pgfplots com conclusões reveladas aos poucos",
+        "Citações ABNT com abntex2cite",
+        "Notas de preenchimento que somem com uma linha"
+      ],
+      "paginas": 16,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/apr-bib-defesa-tcc/fonte/main.tex",
+        "zip": "modelos/apr-bib-defesa-tcc/apr-bib-defesa-tcc.zip",
+        "pdf": "modelos/apr-bib-defesa-tcc/apr-bib-defesa-tcc.pdf",
+        "miniatura": "modelos/apr-bib-defesa-tcc/miniatura.webp",
+        "previas": [
+          "modelos/apr-bib-defesa-tcc/previa-1.webp",
+          "modelos/apr-bib-defesa-tcc/previa-2.webp",
+          "modelos/apr-bib-defesa-tcc/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          270
+        ],
+        "previas": [
+          [
+            900,
+            675
+          ],
+          [
+            900,
+            675
+          ],
+          [
+            900,
+            675
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 182640,
+        "zip": 6656
+      },
+      "sha256_fonte": "e05f3c380f15b73e1eec0d78863c7b9bcda692dbab7fccaccce3145581abb22e",
+      "publicado": true
+    },
+    {
+      "id": "apr-comp-defesa-metropolis",
+      "nome": "Defesa de TCC em Computação (tema metropolis)",
+      "categoria": "apresentacao",
+      "filtro": "eventos",
+      "curso": "Computação",
+      "classe": "beamer",
+      "motor": "pdflatex",
+      "bibliografia": "bibtex",
+      "descricao": "Slides de defesa em 16:9 com o visual limpo do metropolis rodando no pdfLaTeX, com Fira Sans e Fira Mono. Traz diagrama da arquitetura em TikZ, código Python em que cada passo destaca uma linha, gráfico de precisão e revocação e slide final de perguntas.",
+      "destaques": [
+        "Tema metropolis no pdfLaTeX, sem XeLaTeX",
+        "Fira Sans e Fira Mono pelos pacotes do TeX Live",
+        "Código com linhas destacadas passo a passo por overlays",
+        "Arquitetura em TikZ e gráfico em pgfplots",
+        "Notas de preenchimento que somem com uma linha"
+      ],
+      "paginas": 16,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/apr-comp-defesa-metropolis/fonte/main.tex",
+        "zip": "modelos/apr-comp-defesa-metropolis/apr-comp-defesa-metropolis.zip",
+        "pdf": "modelos/apr-comp-defesa-metropolis/apr-comp-defesa-metropolis.pdf",
+        "miniatura": "modelos/apr-comp-defesa-metropolis/miniatura.webp",
+        "previas": [
+          "modelos/apr-comp-defesa-metropolis/previa-1.webp",
+          "modelos/apr-comp-defesa-metropolis/previa-2.webp",
+          "modelos/apr-comp-defesa-metropolis/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          203
+        ],
+        "previas": [
+          [
+            900,
+            507
+          ],
+          [
+            900,
+            507
+          ],
+          [
+            900,
+            507
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 283309,
+        "zip": 6799
+      },
+      "sha256_fonte": "ae289131a85e6bd298c9f93bfef8bcf97ec4b6d4cd6c051dba002eb9fcffdf1b",
+      "publicado": true
+    },
+    {
+      "id": "apr-bib-palestra",
+      "nome": "Palestra de Biblioteconomia com imagens e letra grande",
+      "categoria": "apresentacao",
+      "filtro": "eventos",
+      "curso": "Biblioteconomia",
+      "classe": "beamer",
+      "motor": "pdflatex",
+      "bibliografia": "nenhuma",
+      "descricao": "Slides para palestra em evento ou semana acadêmica, em 16:9 com corpo de 17 pt, imagens grandes e uma frase por slide. Traz capa com imagem, pergunta de abertura, slides de imagem cheia com faixa de texto, três ideias lado a lado, um número de destaque e uma citação.",
+      "destaques": [
+        "Corpo de 17 pt em 16:9, sem barras nem rodapé",
+        "Comando \\imagemcheia para foto de fundo com faixa de texto",
+        "Fonte Lato e uma cor de destaque",
+        "Imagens de exemplo do pacote mwe, fáceis de trocar",
+        "Notas de preenchimento que somem com uma linha"
+      ],
+      "paginas": 8,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/apr-bib-palestra/fonte/main.tex",
+        "zip": "modelos/apr-bib-palestra/apr-bib-palestra.zip",
+        "pdf": "modelos/apr-bib-palestra/apr-bib-palestra.pdf",
+        "miniatura": "modelos/apr-bib-palestra/miniatura.webp",
+        "previas": [
+          "modelos/apr-bib-palestra/previa-1.webp",
+          "modelos/apr-bib-palestra/previa-2.webp",
+          "modelos/apr-bib-palestra/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          203
+        ],
+        "previas": [
+          [
+            900,
+            507
+          ],
+          [
+            900,
+            507
+          ],
+          [
+            900,
+            507
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 143084,
+        "zip": 4926
+      },
+      "sha256_fonte": "d18670d64706308bcfe25c0eb980d4f47979428d6306a05f06a5119c2f35af87",
+      "publicado": true
+    },
+    {
+      "id": "rel-bib-diagnostico-acervo",
+      "nome": "Diagnóstico do acervo de biblioteca",
+      "categoria": "relatorio",
+      "filtro": "pesquisa",
+      "curso": "Biblioteconomia",
+      "classe": "report",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Relatório de diagnóstico de acervo com capa colorida, metodologia, resultados e recomendações. A contagem por classe da CDD fica num arquivo de dados, a tabela calcula totais e percentuais, e dois gráficos de pizza resumem a composição e o estado de conservação.",
+      "destaques": [
+        "Tabela de estado do acervo lida de acervo.dat, com totais calculados",
+        "Dois gráficos de pizza com pgf-pie",
+        "Quadro de critérios de conservação em cores",
+        "Capa com faixa colorida e prateleira desenhada em TikZ",
+        "Texto em fonte sem serifa (TeX Gyre Heros)",
+        "Instruções de preenchimento que somem com uma linha"
+      ],
+      "paginas": 4,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/rel-bib-diagnostico-acervo/fonte/main.tex",
+        "zip": "modelos/rel-bib-diagnostico-acervo/rel-bib-diagnostico-acervo.zip",
+        "pdf": "modelos/rel-bib-diagnostico-acervo/rel-bib-diagnostico-acervo.pdf",
+        "miniatura": "modelos/rel-bib-diagnostico-acervo/miniatura.webp",
+        "previas": [
+          "modelos/rel-bib-diagnostico-acervo/previa-1.webp",
+          "modelos/rel-bib-diagnostico-acervo/previa-2.webp",
+          "modelos/rel-bib-diagnostico-acervo/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 81899,
+        "zip": 7977
+      },
+      "sha256_fonte": "6b17f6c93d4b9bfd0e4acd3c2df5b7d37ef2efa0ab0d71a4d29d987cc67fea97",
+      "publicado": true
+    },
+    {
+      "id": "rel-bib-estagio",
+      "nome": "Relatório de estágio em biblioteca",
+      "categoria": "relatorio",
+      "filtro": "pesquisa",
+      "curso": "Biblioteconomia",
+      "classe": "report",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Relatório de estágio supervisionado em Biblioteconomia com capa, quadro de identificação, caracterização da unidade, atividades por setor e considerações finais. Traz um cronograma semanal com células coloridas e um quadro de avaliação para o supervisor marcar e assinar.",
+      "destaques": [
+        "Cronograma de 12 semanas: basta escrever \\m na célula",
+        "Quadro de avaliação do supervisor com escala de 1 a 5 e assinatura",
+        "Quadro de identificação com os dados do termo de compromisso",
+        "Margens, espaçamento e títulos em caixa alta da NBR 14724",
+        "Citações no padrão ABNT com abntex2cite",
+        "Instruções de preenchimento que somem com uma linha"
+      ],
+      "paginas": 6,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/rel-bib-estagio/fonte/main.tex",
+        "zip": "modelos/rel-bib-estagio/rel-bib-estagio.zip",
+        "pdf": "modelos/rel-bib-estagio/rel-bib-estagio.pdf",
+        "miniatura": "modelos/rel-bib-estagio/miniatura.webp",
+        "previas": [
+          "modelos/rel-bib-estagio/previa-1.webp",
+          "modelos/rel-bib-estagio/previa-2.webp",
+          "modelos/rel-bib-estagio/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 112952,
+        "zip": 7742
+      },
+      "sha256_fonte": "40d900f71c5c9cd1ccea6974a5c3ed34dc80de9189db5866e87b5c2d98980ddd",
+      "publicado": true
+    },
+    {
       "id": "rel-fis-lab-basico",
       "nome": "Relatório de laboratório de Física básica",
       "categoria": "relatorio",
@@ -125,6 +701,112 @@
         "zip": 9476
       },
       "sha256_fonte": "2cc8fe7d472d49fe550254835d09658528380ff53f61d4fa67bf4d57c74543d1",
+      "publicado": true
+    },
+    {
+      "id": "pro-bib-estudo-dirigido",
+      "nome": "Estudo dirigido de Organização da Informação",
+      "categoria": "prova",
+      "filtro": "ensino",
+      "curso": "Biblioteconomia",
+      "classe": "exam",
+      "motor": "pdflatex",
+      "bibliografia": "nenhuma",
+      "descricao": "Folha de estudo dirigido com texto-base e cinco questões discursivas sobre representação descritiva e temática, Ranganathan, NBR 6023, ISBN e ISSN. Cada questão tem linhas para a resposta e a resposta esperada, que aparece só na versão do professor.",
+      "destaques": [
+        "Linhas de resposta com \\fillwithlines, de altura ajustável",
+        "Questões com título (\\titledquestion)",
+        "Resposta esperada em caixa sombreada, ligada por \\printanswers",
+        "Quadro de texto-base antes das questões",
+        "Exercício de referência pela NBR 6023:2018 com gabarito",
+        "Instruções de preenchimento que somem com uma linha"
+      ],
+      "paginas": 3,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/pro-bib-estudo-dirigido/fonte/main.tex",
+        "zip": "modelos/pro-bib-estudo-dirigido/pro-bib-estudo-dirigido.zip",
+        "pdf": "modelos/pro-bib-estudo-dirigido/pro-bib-estudo-dirigido.pdf",
+        "miniatura": "modelos/pro-bib-estudo-dirigido/miniatura.webp",
+        "previas": [
+          "modelos/pro-bib-estudo-dirigido/previa-1.webp",
+          "modelos/pro-bib-estudo-dirigido/previa-2.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 162979,
+        "zip": 6067
+      },
+      "sha256_fonte": "423855a42c1aeb03448cbdc3a59a40d0cad5487210e7103f97f9c6df02a74fbb",
+      "publicado": true
+    },
+    {
+      "id": "pro-bib-objetiva",
+      "nome": "Prova objetiva de Fundamentos da Biblioteconomia",
+      "categoria": "prova",
+      "filtro": "ensino",
+      "curso": "Biblioteconomia",
+      "classe": "exam",
+      "motor": "pdflatex",
+      "bibliografia": "nenhuma",
+      "descricao": "Prova de múltipla escolha com dez questões sobre Ranganathan, CDD, CDU, ISBN, ISSN, MARC 21 e normas da ABNT. Uma linha troca a versão do aluno pela do professor, que destaca a alternativa certa e preenche o quadro de respostas.",
+      "destaques": [
+        "Alternativas a, b, c, d no ambiente choices",
+        "Gabarito ligado e desligado por \\printanswers",
+        "Quadro de respostas que se preenche na versão do professor",
+        "Número de questões e total de pontos calculados pela classe",
+        "Cabeçalho, rodapé e numeração de páginas prontos",
+        "Instruções de preenchimento que somem com uma linha"
+      ],
+      "paginas": 2,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/pro-bib-objetiva/fonte/main.tex",
+        "zip": "modelos/pro-bib-objetiva/pro-bib-objetiva.zip",
+        "pdf": "modelos/pro-bib-objetiva/pro-bib-objetiva.pdf",
+        "miniatura": "modelos/pro-bib-objetiva/miniatura.webp",
+        "previas": [
+          "modelos/pro-bib-objetiva/previa-1.webp",
+          "modelos/pro-bib-objetiva/previa-2.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 173555,
+        "zip": 5980
+      },
+      "sha256_fonte": "a1a0f3f705c3c20d105a20a6d266c768dffda0a09e1a74094521f7c04184d2b3",
       "publicado": true
     }
   ]

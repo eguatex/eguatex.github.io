@@ -1,0 +1,25 @@
+{
+  "id": "dis-bib-mestrado-profissional",
+  "nome": "Dissertação de mestrado profissional em Biblioteconomia",
+  "categoria": "tese",
+  "curso": "Biblioteconomia",
+  "classe": "abntex2",
+  "motor": "pdflatex",
+  "bibliografia": "abntex2cite",
+  "descricao": "Dissertação de mestrado profissional com todos os elementos pré-textuais da NBR 14724, um arquivo por capítulo e o produto técnico completo em apêndice. O exemplo é um guia de política de desenvolvimento de coleções para bibliotecas escolares, com diagnóstico, descrição e validação do produto.",
+  "destaques": [
+    "Capa, folha de rosto, ficha catalográfica, errata e folha de aprovação",
+    "Produto técnico em apêndice, com ficha técnica e formulário",
+    "Listas de figuras, quadros, tabelas, siglas e símbolos",
+    "Ciclo do desenvolvimento de coleções desenhado em TikZ",
+    "Um arquivo por capítulo na pasta capitulos",
+    "Instruções de preenchimento que somem com uma linha"
+  ],
+  "licenca": "CC0-1.0",
+  "publicado": true,
+  "previas_paginas": [1, 20, 27],
+  "avisos_ignorados": [
+    "Package babel Warning: Name 'brazil' is deprecated",
+    "Class memoir Warning: .settocpreprocessor is marked deprecated"
+  ]
+}

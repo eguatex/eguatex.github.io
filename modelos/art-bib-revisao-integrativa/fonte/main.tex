@@ -1,0 +1,209 @@
+% Artigo de revisão integrativa em Biblioteconomia
+% Modelo do ÉguaTex (https://eguatex.github.io), em domínio público pela licença CC0 1.0:
+% use, modifique e distribua sem pedir permissão e sem citar a origem.
+%
+% Compile com pdfLaTeX e BibTeX (o ÉguaTex faz isso sozinho).
+% Arquivos: main.tex (este texto) e referencias.bib (bibliografia).
+
+\documentclass[12pt,a4paper]{article}
+
+% ---------- idioma, fontes e página ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,brazilian]{babel}
+\usepackage{tgpagella}
+\usepackage{microtype}
+\usepackage[a4paper,left=3cm,top=2.5cm,right=2cm,bottom=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.4}
+\usepackage{indentfirst}
+
+% ---------- tabelas, quadros, figuras e página em paisagem ----------
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{xcolor}
+\definecolor{verde}{RGB}{30,95,80}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf, justification=centering}
+% A ABNT distingue quadro (texto, bordas fechadas) de tabela (números, laterais abertas).
+\DeclareCaptionType{quadro}[Quadro][Lista de quadros]
+\newcommand{\fonte}[1]{\par\smallskip{\footnotesize Fonte: #1\par}}
+
+% ---------- títulos das seções ----------
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{verde}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\normalsize\bfseries\itshape}{\thesubsection}{0.7em}{}
+
+% ---------- links e referências no padrão ABNT (sistema numérico) ----------
+% O hyperref vem antes do abntex2cite. A opção num numera as citações na ordem em que aparecem.
+\usepackage[hidelinks]{hyperref}
+\usepackage[num]{abntex2cite}
+
+% ---------- instruções de preenchimento ----------
+% Os textos em cinza explicam o que escrever em cada parte.
+% Troque \instrucoestrue por \instrucoesfalse para esconder todos de uma vez.
+\newif\ifinstrucoes
+\instrucoestrue
+\newcommand{\instrucao}[1]{\ifinstrucoes{\leavevmode\color{gray}\small\itshape #1\par}\fi}
+
+% ---------- dados do artigo: preencha aqui ----------
+\newcommand{\titulo}{Título da revisão integrativa: tema e recorte temporal}
+\newcommand{\autores}{Nome do autor \and Nome da coautora}
+\newcommand{\afiliacao}{Universidade Federal Exemplo, Programa de Pós-Graduação em Ciência da Informação, Cidade}
+
+\hypersetup{pdftitle={\titulo}}
+
+\begin{document}
+
+% ======================================================================
+% Título, autoria e resumo
+% ======================================================================
+\begin{center}
+  {\color{verde}\rule{0.35\linewidth}{1.2pt}}\par\vspace{0.8em}
+  {\LARGE\bfseries\titulo\par}
+  \vspace{1em}
+  {\large Nome do autor \qquad Nome da coautora\par}
+  {\small\itshape\afiliacao\par}
+  \vspace{0.6em}
+  {\color{verde}\rule{0.35\linewidth}{1.2pt}}
+\end{center}
+
+\begin{singlespace}
+\instrucao{Até 250 palavras com objetivo, pergunta de pesquisa, bases consultadas, período, número de estudos incluídos e principais achados.}
+\noindent\textbf{Resumo:} Esta revisão integrativa analisa a produção científica sobre um tema da Biblioteconomia em um período definido. A busca em bases de dados nacionais e internacionais seguiu critérios explícitos de inclusão e de exclusão. Os estudos selecionados foram organizados em um quadro síntese e discutidos em categorias temáticas.
+
+\smallskip
+\noindent\textbf{Palavras-chave:} revisão integrativa. Biblioteconomia. Produção científica.
+
+\medskip
+\begin{otherlanguage}{english}
+\noindent\textbf{Abstract:} This integrative review analyzes the scientific literature on a Library Science topic within a defined period. The search in national and international databases followed explicit inclusion and exclusion criteria.
+
+\smallskip
+\noindent\textbf{Keywords:} integrative review. Library Science. Scientific production.
+\end{otherlanguage}
+\end{singlespace}
+
+% ======================================================================
+\section{Introdução}
+% ======================================================================
+\instrucao{Apresente o tema, a lacuna que justifica a revisão e a pergunta norteadora, escrita de forma que possa ser respondida pelos estudos.}
+
+A revisão integrativa reúne estudos com delineamentos diferentes para produzir uma visão ampla de um problema \cite{whittemore2005}. Na Biblioteconomia, ela ajuda a mapear práticas e a identificar temas pouco explorados, em linha com a quarta lei de Ranganathan, que pede poupar o tempo do leitor \cite{ranganathan1931}.
+
+O objetivo deste artigo é sintetizar a produção sobre o tema entre os anos de início e de fim. A pergunta norteadora foi: \emph{escreva aqui a pergunta}?
+
+% ======================================================================
+\section{Método}
+% ======================================================================
+\instrucao{Descreva cada etapa com detalhe suficiente para que outra pessoa repita a busca e obtenha os mesmos estudos.}
+
+\subsection{Etapas da revisão}
+O trabalho seguiu as cinco etapas propostas por \citeonline{whittemore2005}: identificação do problema, busca na literatura, avaliação dos dados, análise dos dados e apresentação dos resultados.
+
+\subsection{Busca e seleção}
+\instrucao{Informe as bases, a data da busca, a expressão de busca com os operadores booleanos e os critérios de inclusão e de exclusão.}
+A busca foi feita em três bases de dados, com a expressão \texttt{(termo1 OR termo2) AND termo3}, com aspas nos termos compostos. Foram incluídos artigos completos, em português, inglês ou espanhol, publicados no período definido. Os estudos selecionados foram citados conforme a NBR 10520 \cite{abnt10520}. A Figura~\ref{fig:fluxo} resume a seleção.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      caixa/.style={draw=verde, thick, rounded corners=2pt, fill=verde!6,
+        text width=5.6cm, align=center, minimum height=0.9cm, font=\small},
+      lado/.style={draw=gray, rounded corners=2pt, text width=3.6cm,
+        align=center, font=\footnotesize},
+      seta/.style={-{Stealth}, thick, verde},
+      node distance=0.55cm]
+    \node[caixa] (a) {Registros identificados nas bases ($n = 000$)};
+    \node[caixa, below=of a] (b) {Registros após remover duplicados ($n = 000$)};
+    \node[caixa, below=of b] (c) {Textos completos avaliados ($n = 00$)};
+    \node[caixa, below=of c] (d) {Estudos incluídos na revisão ($n = 0$)};
+    \node[lado, right=0.6cm of b] (xb) {Excluídos pelo título e pelo resumo ($n = 000$)};
+    \node[lado, right=0.6cm of c] (xc) {Excluídos pelos critérios ($n = 00$)};
+    \draw[seta] (a) -- (b);
+    \draw[seta] (b) -- (c);
+    \draw[seta] (c) -- (d);
+    \draw[seta, gray] (b) -- (xb);
+    \draw[seta, gray] (c) -- (xc);
+  \end{tikzpicture}
+  \caption{Fluxograma da seleção dos estudos}
+  \label{fig:fluxo}
+  \fonte{elaborada pelos autores (Ano). Substitua os zeros pelos números da sua busca.}
+\end{figure}
+
+% ======================================================================
+\section{Resultados}
+% ======================================================================
+\instrucao{Apresente os estudos incluídos no quadro síntese, com um código para cada um (E1, E2...), e as características gerais em tabela.}
+
+O Quadro~\ref{qua:sintese} apresenta a síntese dos estudos incluídos, e a Tabela~\ref{tab:caracteristicas}, em página na horizontal, reúne as características de cada um. Cada estudo incluído entra também na lista de referências, como o estudo E1 \cite{exemploE1}.
+
+\begin{quadro}[!htb]
+  \caption{Síntese dos estudos incluídos na revisão}
+  \label{qua:sintese}
+  \centering
+  \small
+  \setstretch{1.1}
+  \begin{tabularx}{\linewidth}{|c|p{2.3cm}|X|X|}
+    \hline
+    \textbf{Cód.} & \textbf{Autoria e ano} & \textbf{Objetivo} & \textbf{Principais achados} \\ \hline
+    E1 & Sobrenome (Ano) & Avaliar o serviço de referência virtual & Escreva o achado em uma frase \\ \hline
+    E2 & Sobrenome (Ano) & Descrever práticas de catalogação & Escreva o achado em uma frase \\ \hline
+    E3 & Sobrenome (Ano) & Analisar a competência em informação & Escreva o achado em uma frase \\ \hline
+    E4 & Sobrenome (Ano) & Mapear repositórios institucionais & Escreva o achado em uma frase \\ \hline
+  \end{tabularx}
+  \fonte{elaborado pelos autores (Ano).}
+\end{quadro}
+
+
+% ======================================================================
+\section{Discussão}
+% ======================================================================
+\instrucao{Agrupe os achados em categorias temáticas, compare os estudos entre si e com a literatura, e aponte as lacunas. Use os códigos E1, E2... para remeter ao quadro.}
+
+\subsection{Categoria 1: nome da categoria}
+Os estudos E1 e E3 convergem ao apontar que a avaliação dos serviços depende de indicadores definidos com os usuários. Descreva aqui as semelhanças e as diferenças entre eles.
+
+
+\subsection{Categoria 2: nome da categoria}
+Os estudos E2 e E4 tratam da organização e do acesso à informação em ambientes digitais. Discuta como os resultados se complementam e o que ainda falta investigar.
+
+% A página em paisagem gira só a tabela. O texto continua em retrato na página seguinte.
+\begin{landscape}
+\begin{table}[p]
+  \centering
+  \caption{Características dos estudos incluídos}
+  \label{tab:caracteristicas}
+  \setstretch{1.2}
+  \begin{tabular}{c l l l l c c}
+    \toprule
+    Cód. & Base de dados & Periódico & País & Abordagem & Ano & Participantes \\
+    \midrule
+    E1 & Base 1 & Nome do periódico & Brasil & Qualitativa & Ano & 12 \\
+    E2 & Base 2 & Nome do periódico & Portugal & Quantitativa & Ano & 230 \\
+    E3 & Base 1 & Nome do periódico & Brasil & Mista & Ano & 48 \\
+    E4 & Base 3 & Nome do periódico & Espanha & Qualitativa & Ano & 7 \\
+    \bottomrule
+  \end{tabular}
+  \fonte{elaborada pelos autores (Ano). Dados de exemplo.}
+\end{table}
+\end{landscape}
+
+% ======================================================================
+\section{Conclusão}
+% ======================================================================
+\instrucao{Responda à pergunta norteadora, indique as limitações da revisão (bases, idiomas, período) e sugira temas para estudos futuros.}
+
+A revisão mostrou que o tema é estudado sobretudo com abordagens qualitativas e em contextos universitários. Como limitação, a busca se restringiu a três bases e a três idiomas.
+
+% ======================================================================
+% Referências
+% ======================================================================
+% Sistema numérico: a lista sai na ordem de citação, como pede a NBR 10520 para esse sistema.
+\bibliography{referencias}
+
+\end{document}

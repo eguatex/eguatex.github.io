@@ -1,0 +1,15 @@
+# Dados de exemplo: troque pela contagem feita na sua biblioteca.
+# classe  = classe principal da CDD
+# area    = nome da classe (entre chaves quando tiver espaco)
+# bom, regular, ruim = numero de itens em cada estado de conservacao
+classe  area                        bom   regular  ruim
+000     {Generalidades}             90    22       8
+100     {Filosofia e psicologia}    130   38       12
+200     {Religião}                  40    15       5
+300     {Ciências sociais}          450   140      50
+400     {Linguagem}                 160   45       15
+500     {Ciências naturais}         500   165      95
+600     {Tecnologia}                380   120      40
+700     {Artes}                     200   45       15
+800     {Literatura}                620   215      65
+900     {História e geografia}      230   65       25

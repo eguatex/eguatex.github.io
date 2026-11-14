@@ -1,0 +1,263 @@
+% Tese de doutorado em Biblioteconomia e Ciência da Informação
+% Modelo do ÉguaTex (https://eguatex.github.io), em domínio público pela licença CC0 1.0:
+% use, modifique e distribua sem pedir permissão e sem citar a origem.
+%
+% Compile com pdfLaTeX e BibTeX (o ÉguaTex faz isso sozinho).
+% Arquivos: main.tex (preâmbulo, pré-textuais e ordem das partes), capitulos/*.tex
+% (um arquivo por capítulo, apêndice ou anexo) e referencias.bib.
+% A tese é dividida em partes (\part), cada uma com seus capítulos.
+
+\documentclass[
+  12pt,
+  twoside,          % frente e verso: capítulos e partes abrem em página ímpar
+  openright,
+  a4paper,
+  chapter=TITLE,    % títulos de capítulo em maiúsculas
+  section=TITLE,    % títulos de seção primária em maiúsculas
+  english,
+  french,
+  brazil            % o último idioma é o principal (o abntex2 usa o nome brazil)
+]{abntex2}
+
+% ---------- fontes ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{ebgaramond}         % Garamond no texto
+\usepackage[scale=0.9]{tgheros} % títulos sem serifa
+\usepackage{microtype}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+
+% ---------- tabelas, figuras e cores ----------
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, fit, babel}
+\definecolor{vinho}{RGB}{122,28,44}
+
+% ---------- citações ABNT (o abntex2 já carrega o hyperref) ----------
+\usepackage[alf]{abntex2cite}
+
+% ---------- aparência das partes e dos capítulos ----------
+\renewcommand{\ABNTEXchapterfont}{\sffamily\bfseries\color{vinho}}
+\renewcommand{\ABNTEXpartfont}{\sffamily\bfseries\color{vinho}}
+
+% ---------- instruções de preenchimento ----------
+% Os textos em cinza explicam o que escrever em cada parte.
+% Troque \instrucoestrue por \instrucoesfalse para esconder todos de uma vez.
+\newif\ifinstrucoes
+\instrucoestrue
+\newcommand{\instrucao}[1]{\ifinstrucoes{\color{gray}\small\itshape #1\par}\fi}
+
+% ---------- dados do trabalho: preencha aqui ----------
+\titulo{Interoperabilidade de metadados em repositórios institucionais: um modelo de avaliação}
+\autor{Nome do autor}
+\local{Cidade}
+\data{Ano}
+\orientador{Prof. Dr. Nome do orientador}
+\instituicao{%
+  Universidade Federal Exemplo
+  \par
+  Faculdade de Biblioteconomia e Ciência da Informação
+  \par
+  Programa de Pós-Graduação em Ciência da Informação}
+\tipotrabalho{Tese (Doutorado)}
+\preambulo{Tese apresentada ao Programa de Pós-Graduação em Ciência da Informação da Universidade Federal Exemplo, como requisito parcial para a obtenção do título de Doutor em Ciência da Informação. Linha de pesquisa: Organização da informação e do conhecimento.}
+
+\makeatletter
+\hypersetup{
+  pdftitle={\@title}, pdfauthor={\@author}, pdfsubject={\imprimirpreambulo},
+  colorlinks=true, linkcolor=vinho, citecolor=vinho, urlcolor=vinho,
+  bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.15cm}
+
+\begin{document}
+\selectlanguage{brazil}
+\frenchspacing
+
+% ======================================================================
+% Elementos pré-textuais (NBR 14724:2011)
+% ======================================================================
+\imprimircapa
+\imprimirfolhaderosto*
+
+% Ficha catalográfica no verso da folha de rosto: peça a definitiva à biblioteca.
+\begin{fichacatalografica}
+  \vspace*{\fill}
+  \begin{center}
+    \fbox{\begin{minipage}[c][7cm]{13cm}
+      \footnotesize\sffamily
+      S000i\quad Sobrenome, Nome do autor.\par
+      \hspace{1cm}\imprimirtitulo\ / Nome do autor; orientador \imprimirorientador. -- \imprimirlocal, \imprimirdata.\par
+      \hspace{1cm}\thelastpage\ f. : il.\par\medskip
+      \hspace{1cm}\imprimirtipotrabalho\ -- Universidade Federal Exemplo, Programa de Pós-Graduação em Ciência da Informação, \imprimirdata.\par\medskip
+      \hspace{1cm}1. Metadados. 2. Repositórios institucionais. 3. Interoperabilidade. I. Orientador. II. Título.\par
+      \vfill\hfill CDD 025.3
+    \end{minipage}}
+  \end{center}
+\end{fichacatalografica}
+
+% Errata: elemento opcional. Apague se não houver.
+\begin{errata}
+  Sobrenome, Nome do autor. \textbf{\imprimirtitulo}. Ano. Tese (Doutorado em Ciência da Informação) -- Universidade Federal Exemplo, Cidade, Ano.
+
+  \begin{table}[htb]
+    \centering\small
+    \begin{tabular}{cccc}
+      \toprule
+      Folha & Linha & Onde se lê & Leia-se \\
+      \midrule
+      58 & 4 & OAI-PHM & OAI-PMH \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{errata}
+
+\begin{folhadeaprovacao}
+  \begin{center}
+    {\large\imprimirautor}
+
+    \vspace*{\fill}
+    {\sffamily\bfseries\Large\imprimirtitulo}
+    \vspace*{\fill}
+
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+      \small\imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+  \end{center}
+
+  Tese defendida e aprovada em dia de mês de Ano.
+
+  \assinatura{\textbf{\imprimirorientador} (orientador) \\ Universidade Federal Exemplo}
+  \assinatura{\textbf{Prof.ª Dr.ª Nome} \\ Universidade Federal Exemplo}
+  \assinatura{\textbf{Prof. Dr. Nome} \\ Universidade Federal Exemplo}
+  \assinatura{\textbf{Prof.ª Dr.ª Nome} \\ Instituição externa}
+  \assinatura{\textbf{Prof. Dr. Nome} \\ Instituição externa}
+\end{folhadeaprovacao}
+
+\begin{dedicatoria}
+  \vspace*{\fill}
+  \centering\itshape
+  A quem cataloga para que outros encontrem.
+  \vspace*{\fill}
+\end{dedicatoria}
+
+\begin{agradecimentos}
+  \instrucao{Elemento opcional. Na tese, cite a agência de fomento com o número do processo, o período de doutorado sanduíche, se houver, e as instituições que cederam dados.}
+  Ao orientador, pela confiança ao longo de quatro anos.
+
+  Às equipes dos repositórios que responderam ao questionário e cederam acesso aos seus dados.
+
+  Este trabalho teve apoio da agência de fomento pelo processo nº 000000/Ano.
+\end{agradecimentos}
+
+\begin{epigrafe}
+  \vspace*{\fill}
+  \begin{flushright}
+    \begin{minipage}{.6\textwidth}
+      \itshape Escolha um trecho curto que dialogue com o tema da tese e indique o autor e a obra, com a página, como em qualquer citação direta.
+    \end{minipage}
+  \end{flushright}
+\end{epigrafe}
+
+\setlength{\absparsep}{18pt}
+\begin{resumo}
+  \instrucao{De 150 a 500 palavras, em parágrafo único (NBR 6028:2021). Na tese, destaque a contribuição original: o que se sabe agora que não se sabia antes.}
+  Esta tese propõe e aplica um modelo de avaliação da interoperabilidade de metadados em repositórios institucionais. O modelo combina três dimensões: sintática, semântica e organizacional. A aplicação em uma amostra de repositórios brasileiros, por meio da coleta automática de registros e de questionário às equipes gestoras, revelou que a dimensão semântica é a mais frágil, sobretudo no controle de autoridades. A tese contribui com um instrumento replicável e com uma agenda de melhorias priorizadas.
+
+  \textbf{Palavras-chave}: metadados. repositórios institucionais. interoperabilidade. controle de autoridade.
+\end{resumo}
+
+\begin{resumo}[Abstract]
+  \begin{otherlanguage*}{english}
+    This thesis proposes and applies a model for assessing metadata interoperability in institutional repositories, along syntactic, semantic and organizational dimensions. Applied to a sample of Brazilian repositories, it shows that the semantic dimension is the weakest, especially in authority control.
+
+    \textbf{Keywords}: metadata. institutional repositories. interoperability. authority control.
+  \end{otherlanguage*}
+\end{resumo}
+
+\begin{resumo}[Résumé]
+  \begin{otherlanguage*}{french}
+    Cette thèse propose et applique un modèle d'évaluation de l'interopérabilité des métadonnées dans les archives institutionnelles, selon les dimensions syntaxique, sémantique et organisationnelle.
+
+    \textbf{Mots-clés}: métadonnées. archives institutionnelles. interopérabilité.
+  \end{otherlanguage*}
+\end{resumo}
+
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+% Lista de abreviaturas e siglas: em ordem alfabética, cada sigla com o nome por extenso.
+% Na primeira vez que a sigla aparece no texto, escreva o nome completo seguido da sigla entre parênteses.
+\begin{siglas}
+  \item[ABNT] Associação Brasileira de Normas Técnicas
+  \item[BDTD] Biblioteca Digital Brasileira de Teses e Dissertações
+  \item[DC] Dublin Core
+  \item[DOI] \textit{Digital Object Identifier}
+  \item[IFLA] \textit{International Federation of Library Associations and Institutions}
+  \item[LRM] \textit{Library Reference Model}
+  \item[MARC] \textit{Machine Readable Cataloging}
+  \item[OAI-PMH] \textit{Open Archives Initiative Protocol for Metadata Harvesting}
+  \item[ORCID] \textit{Open Researcher and Contributor ID}
+  \item[RDA] \textit{Resource Description and Access}
+  \item[XML] \textit{Extensible Markup Language}
+\end{siglas}
+
+\begin{simbolos}
+  \item[$I_s$] Índice de interoperabilidade sintática
+  \item[$I_m$] Índice de interoperabilidade semântica
+  \item[$I_o$] Índice de interoperabilidade organizacional
+  \item[$w_k$] Peso da dimensão $k$ no índice geral
+\end{simbolos}
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ======================================================================
+% Elementos textuais
+% ======================================================================
+\textual
+\include{capitulos/introducao}
+
+\part{Fundamentos}\label{part:fundamentos}
+\include{capitulos/metadados}
+\include{capitulos/interoperabilidade}
+
+\part{Pesquisa empírica}\label{part:empirica}
+\include{capitulos/metodo}
+\include{capitulos/resultados}
+
+% \phantompart encerra a última parte; a conclusão fica fora dela no sumário.
+\phantompart
+\include{capitulos/conclusao}
+
+% ======================================================================
+% Elementos pós-textuais
+% ======================================================================
+\postextual
+\bibliography{referencias}
+
+\begin{apendicesenv}
+  \partapendices
+  \include{capitulos/apendice-coleta}
+\end{apendicesenv}
+
+\begin{anexosenv}
+  \partanexos
+  \include{capitulos/anexo-oai}
+\end{anexosenv}
+
+\end{document}

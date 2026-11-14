@@ -1,0 +1,20 @@
+{
+  "id": "apr-comp-defesa-metropolis",
+  "nome": "Defesa de TCC em Computação (tema metropolis)",
+  "categoria": "apresentacao",
+  "curso": "Computação",
+  "classe": "beamer",
+  "motor": "pdflatex",
+  "bibliografia": "bibtex",
+  "descricao": "Slides de defesa em 16:9 com o visual limpo do metropolis rodando no pdfLaTeX, com Fira Sans e Fira Mono. Traz diagrama da arquitetura em TikZ, código Python em que cada passo destaca uma linha, gráfico de precisão e revocação e slide final de perguntas.",
+  "destaques": [
+    "Tema metropolis no pdfLaTeX, sem XeLaTeX",
+    "Fira Sans e Fira Mono pelos pacotes do TeX Live",
+    "Código com linhas destacadas passo a passo por overlays",
+    "Arquitetura em TikZ e gráfico em pgfplots",
+    "Notas de preenchimento que somem com uma linha"
+  ],
+  "licenca": "CC0-1.0",
+  "publicado": true,
+  "previas_paginas": [1, 10, 12]
+}

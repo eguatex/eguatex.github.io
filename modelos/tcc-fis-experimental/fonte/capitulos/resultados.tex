@@ -1,0 +1,64 @@
+% ======================================================================
+\chapter{Resultados e discussão}
+\label{cap:resultados}
+% ======================================================================
+\instrucao{Mostre os dados em tabela com unidades e incertezas, o gráfico com barras de erro e o ajuste. Compare com a teoria ou com um valor de referência e discuta as fontes de incerteza mais importantes.}
+
+\section{Posições de ressonância}
+
+A \autoref{tab:dados} reúne as posições médias de ressonância e suas incertezas. A tabela é lida diretamente do arquivo \texttt{dados.dat}, o mesmo usado no gráfico.
+
+\begin{table}[htb]
+  \caption{Posições de ressonância para $f = \qty{\frequencia}{\hertz}$ (dados de exemplo).}
+  \label{tab:dados}
+  \centering
+  \pgfplotstabletypeset[
+    columns={n,x,L,sL},
+    every head row/.style={before row=\toprule, after row=\midrule},
+    every last row/.style={after row=\bottomrule},
+    columns/n/.style={column name={$n$}},
+    columns/x/.style={column name={$x_n = (2n-1)/4$}, fixed, fixed zerofill, precision=2, use comma},
+    columns/L/.style={column name={$L_n$ (\unit{\metre})}, fixed, fixed zerofill, precision=3, use comma},
+    columns/sL/.style={column name={$\sigma_L$ (\unit{\metre})}, fixed, fixed zerofill, precision=3, use comma},
+  ]\medidas
+
+  \legend{Fonte: elaborada pelo autor.}
+\end{table}
+
+\section{Ajuste linear}
+
+A \autoref{fig:ajuste} mostra $L_n$ em função de $x_n$ com as barras de incerteza e a reta ajustada pela Equação~\eqref{eq:reta}. O coeficiente angular dá $\lambda = \qty[round-mode=uncertainty]{\lambdaAjuste \pm \incertezaLambda}{\metre}$, e o coeficiente linear dá a correção de extremidade $e = \qty[round-mode=places, round-precision=3]{\correcao}{\metre}$.
+
+\begin{figure}[htb]
+  \caption{Posição de ressonância em função de $x_n$, com a reta ajustada.}
+  \label{fig:ajuste}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=0.8\linewidth, height=0.55\linewidth,
+      xlabel={$x_n = (2n-1)/4$}, ylabel={$L_n$ (\unit{\metre})},
+      xmin=0, xmax=3, ymin=0, ymax=1,
+      grid=major, grid style={gray!25},
+      legend pos=north west, legend cell align=left,
+      /pgf/number format/use comma,
+    ]
+      \addplot[only marks, mark=square*, mark size=1.5pt,
+        error bars/.cd, y dir=both, y explicit]
+        table[x=x, y=L, y error=sL] {\medidas};
+      \addlegendentry{medidas}
+      \addplot[thick, red!70!black] table[x=x, y=ajuste] {\medidas};
+      \addlegendentry{ajuste ponderado}
+    \end{axis}
+  \end{tikzpicture}
+
+  \legend{Fonte: elaborada pelo autor.}
+\end{figure}
+
+\section{Velocidade do som}
+
+Pela Equação~\eqref{eq:velocidade}, a velocidade do som é
+\begin{equation}
+  v = f\lambda = \qty[round-mode=uncertainty]{\velocidade \pm \incertezaVelocidade}{\metre\per\second}.
+\end{equation}
+\instrucao{Compare com a previsão teórica na temperatura medida, calcule a discrepância em unidades de incerteza e diga se há compatibilidade. Discuta também a correção de extremidade obtida.}
+Para a temperatura de \qty{20.0 \pm 0.5}{\celsius}, a Equação~\eqref{eq:temperatura} prevê \qty{343.2 \pm 0.3}{\metre\per\second}, compatível com o valor medido. A correção de extremidade obtida está próxima de $0{,}6\,r$ para o raio interno de \qty{19}{\milli\metre}.

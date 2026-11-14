@@ -1,0 +1,193 @@
+% TCC de Física experimental (classe abntex2)
+% Modelo do ÉguaTex (https://eguatex.github.io), em domínio público pela licença CC0 1.0:
+% use, modifique e distribua sem pedir permissão e sem citar a origem.
+%
+% Compile com pdfLaTeX e BibTeX (o ÉguaTex faz isso sozinho).
+% Arquivos:
+%   main.tex            preâmbulo, elementos pré-textuais e pós-textuais
+%   capitulos/*.tex     um arquivo por capítulo, na ordem dos \input abaixo
+%   dados.dat           medidas usadas na tabela, no gráfico e no ajuste
+%   referencias.bib     bibliografia no formato BibTeX
+
+\documentclass[
+  12pt,            % corpo 12 para o texto, como pede a NBR 14724
+  oneside,         % troque por twoside para imprimir frente e verso
+  a4paper,
+  english,         % idioma do abstract
+  brazilian,       % idioma principal (o último da lista)
+]{abntex2}
+
+% ---------- idioma, fontes e microtipografia ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ---------- matemática, unidades, tabelas e figuras ----------
+\usepackage{amsmath}
+\usepackage{siunitx}
+\sisetup{locale=FR, output-decimal-marker={,}, separate-uncertainty=true, per-mode=symbol}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, patterns, decorations.pathmorphing, calc, babel}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+% ---------- referências no padrão ABNT ----------
+% A classe abntex2 já carrega o hyperref; aqui só ajustamos as opções.
+\hypersetup{hidelinks}
+\usepackage[alf]{abntex2cite}
+
+% ---------- instruções de preenchimento ----------
+% Os textos em cinza explicam o que escrever em cada parte.
+% Troque \instrucoestrue por \instrucoesfalse para esconder todos de uma vez.
+\newif\ifinstrucoes
+\instrucoestrue
+\newcommand{\instrucao}[1]{\ifinstrucoes{\color{gray}\small\itshape #1\par}\fi}
+
+% ---------- dados do trabalho: preencha aqui ----------
+\titulo{Medida da velocidade do som no ar com um tubo de ressonância}
+\autor{Nome do autor}
+\local{Cidade}
+\data{Ano}
+\orientador{Prof. Dr. Nome do orientador}
+\coorientador{Prof.\textsuperscript{a} Dr.\textsuperscript{a} Nome da coorientadora}
+\instituicao{%
+  Universidade Federal Exemplo\par
+  Instituto de Ciências Exatas e Naturais\par
+  Faculdade de Física}
+\tipotrabalho{Trabalho de Conclusão de Curso}
+\preambulo{Trabalho de Conclusão de Curso apresentado à Faculdade de Física da Universidade Federal Exemplo como requisito parcial para a obtenção do grau de Bacharel em Física.}
+
+\makeatletter
+\hypersetup{pdftitle={\@title}, pdfauthor={\@author}, pdfsubject={\imprimirpreambulo}}
+\makeatother
+
+% ---------- cálculos a partir das medidas (arquivo dados.dat) ----------
+% O ajuste linear ponderado de L em função de x = (2n-1)/4 dá o comprimento de onda
+% (coeficiente angular) e a correção de extremidade (coeficiente linear com sinal trocado).
+\pgfplotstableread{dados.dat}\medidas
+\pgfplotstablecreatecol[linear regression={x=x, y=L, variance=sL}]{ajuste}\medidas
+\pgfmathsetmacro{\lambdaAjuste}{\pgfplotstableregressiona}
+\pgfmathsetmacro{\correcao}{-1*\pgfplotstableregressionb}
+% Frequência do gerador (Hz) e incerteza do coeficiente angular (m), calculada com as
+% equações do Apêndice A. Troque pelos seus valores.
+\newcommand{\frequencia}{1000}
+\newcommand{\incertezaLambda}{0.00096}
+\pgfmathsetmacro{\velocidade}{\frequencia*\lambdaAjuste}
+\pgfmathsetmacro{\incertezaVelocidade}{\frequencia*\incertezaLambda}
+
+\begin{document}
+
+% ======================================================================
+% Elementos pré-textuais
+% ======================================================================
+\pretextual
+
+\imprimircapa
+% As chaves vazias depois de \imprimirfolhaderosto evitam um erro conhecido da classe.
+\imprimirfolhaderosto{}
+
+\begin{folhadeaprovacao}
+  \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    {\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+    \vspace*{\fill}
+
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+      \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+  \end{center}
+
+  Trabalho aprovado. \imprimirlocal, dia de mês de \imprimirdata.
+
+  \assinatura{\textbf{\imprimirorientador} \\ Orientador}
+  \assinatura{\textbf{Prof. Dr. Nome do membro da banca} \\ Universidade Federal Exemplo}
+  \assinatura{\textbf{Prof.\textsuperscript{a} Dr.\textsuperscript{a} Nome da membro da banca} \\ Instituição}
+
+  \begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+\end{folhadeaprovacao}
+
+\begin{agradecimentos}
+  \instrucao{Opcional. Em poucas linhas, agradeça a quem contribuiu de fato: orientação, técnicos do laboratório, agência de fomento (com o número do processo).}
+  Agradeço ao orientador, à equipe técnica do Laboratório de Física e aos colegas que ajudaram na montagem experimental.
+\end{agradecimentos}
+
+\begin{resumo}
+  \instrucao{Um parágrafo de 150 a 500 palavras (NBR 6028): objetivo, método, resultado principal com incerteza e conclusão. Escreva por último.}
+  Este trabalho determina a velocidade do som no ar a partir das ressonâncias de uma coluna de ar em um tubo fechado em uma das extremidades. Para uma frequência fixa de \qty{\frequencia}{\hertz}, foram medidas as seis primeiras posições de ressonância, e a relação linear entre a posição e a ordem da ressonância foi ajustada pelo método dos mínimos quadrados ponderados. O coeficiente angular fornece o comprimento de onda e, com ele, $v = \qty[round-mode=uncertainty]{\velocidade \pm \incertezaVelocidade}{\metre\per\second}$, compatível com o valor previsto para a temperatura do laboratório. O coeficiente linear dá a correção de extremidade do tubo, comparada com a estimativa teórica.
+
+  \textbf{Palavras-chave}: velocidade do som. Tubo de ressonância. Ondas estacionárias. Incerteza de medição.
+\end{resumo}
+
+\begin{resumo}[Abstract]
+  \begin{otherlanguage*}{english}
+    \instrucao{Tradução fiel do resumo para o inglês, com as mesmas informações.}
+    This work determines the speed of sound in air from the resonances of an air column in a tube closed at one end. For a fixed frequency, the first six resonance positions were measured and fitted by weighted least squares. The slope gives the wavelength and the speed of sound, which agrees with the value expected at the laboratory temperature.
+
+    \vspace{\onelineskip}
+    \noindent\textbf{Keywords}: speed of sound. Resonance tube. Standing waves. Measurement uncertainty.
+  \end{otherlanguage*}
+\end{resumo}
+
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+\begin{siglas}
+  \item[GUM] Guia para a Expressão da Incerteza de Medição
+  \item[SI] Sistema Internacional de Unidades
+\end{siglas}
+
+\begin{simbolos}
+  \item[$f$] Frequência do gerador de sinais
+  \item[$\lambda$] Comprimento de onda
+  \item[$L_n$] Posição da $n$-ésima ressonância
+  \item[$e$] Correção de extremidade do tubo
+  \item[$v$] Velocidade do som no ar
+\end{simbolos}
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ======================================================================
+% Elementos textuais: um arquivo por capítulo
+% ======================================================================
+\textual
+
+\input{capitulos/introducao}
+\input{capitulos/fundamentacao}
+\input{capitulos/metodologia}
+\input{capitulos/resultados}
+\input{capitulos/conclusao}
+
+% ======================================================================
+% Elementos pós-textuais
+% ======================================================================
+\postextual
+
+\bibliography{referencias}
+
+\begin{apendicesenv}
+  \partapendices
+  \input{capitulos/apendice-ajuste}
+\end{apendicesenv}
+
+\end{document}

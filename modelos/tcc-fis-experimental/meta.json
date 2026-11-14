@@ -1,0 +1,25 @@
+{
+  "id": "tcc-fis-experimental",
+  "nome": "TCC de Física experimental",
+  "categoria": "tcc",
+  "curso": "Física",
+  "classe": "abntex2",
+  "motor": "pdflatex",
+  "bibliografia": "abntex2cite",
+  "descricao": "Trabalho de conclusão de curso em Física experimental no padrão ABNT, com capa, folha de rosto, folha de aprovação, resumo, abstract, listas e um arquivo por capítulo. O exemplo do tubo de ressonância lê as medidas de um arquivo de dados e calcula o ajuste e a velocidade do som no próprio LaTeX.",
+  "destaques": [
+    "Elementos pré-textuais completos da NBR 14724 com abntex2",
+    "Capítulos separados em capitulos/*.tex",
+    "Medidas e incertezas com siunitx",
+    "Ajuste ponderado com barras de erro em pgfplots",
+    "Montagem experimental desenhada em TikZ",
+    "Listas de siglas e de símbolos"
+  ],
+  "licenca": "CC0-1.0",
+  "publicado": true,
+  "previas_paginas": [1, 16, 19],
+  "avisos_ignorados": [
+    "Package babel Warning: Name 'brazil' is deprecated",
+    "Class memoir Warning: \\\\settocpreprocessor is marked deprecated"
+  ]
+}

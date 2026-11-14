@@ -1,0 +1,225 @@
+% Relatório de diagnóstico do acervo de uma biblioteca
+% Modelo do ÉguaTex (https://eguatex.github.io), em domínio público pela licença CC0 1.0:
+% use, modifique e distribua sem pedir permissão e sem citar a origem.
+%
+% Compile com pdfLaTeX e BibTeX (o ÉguaTex faz isso sozinho).
+% Arquivos: main.tex (este texto), acervo.dat (contagem por classe) e referencias.bib.
+
+\documentclass[11pt,a4paper]{report}
+
+% ---------- idioma, fontes e página ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{tgheros}
+\renewcommand{\familydefault}{\sfdefault}   % texto todo em fonte sem serifa
+\usepackage{microtype}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.25}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+% ---------- tabelas, gráficos e cores ----------
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{caption}
+\captionsetup{font=small, labelfont={bf,color=azul}, labelsep=period}
+\usepackage{tikz}
+\usepackage{pgf-pie}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{compat=1.18}
+
+\definecolor{azul}{RGB}{31,78,121}
+\definecolor{bom}{RGB}{76,140,74}
+\definecolor{regular}{RGB}{230,170,50}
+\definecolor{ruim}{RGB}{192,57,43}
+\definecolor{linha}{RGB}{236,242,248}
+
+% ---------- títulos das seções em azul, com filete ----------
+\renewcommand{\thesection}{\arabic{section}}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{azul}}{\thesection}{0.7em}{}[{\color{azul}\titlerule[0.8pt]}]
+\titleformat{\subsection}{\large\bfseries\color{azul}}{\thesubsection}{0.6em}{}
+
+% ---------- links e referências no padrão ABNT ----------
+% O hyperref vem antes do abntex2cite, senão as citações quebram.
+\usepackage[hidelinks]{hyperref}
+\usepackage[alf]{abntex2cite}
+\addto\captionsbrazilian{\renewcommand{\bibname}{Referências}}
+
+% ---------- instruções de preenchimento ----------
+% Os textos em cinza explicam o que escrever em cada parte.
+% Troque \instrucoestrue por \instrucoesfalse para esconder todos de uma vez.
+\newif\ifinstrucoes
+\instrucoestrue
+\newcommand{\instrucao}[1]{\ifinstrucoes{\color{gray}\small\itshape #1\par}\fi}
+
+% ---------- dados da capa: preencha aqui ----------
+\newcommand{\universidade}{Universidade Federal Exemplo}
+\newcommand{\unidade}{Biblioteca Setorial do Instituto de Ciências Exatas}
+\newcommand{\titulo}{Diagnóstico do acervo}
+\newcommand{\subtitulo}{estado de conservação e composição por área do conhecimento}
+\newcommand{\autores}{Nome do autor}
+\newcommand{\local}{Cidade}
+\newcommand{\data}{Ano}
+
+\hypersetup{pdftitle={\titulo}, pdfauthor={\autores}}
+
+% ---------- dados do levantamento (arquivo acervo.dat) ----------
+% A tabela soma as colunas sozinha; os gráficos usam os totais abaixo.
+% Ao trocar os dados, atualize também estes totais.
+\pgfplotstableread{acervo.dat}\acervo
+\pgfplotstablecreatecol[create col/expr={\thisrow{bom}+\thisrow{regular}+\thisrow{ruim}}]{total}\acervo
+\pgfplotstablecreatecol[create col/expr={100*\thisrow{ruim}/(\thisrow{bom}+\thisrow{regular}+\thisrow{ruim})}]{pruim}\acervo
+\newcommand{\totalbom}{2800}
+\newcommand{\totalregular}{870}
+\newcommand{\totalruim}{330}
+\newcommand{\totalacervo}{4000}
+
+\begin{document}
+
+% ======================================================================
+% Capa
+% ======================================================================
+\begin{titlepage}
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[azul] (current page.north west) rectangle ([yshift=-10.5cm]current page.north east);
+  \end{tikzpicture}
+  \color{white}
+  {\large\bfseries\MakeUppercase{\universidade}\par}
+  {\unidade\par}
+  \vspace{2.2cm}
+  {\fontsize{30}{34}\selectfont\bfseries\titulo\par}
+  \vspace{0.4em}
+  {\Large\subtitulo\par}
+  \color{black}
+  \vspace{3cm}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.9]
+      % Prateleira estilizada: lombadas nas cores do estado de conservação
+      \foreach \x/\c/\h in {0/bom/2.2, 0.55/bom/2.6, 1.1/regular/2.0, 1.6/bom/2.4,
+                            2.15/ruim/1.8, 2.6/bom/2.5, 3.15/regular/2.2, 3.7/bom/2.7,
+                            4.25/bom/2.1, 4.8/regular/2.4, 5.35/bom/2.6}
+        \fill[\c, rounded corners=1pt] (\x,0) rectangle ++(0.45,\h);
+      \fill[azul] (-0.3,-0.25) rectangle (6.1,0);
+    \end{tikzpicture}
+  \end{center}
+  \vfill
+  {\large\autores\par}
+  \vspace{1em}
+  {\local, \data\par}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+% ======================================================================
+\section{Apresentação}
+% ======================================================================
+\instrucao{Diga em um parágrafo qual biblioteca foi avaliada, quem pediu o diagnóstico e para que ele vai servir. Exemplo: subsidiar a política de desenvolvimento de coleções.}
+
+Este relatório apresenta o diagnóstico do acervo da \unidade, com a composição da coleção por área do conhecimento e o estado de conservação dos itens. O resultado orienta as decisões de aquisição, restauração e descarte, de modo que cada leitor encontre o seu livro, como propõe a segunda lei de \citeonline{ranganathan2009}.
+
+% ======================================================================
+\section{Metodologia}
+% ======================================================================
+\instrucao{Explique como os itens foram contados e avaliados: censo ou amostra, período, critérios de cada categoria e quem fez a avaliação. Uma tabela de critérios ajuda quem for repetir o levantamento.}
+
+O levantamento contou todos os itens da coleção de empréstimo, agrupados pelas classes principais da Classificação Decimal de Dewey (CDD). Cada item recebeu uma das três categorias da Tabela~\ref{tab:criterios}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Critérios usados para classificar o estado de conservação.}
+  \label{tab:criterios}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{>{\bfseries}l p{10.5cm}}
+    \toprule
+    Estado & Critério \\
+    \midrule
+    {\color{bom}Bom}         & Capa, lombada e páginas íntegras; pode circular sem restrição. \\
+    {\color{regular}Regular} & Desgaste na capa ou na lombada, páginas soltas ou anotações; precisa de pequeno reparo. \\
+    {\color{ruim}Ruim}       & Páginas faltando, fungos, umidade ou encadernação perdida; indicar para restauração ou descarte. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ======================================================================
+\section{Resultados}
+% ======================================================================
+\instrucao{Mostre os números em tabela e resuma as proporções em gráficos. Comente as classes com maior proporção de itens em estado ruim.}
+
+\subsection{Estado do acervo por classe}
+
+A Tabela~\ref{tab:estado} reúne a contagem por classe da CDD. Foram avaliados \totalacervo{} itens.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Estado de conservação por classe da CDD (dados de exemplo).}
+  \label{tab:estado}
+  \rowcolors{2}{linha}{white}
+  \pgfplotstabletypeset[
+    columns={classe,area,bom,regular,ruim,total,pruim},
+    string type,
+    assume math mode=true, % números na fonte do texto, sem modo matemático
+    every head row/.style={before row=\toprule, after row=\midrule},
+    every last row/.style={after row=\bottomrule},
+    columns/classe/.style={column name={CDD}, column type=l},
+    columns/area/.style={column name={Área}, column type=l},
+    columns/bom/.style={column name={Bom}, column type=r},
+    columns/regular/.style={column name={Regular}, column type=r},
+    columns/ruim/.style={column name={Ruim}, column type=r},
+    columns/total/.style={column name={Total}, column type=r, numeric type, fixed, precision=0, 1000 sep={.}},
+    columns/pruim/.style={column name={\% ruim}, column type=r, numeric type, fixed, fixed zerofill, precision=1, use comma},
+  ]\acervo
+\end{table}
+
+\subsection{Composição e conservação}
+
+A Figura~\ref{fig:pizzas} resume a coleção em duas proporções: a parte de cada grande área no total e a distribuição geral do estado de conservação.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    % Composição por área (contagens; sum=auto converte em setores proporcionais)
+    \pie[sum=auto, radius=1.55, text=legend, after number=,
+         color={azul!90, azul!65, azul!45, azul!28, gray!25}]
+      {900/Literatura (800), 760/Ciências naturais (500), 640/Ciências sociais (300),
+       540/Tecnologia (600), 1160/Outras classes}
+  \end{tikzpicture}
+  \hfill
+  \begin{tikzpicture}
+    % Estado de conservação (contagens; o percentual vai na legenda)
+    \pie[sum=auto, radius=1.55, text=legend, after number=, color={bom, regular, ruim}]
+      {2800/Bom (70\,\%), 870/Regular (21{,}75\,\%), 330/Ruim (8{,}25\,\%)}
+  \end{tikzpicture}
+  \caption{À esquerda, número de itens por área; à direita, número de itens por estado de conservação.}
+  \label{fig:pizzas}
+\end{figure}
+
+\instrucao{Destaque a classe mais crítica com o número e o percentual, como no exemplo abaixo.}
+Dos \totalacervo{} itens, \totalbom{} estão em bom estado, \totalregular{} em estado regular e \totalruim{} em estado ruim. A classe 500 tem a maior proporção de itens em estado ruim, o que se explica pelo uso intenso dos livros-texto de Física e Matemática.
+
+% ======================================================================
+\section{Recomendações}
+% ======================================================================
+\instrucao{Transforme os resultados em ações, com prazo e responsável. Uma lista numerada por prioridade funciona bem.}
+
+\begin{enumerate}
+  \item Encaminhar os itens em estado ruim da classe 500 para avaliação de restauração ou reposição.
+  \item Fazer pequenos reparos nos itens em estado regular durante o período de férias.
+  \item Revisar a política de desenvolvimento de coleções com base na composição por área.
+\end{enumerate}
+
+% ======================================================================
+% Referências
+% ======================================================================
+\begingroup
+\let\chapter\section
+\phantomsection
+\addcontentsline{toc}{section}{\bibname}
+\bibliography{referencias}
+\endgroup
+
+\end{document}

@@ -1,0 +1,200 @@
+% Apresentação de defesa de TCC em Biblioteconomia
+% Modelo do ÉguaTex (https://eguatex.github.io), em domínio público pela licença CC0 1.0:
+% use, modifique e distribua sem pedir permissão e sem citar a origem.
+%
+% Compile com pdfLaTeX e BibTeX (o ÉguaTex faz isso sozinho).
+% Arquivos: main.tex (os slides) e referencias.bib (bibliografia).
+%
+% Cada \begin{frame} ... \end{frame} é um slide. Planeje um slide por minuto de fala:
+% uma defesa de 20 minutos pede de 15 a 20 slides.
+
+\documentclass[11pt]{beamer}
+
+% ---------- idioma e fontes ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+
+% ---------- tema Madrid com as cores do curso ----------
+% Troque os três valores RGB abaixo pelas cores da sua instituição.
+\usetheme{Madrid}
+\definecolor{petroleo}{RGB}{0,84,98}
+\definecolor{areia}{RGB}{214,168,84}
+\definecolor{nevoa}{RGB}{233,240,241}
+\setbeamercolor{palette primary}{bg=petroleo!85!white, fg=white}
+\setbeamercolor{palette secondary}{bg=petroleo!92!black, fg=white}
+\setbeamercolor{palette tertiary}{bg=petroleo!70!black, fg=white}
+\setbeamercolor{palette quaternary}{bg=petroleo!60!black, fg=white}
+\setbeamercolor{structure}{fg=petroleo}
+\setbeamercolor{frametitle}{bg=petroleo, fg=white}
+\setbeamercolor{title}{bg=petroleo, fg=white}
+\setbeamercolor{block title}{bg=petroleo, fg=white}
+\setbeamercolor{block body}{bg=nevoa, fg=black}
+\setbeamercolor{block title alerted}{bg=areia!80!black, fg=white}
+\setbeamercolor{block body alerted}{bg=areia!15, fg=black}
+\setbeamercolor{item projected}{bg=areia!80!black, fg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{items}[circle]
+
+% ---------- gráficos e referências ----------
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+% O beamer já carrega o hyperref, por isso o abntex2cite entra direto.
+\usepackage[alf]{abntex2cite}
+
+% ---------- sumário no início de cada seção ----------
+% A cada \section, um slide mostra o sumário com a seção atual em destaque.
+\AtBeginSection[]{
+  \begin{frame}{Sumário}
+    \tableofcontents[currentsection, hideallsubsections]
+  \end{frame}
+}
+
+% ---------- instruções de preenchimento ----------
+% As notas em cinza explicam o que pôr em cada slide.
+% Troque \instrucoestrue por \instrucoesfalse para esconder todas de uma vez.
+\newif\ifinstrucoes
+\instrucoestrue
+\newcommand{\instrucao}[1]{\ifinstrucoes\par\vfill{\color{gray}\scriptsize\itshape #1\par}\fi}
+
+% ---------- dados da capa: preencha aqui ----------
+\title[Defesa de TCC]{Estudo de usuários do serviço de referência de uma biblioteca universitária}
+\subtitle{Trabalho de Conclusão de Curso}
+\author[Nome do autor]{Nome do autor\\[2pt]{\small Orientação: Nome do orientador}}
+\institute[UF Exemplo]{Curso de Biblioteconomia\\Universidade Federal Exemplo}
+\date[Ano]{Cidade, Ano}
+
+\begin{document}
+
+% ======================================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ======================================================================
+\section{Introdução}
+% ======================================================================
+\begin{frame}{Contexto e problema}
+  \begin{itemize}
+    \item O serviço de referência orienta a busca e o uso da informação.
+    \item A procura presencial caiu, mas as dúvidas dos usuários continuam.
+    \item \alert{Problema:} que necessidades os usuários levam hoje ao balcão de referência?
+  \end{itemize}
+  \instrucao{Em 3 ou 4 tópicos, situe o tema e termine com a pergunta de pesquisa. Fale o restante, sem escrever frases longas no slide.}
+\end{frame}
+
+\begin{frame}{Objetivos}
+  \begin{block}{Objetivo geral}
+    Identificar o perfil e as necessidades de informação dos usuários do serviço de referência.
+  \end{block}
+  \begin{block}{Objetivos específicos}
+    \begin{enumerate}
+      \item Caracterizar o público atendido.
+      \item Classificar as perguntas recebidas.
+      \item Propor melhorias no atendimento.
+    \end{enumerate}
+  \end{block}
+  \instrucao{Copie os objetivos do TCC sem mudar os verbos. A banca vai conferir se as conclusões respondem a cada um.}
+\end{frame}
+
+% ======================================================================
+\section{Referencial teórico}
+% ======================================================================
+\begin{frame}{As cinco leis da Biblioteconomia}
+  \begin{columns}[T]
+    \begin{column}{0.55\textwidth}
+      \begin{enumerate}
+        \item Os livros são para usar.
+        \item A cada leitor o seu livro.
+        \item A cada livro o seu leitor.
+        \item Poupe o tempo do leitor.
+        \item A biblioteca é um organismo em crescimento.
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{alertblock}{Ligação com o estudo}
+        A quarta lei justifica medir o tempo de espera no atendimento \cite{ranganathan1931}.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+  \instrucao{Mostre só os conceitos que sustentam a análise, com o autor de cada um. Um slide por ideia central basta.}
+\end{frame}
+
+% ======================================================================
+\section{Metodologia}
+% ======================================================================
+\begin{frame}{Percurso metodológico}
+  \begin{table}
+    \centering
+    \begin{tabular}{@{}ll@{}}
+      \toprule
+      Etapa & Descrição \\
+      \midrule
+      Tipo de pesquisa & descritiva, com abordagem quantitativa \\
+      Universo & usuários atendidos em um semestre \\
+      Instrumento & questionário com 12 perguntas fechadas \\
+      Análise & estatística descritiva e categorias de perguntas \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  \instrucao{Resuma em tabela o tipo de pesquisa, a amostra, o instrumento e a forma de análise. Cite a norma ou o autor do método, se houver.}
+\end{frame}
+
+% ======================================================================
+\section{Resultados}
+% ======================================================================
+\begin{frame}{Tipos de pergunta recebidos}
+  \begin{columns}[c]
+    \begin{column}{0.58\textwidth}
+      \begin{tikzpicture}
+        \begin{axis}[
+          xbar, scale only axis, width=3.4cm, height=4.2cm,
+          xmin=0, xmax=50, xlabel={\% das perguntas (dados de exemplo)},
+          symbolic y coords={Normalização, Bases de dados, Localização, Empréstimo},
+          ytick=data, nodes near coords, nodes near coords align={horizontal},
+          tick label style={font=\footnotesize}, label style={font=\footnotesize},
+          bar width=9pt, fill=petroleo, draw=none,
+          /pgf/number format/use comma,
+        ]
+          \addplot[fill=petroleo, draw=none] coordinates {(38,Normalização) (27,Bases de dados) (21,Localização) (14,Empréstimo)};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \begin{itemize}
+        \item<2-> Normalização lidera as dúvidas.
+        \item<3-> Bases de dados vêm em seguida.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \instrucao{Um gráfico por slide, com a fonte dos dados. Revele as conclusões com \texttt{<2->} para guiar a fala.}
+\end{frame}
+
+% ======================================================================
+\section{Considerações finais}
+% ======================================================================
+\begin{frame}{Considerações finais}
+  \begin{itemize}
+    \item O objetivo geral foi atingido: o perfil e as necessidades foram descritos.
+    \item A maior parte das dúvidas trata de normalização segundo a NBR 6023 \cite{abnt6023}.
+    \item \alert{Proposta:} oficinas mensais de normalização para alunos de graduação.
+  \end{itemize}
+  \instrucao{Responda a cada objetivo em uma linha, diga as limitações e sugira um trabalho futuro.}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{Referências}
+  \small
+  \bibliography{referencias}
+\end{frame}
+
+\begin{frame}[plain]
+  \centering\vfill
+  {\Large\usebeamercolor[fg]{structure} Obrigado!}\par\bigskip
+  Nome do autor\par
+  {\small email@exemplo.com}
+  \vfill
+\end{frame}
+
+\end{document}

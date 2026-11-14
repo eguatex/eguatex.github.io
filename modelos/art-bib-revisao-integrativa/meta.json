@@ -1,0 +1,21 @@
+{
+  "id": "art-bib-revisao-integrativa",
+  "nome": "Artigo de revisão integrativa em Biblioteconomia",
+  "categoria": "artigo",
+  "curso": "Biblioteconomia",
+  "classe": "article",
+  "motor": "pdflatex",
+  "bibliografia": "abntex2cite",
+  "descricao": "Artigo de revisão integrativa com pergunta norteadora, etapas do método, fluxograma da seleção dos estudos, quadro síntese, tabela de características em página horizontal e discussão por categorias temáticas. Citações ABNT no sistema numérico.",
+  "destaques": [
+    "Fluxograma da seleção dos estudos em TikZ",
+    "Quadro síntese com bordas fechadas, como pede a ABNT",
+    "Tabela de características em página na horizontal (pdflscape)",
+    "Citações numéricas ABNT com abntex2cite",
+    "Resumo e abstract com palavras-chave",
+    "Instruções de preenchimento que somem com uma linha"
+  ],
+  "licenca": "CC0-1.0",
+  "publicado": true,
+  "previas_paginas": [1, 2, 3]
+}

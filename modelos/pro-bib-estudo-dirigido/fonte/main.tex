@@ -1,0 +1,146 @@
+% Estudo dirigido de Biblioteconomia
+% Modelo do ÉguaTex (https://eguatex.github.io), em domínio público pela licença CC0 1.0:
+% use, modifique e distribua sem pedir permissão e sem citar a origem.
+%
+% Compile com pdfLaTeX (o ÉguaTex faz isso sozinho). Arquivo único: main.tex.
+% Cada questão discursiva tem linhas para a resposta (\fillwithlines)
+% e uma resposta esperada no ambiente solution.
+
+% ---------- versão do professor ou do aluno ----------
+% Com \printanswers as respostas esperadas aparecem em caixas, antes das linhas.
+% Troque por \noprintanswers para entregar a folha do aluno só com as linhas.
+\documentclass[12pt,a4paper]{exam}
+\printanswers
+
+% ---------- idioma, fontes e página ----------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,top=2cm,bottom=2.4cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{petroleo}{RGB}{16,78,94}
+
+% ---------- instruções de preenchimento ----------
+% Os textos em cinza explicam o que escrever em cada parte.
+% Troque \instrucoestrue por \instrucoesfalse para esconder todos de uma vez.
+\newif\ifinstrucoes
+\instrucoestrue
+\newcommand{\instrucao}[1]{\ifinstrucoes{\color{gray}\small\itshape #1\par}\fi}
+
+% ---------- dados do estudo dirigido: preencha aqui ----------
+\newcommand{\universidade}{Universidade Federal Exemplo}
+\newcommand{\curso}{Curso de Biblioteconomia}
+\newcommand{\disciplina}{Organização e Representação da Informação}
+\newcommand{\tema}{Estudo dirigido 2}
+\newcommand{\assunto}{Representação descritiva e temática}
+\newcommand{\professor}{Nome do professor ou da professora}
+\newcommand{\entrega}{Entrega na aula seguinte}
+
+\hypersetup{pdftitle={\tema}}
+
+% ---------- aparência das questões e das respostas ----------
+\qformat{\colorbox{petroleo}{\textcolor{white}{\bfseries\,\thequestion\,}}\enspace\textcolor{petroleo}{\bfseries\thequestiontitle}\hfill}
+\renewcommand{\solutiontitle}{\noindent\textbf{Resposta esperada:}\enspace}
+\SolutionEmphasis{\small}
+\setlength{\linefillheight}{0.32in}
+\colorfillwithlines
+\definecolor{FillWithLinesColor}{gray}{0.6}
+
+% ---------- cabeçalho e rodapé ----------
+\pagestyle{headandfoot}
+\firstpageheader{}{}{}
+\runningheader{\footnotesize\textcolor{petroleo}{\disciplina}}{}{\footnotesize\textcolor{petroleo}{\tema}}
+\footer{}{\small\thepage}{}
+
+\begin{document}
+
+% ======================================================================
+% Identificação
+% ======================================================================
+\noindent{\small\MakeUppercase{\universidade}\enspace\textbullet\enspace\curso}\par
+\noindent{\color{petroleo}\rule{\textwidth}{1.5pt}}\par
+\noindent{\LARGE\bfseries\color{petroleo}\tema\par}
+\noindent{\large\itshape\assunto\par}
+\smallskip
+\noindent\disciplina\par
+\noindent Professor(a): \professor\par
+\medskip
+\noindent Nome: \makebox[0.55\textwidth]{\hrulefill}\hfill \entrega\par
+
+% ======================================================================
+% Orientações
+% ======================================================================
+\bigskip
+\instrucao{Em duas ou três frases: objetivo, material de apoio e se a resposta é individual.}
+\noindent\begin{tabular}{@{}!{\color{petroleo}\vrule width 3pt}@{\hspace{6pt}}p{\dimexpr\textwidth-9pt\relax}@{}}
+  \small\textbf{Orientações.} Leia o texto-base e o capítulo indicado na bibliografia da disciplina. Responda com suas palavras, em frases completas, usando o espaço das linhas. As respostas são individuais e podem ser escritas a lápis.
+\end{tabular}
+
+% ======================================================================
+% Texto-base
+% ======================================================================
+\bigskip
+\instrucao{Texto curto, próprio ou citado com a fonte, que apoie as questões.}
+\noindent{\bfseries\color{petroleo}Texto-base}\par
+\smallskip
+\noindent A representação da informação em bibliotecas tem duas faces. A representação descritiva registra os dados que identificam um documento, como título, autoria, edição, local, editora, data e descrição física, e define os pontos de acesso por nome e por título. A representação temática descreve o assunto do documento, por meio de códigos de classificação, como a CDD e a CDU, e de termos de indexação, como cabeçalhos de assunto e descritores de um tesauro. As duas juntas permitem que o usuário encontre o documento tanto pelo que ele é quanto pelo que ele trata.
+
+% ======================================================================
+% Questões
+% ======================================================================
+\bigskip
+\instrucao{Escreva de quatro a seis questões que peçam explicação, comparação ou aplicação. Ajuste a altura de \textbackslash fillwithlines à extensão esperada: 3 cm para cerca de cinco linhas.}
+
+\begin{questions}
+
+\titledquestion{Representação descritiva e temática}
+Com base no texto-base, diferencie a representação descritiva da representação temática e cite dois elementos de cada uma.
+\begin{solution}
+A representação descritiva identifica o documento pelos seus dados bibliográficos e físicos e define pontos de acesso por nome e título; exemplos: título e editora. A representação temática indica o assunto do documento; exemplos: o número de classificação na CDD e os descritores de um tesauro.
+\end{solution}
+\fillwithlines{4.4cm}
+
+\titledquestion{A segunda lei de Ranganathan}
+Explique a lei ``A cada leitor o seu livro'' e dê um exemplo de serviço de biblioteca que a coloca em prática.
+\begin{solution}
+A lei afirma que todo usuário tem direito a encontrar o material que atende à sua necessidade, sem distinção. Exemplos: o serviço de referência que orienta a busca de cada pessoa, a política de desenvolvimento de coleções baseada no perfil dos usuários e a oferta de obras em braile ou em áudio.
+\end{solution}
+\fillwithlines{4.4cm}
+
+\titledquestion{Referência segundo a NBR 6023:2018}
+Escreva a referência do livro com os dados abaixo, conforme a NBR 6023:2018.
+\begin{center}\small
+  \begin{tabular}{@{}ll@{}}
+    Autoria: Ana Maria Silva & Título: Organização da informação \\
+    Edição: 2.\textordfeminine & Local e editora: São Paulo, Editora Exemplo \\
+    Ano: 2020 & Páginas: 180 \\
+  \end{tabular}\par
+  {\footnotesize(dados fictícios, criados para o exercício)}
+\end{center}
+\begin{solution}
+SILVA, Ana Maria. \textbf{Organização da informação}. 2. ed. São Paulo: Editora Exemplo, 2020. 180 p.
+\end{solution}
+\fillwithlines{1.6cm}
+
+\titledquestion{ISBN e ISSN}
+Qual é a diferença entre o ISBN e o ISSN? Diga que tipo de documento cada um identifica.
+\begin{solution}
+O ISBN identifica um livro, uma edição específica de uma publicação monográfica, e tem 13 dígitos desde 2007. O ISSN identifica uma publicação seriada, como um periódico ou uma revista, com 8 dígitos, e vale para todos os fascículos do título.
+\end{solution}
+\fillwithlines{2.4cm}
+
+\titledquestion{Dado, informação e conhecimento}
+Diferencie dado, informação e conhecimento, com um exemplo ligado a uma biblioteca.
+\begin{solution}
+Dado é o registro bruto, sem contexto, como o número 245 em um registro. Informação é o dado organizado e com significado, como saber que o campo 245 do MARC 21 traz o título. Conhecimento é a informação assimilada por uma pessoa e usada para agir, como o catalogador que sabe preencher o registro corretamente.
+\end{solution}
+\fillwithlines{4.4cm}
+
+\end{questions}
+
+\end{document}
