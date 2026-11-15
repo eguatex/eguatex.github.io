@@ -1,0 +1,13 @@
+# Manutenção do site
+
+O site do ÉguaTex (este repositório, eguatex/eguatex.github.io) tem uma responsável: Jéssica Lopes Melo.
+
+Nenhuma alteração entra no site sem autorização expressa dela. Isso vale para tudo: páginas, textos, imagens, logo, ícones, estilos, scripts, modelos LaTeX, avaliações, configurações do GitHub Pages e domínio (ver também DOMINIO.md).
+
+## Como propor uma mudança
+
+1. Crie um ramo a partir do `main`.
+2. Faça a mudança nesse ramo e abra um pull request explicando o que muda e por quê, com uma imagem de antes e depois quando a mudança for visível.
+3. A mudança só entra no `main` depois da aprovação da Jéssica Lopes Melo no pull request.
+
+Não envie commits direto para o `main`.
