@@ -122,9 +122,9 @@
       },
       "bytes": {
         "pdf": 325451,
-        "zip": 14063
+        "zip": 14075
       },
-      "sha256_fonte": "505749a6c28926854ef8c50a68a9e1d58d6f7d88669969b536b1c0f10165368b",
+      "sha256_fonte": "485160cb44e7a74b788f6660b6641138db1237c8d318cfc472f6577bfd01ff44",
       "publicado": true
     },
     {
@@ -180,9 +180,9 @@
       },
       "bytes": {
         "pdf": 275695,
-        "zip": 7990
+        "zip": 8005
       },
-      "sha256_fonte": "41ae890c1fb3c75fc88ceebb2a29cc24ab2daec1e1426c3acc2e880554099abe",
+      "sha256_fonte": "cbae1fdba0d7f806a24a79170f0161a2bd7a717d69fa790a2b5bbe5319820faa",
       "publicado": true
     },
     {
@@ -238,9 +238,9 @@
       },
       "bytes": {
         "pdf": 218583,
-        "zip": 17437
+        "zip": 17455
       },
-      "sha256_fonte": "93a0c671f4cc290e534d337aee49cb41dfeb99c4ef071a31b7fc86566a52048c",
+      "sha256_fonte": "bb93925b9ed965ea09e8c3865bb28114ba1cb1559024bf0fff3684459ade2ae0",
       "publicado": true
     },
     {
@@ -296,9 +296,9 @@
       },
       "bytes": {
         "pdf": 300760,
-        "zip": 15366
+        "zip": 15380
       },
-      "sha256_fonte": "718e3eb8b01bc5a2ae9654057a15ad54e22bb33169b9a0011fbcd7f0bf353b46",
+      "sha256_fonte": "36f76d8ef8872c626157c5e1360eae23ab62815fc802940c20efa81c6708d12d",
       "publicado": true
     },
     {
@@ -353,9 +353,9 @@
       },
       "bytes": {
         "pdf": 91638,
-        "zip": 5907
+        "zip": 5911
       },
-      "sha256_fonte": "53a9aa2fc8c75eb8bdc4fbf1f3f8ab0eeacf86289d11e4c5a09f87c103bf6fa7",
+      "sha256_fonte": "7b5e53b4b570899b685a4719e698b2a43d318d96f17e2a293ed3077ed36b22f7",
       "publicado": true
     },
     {
@@ -410,9 +410,9 @@
       },
       "bytes": {
         "pdf": 182640,
-        "zip": 6656
+        "zip": 6664
       },
-      "sha256_fonte": "e05f3c380f15b73e1eec0d78863c7b9bcda692dbab7fccaccce3145581abb22e",
+      "sha256_fonte": "5237af423ff39d17799f0118202bd545a2cbd6af77d43dcb96adabdca4db4f01",
       "publicado": true
     },
     {
@@ -467,9 +467,9 @@
       },
       "bytes": {
         "pdf": 283309,
-        "zip": 6799
+        "zip": 6808
       },
-      "sha256_fonte": "ae289131a85e6bd298c9f93bfef8bcf97ec4b6d4cd6c051dba002eb9fcffdf1b",
+      "sha256_fonte": "d9fe437bf287699b63c70fbc0a4ad5a507ad1e4f1196f3535832764bc2b91a0f",
       "publicado": true
     },
     {
@@ -524,9 +524,9 @@
       },
       "bytes": {
         "pdf": 143084,
-        "zip": 4926
+        "zip": 4927
       },
-      "sha256_fonte": "d18670d64706308bcfe25c0eb980d4f47979428d6306a05f06a5119c2f35af87",
+      "sha256_fonte": "ec02bf24ba6fd75ed41c46d8ce37ff8c333515d11b037d36183dcaf7327e06c2",
       "publicado": true
     },
     {
@@ -582,9 +582,9 @@
       },
       "bytes": {
         "pdf": 81899,
-        "zip": 7977
+        "zip": 7984
       },
-      "sha256_fonte": "6b17f6c93d4b9bfd0e4acd3c2df5b7d37ef2efa0ab0d71a4d29d987cc67fea97",
+      "sha256_fonte": "8e9b9aef8fa682296fd0d714bf1a028bcd38fae93ca4cbf764aa03d04c8a5469",
       "publicado": true
     },
     {
@@ -640,9 +640,9 @@
       },
       "bytes": {
         "pdf": 112952,
-        "zip": 7742
+        "zip": 7756
       },
-      "sha256_fonte": "40d900f71c5c9cd1ccea6974a5c3ed34dc80de9189db5866e87b5c2d98980ddd",
+      "sha256_fonte": "bf924c4c4f6cfa1617594af30a348fa6239cc364226cfbd27a7ae0c55f05b326",
       "publicado": true
     },
     {
@@ -698,9 +698,9 @@
       },
       "bytes": {
         "pdf": 251523,
-        "zip": 9476
+        "zip": 9498
       },
-      "sha256_fonte": "2cc8fe7d472d49fe550254835d09658528380ff53f61d4fa67bf4d57c74543d1",
+      "sha256_fonte": "8c9ca2fb54b699d3933a89479350dec5d9b5db120b9445de391ed678b6921108",
       "publicado": true
     },
     {
@@ -751,9 +751,9 @@
       },
       "bytes": {
         "pdf": 162979,
-        "zip": 6067
+        "zip": 6075
       },
-      "sha256_fonte": "423855a42c1aeb03448cbdc3a59a40d0cad5487210e7103f97f9c6df02a74fbb",
+      "sha256_fonte": "87c3900bcd8578274fd810fa37f45a894e415a16f6e31b3af7b91b916060c41a",
       "publicado": true
     },
     {
@@ -804,9 +804,9 @@
       },
       "bytes": {
         "pdf": 173555,
-        "zip": 5980
+        "zip": 5984
       },
-      "sha256_fonte": "a1a0f3f705c3c20d105a20a6d266c768dffda0a09e1a74094521f7c04184d2b3",
+      "sha256_fonte": "faff84dc0846c5a161ccf3531c9abebf0f979acc723b77386a193ae11b041324",
       "publicado": true
     }
   ]

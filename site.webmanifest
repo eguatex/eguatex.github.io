@@ -1,0 +1,14 @@
+{
+  "name": "ÉguaTex",
+  "short_name": "ÉguaTex",
+  "description": "Editor LaTeX gratuito e offline para Windows e Android, feito na Amazônia.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#1c0a2b",
+  "theme_color": "#1c0a2b",
+  "icons": [
+    {"src": "/favicon.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/icone-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
