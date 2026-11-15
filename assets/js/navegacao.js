@@ -1,7 +1,7 @@
 // ÉguaTex: menu no celular e tela de carregamento ao trocar de aba (vale para todas as páginas).
 
 (() => {
-  const TEMPO_TROCA = 1500; // quanto tempo a tela do curupira fica ao trocar de aba, em milissegundos
+  const TEMPO_TROCA = 1500; // quanto tempo a tela do Curupira fica ao trocar de aba, em milissegundos
 
   /* ---------- contador de visitas (GoatCounter: sem cookies e sem dados pessoais) ---------- */
   const cfg = window.EGUATEX || {};
@@ -37,8 +37,8 @@
             ${pegadas}
           </svg>
         </div>
-        <p class="carregando-texto">Seguindo as pegadas do curupira…</p>
-        <p class="carregando-dica">Os pés do curupira apontam para um lado e ele anda para o outro.</p>
+        <p class="carregando-texto">Seguindo as pegadas do Curupira…</p>
+        <p class="carregando-dica">Os pés do Curupira apontam para um lado e ele anda para o outro.</p>
       </div>
     </div>`);
 
@@ -75,7 +75,7 @@
     nav.addEventListener("click", (e) => { if (e.target.closest("a")) abrir(false); });
   }
 
-  /* ---------- trocar de aba com a tela do curupira ---------- */
+  /* ---------- trocar de aba com a tela do Curupira ---------- */
   const semIndex = (caminho) => caminho.replace(/index\.html$/, "");
 
   document.addEventListener("click", (e) => {

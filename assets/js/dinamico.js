@@ -40,7 +40,7 @@
 
   if (calmo()) { abertura.classList.add("revelar"); return; }
 
-  /* ---------- curupira segue o mouse de leve ---------- */
+  /* ---------- Curupira segue o mouse de leve ---------- */
   const figura = document.getElementById("figura");
   const img = figura.querySelector(".logo-viva"), brasa = figura.querySelector(".brasa");
   if (matchMedia("(pointer: fine)").matches) {
@@ -52,7 +52,7 @@
   }
 
 
-  /* ---------- o cabelo do curupira pega fogo: labaredas e faíscas ---------- */
+  /* ---------- o cabelo do Curupira pega fogo: labaredas e faíscas ---------- */
   (() => {
     const tela = figura.querySelector(".chamas");
     if (!tela) return;
@@ -266,7 +266,7 @@
     if (ents[0].isIntersecting && window.katex) { digitar(entrada.value); obs.disconnect(); }
   }, { threshold: 0.5 }).observe(document.querySelector(".editor"));
 
-  /* ---------- pegadas aparecem ao contrário, como o curupira anda ---------- */
+  /* ---------- pegadas aparecem ao contrário, como o Curupira anda ---------- */
   const rastro = document.getElementById("rastro");
   const pes = [...rastro.querySelectorAll("use")];
   pes.forEach((pe, i) => pe.style.animationDelay = `${i * 0.42}s`);

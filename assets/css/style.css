@@ -1,4 +1,4 @@
-/* ÉguaTex — paleta tirada da logo do curupira
+/* ÉguaTex — paleta tirada da logo do Curupira
    Roxo é a cor principal; verde e laranja-fogo são secundárias. */
 :root {
   --noite: #1c0a2b;        /* fundo: roxo-noite da mata */
@@ -6,7 +6,7 @@
   --noite-3: #3a1a58;      /* bordas e realces discretos */
   --roxo: #7a35c4;         /* principal, das pontas do cabelo */
   --roxo-claro: #c9a6f0;
-  --verde: #3f9a37;        /* pele do curupira */
+  --verde: #3f9a37;        /* pele do Curupira */
   --verde-claro: #8fd47f;
   --fogo: #ff5f15;         /* laranja-fogo */
   --brasa: #e0243e;
@@ -261,7 +261,7 @@ button.botao { cursor: pointer; }
 .passos h3 { margin-bottom: 0.5em; }
 .passos p { color: var(--texto-suave); }
 
-/* ---------- curupira ---------- */
+/* ---------- Curupira ---------- */
 .curupira {
   background: linear-gradient(180deg, var(--noite) 0%, #16280f 140%);
   overflow: hidden;

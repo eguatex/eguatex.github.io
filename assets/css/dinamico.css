@@ -106,7 +106,7 @@ html, body { background: var(--noite); }
 .pdf-linha { height: .55em; background: #ddd3e8; border-radius: 2px; margin: .55em 0; }
 .pdf-pagina { margin-top: auto; text-align: right; font-size: .9em; color: #6a5880; }
 
-/* ---------- pegadas do curupira ---------- */
+/* ---------- pegadas do Curupira ---------- */
 .js:not(.calmo) .rastro.andou use { animation: pisar 5.4s infinite both; }
 .js:not(.calmo) .rastro { opacity: .8; }
 
@@ -193,7 +193,7 @@ html, body { background: var(--noite); }
 .pdf-eq .katex-display { margin: 0; }
 .pdf-eq .katex { font-size: 1.05em; }
 
-/* ---------- logo viva: o cabelo do curupira pega fogo ---------- */
+/* ---------- logo viva: o cabelo do Curupira pega fogo ---------- */
 .abertura-figura .logo-viva { position: relative; z-index: 1; width: 100%; aspect-ratio: 1; }
 .abertura-figura .logo-viva img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
 /* a tela das chamas passa um pouco das bordas da logo, para as labaredas subirem livres */
