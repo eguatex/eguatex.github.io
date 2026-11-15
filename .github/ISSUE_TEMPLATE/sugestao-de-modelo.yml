@@ -1,0 +1,21 @@
+name: Sugestão de modelo LaTeX
+description: Sugira um modelo para a galeria do site
+labels: ["modelo"]
+body:
+  - type: input
+    id: nome
+    attributes:
+      label: Que modelo você quer?
+      placeholder: TCC de Engenharia no padrão ABNT
+    validations:
+      required: true
+  - type: input
+    id: area
+    attributes:
+      label: Área
+      placeholder: Engenharia, Biblioteconomia, Física...
+  - type: textarea
+    id: detalhes
+    attributes:
+      label: Detalhes
+      description: Para que serve, regras que precisa seguir (ABNT, norma da instituição) e, se tiver, um link ou arquivo de exemplo.

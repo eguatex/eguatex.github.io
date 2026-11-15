@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Falha de segurança
+    url: https://github.com/eguatex/eguatex.github.io/blob/main/SECURITY.md
+    about: Não abra uma issue pública. Veja como avisar em particular.
+  - name: Dúvidas sobre o app
+    url: https://www.eguatex.com.br/contato.html
+    about: Fale com a equipe pelo e-mail de contato.

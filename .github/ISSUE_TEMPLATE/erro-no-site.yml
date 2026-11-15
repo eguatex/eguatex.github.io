@@ -1,0 +1,24 @@
+name: Erro no site
+description: Algo no site não funciona ou está errado
+labels: ["erro"]
+body:
+  - type: input
+    id: pagina
+    attributes:
+      label: Página
+      description: Endereço ou nome da página onde o erro aparece
+      placeholder: www.eguatex.com.br/templates.html
+    validations:
+      required: true
+  - type: textarea
+    id: descricao
+    attributes:
+      label: O que aconteceu
+      description: Conte o que você viu e o que esperava ver. Se puder, cole uma imagem da tela.
+    validations:
+      required: true
+  - type: input
+    id: aparelho
+    attributes:
+      label: Aparelho e navegador
+      placeholder: Celular Android, Chrome
