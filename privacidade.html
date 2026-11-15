@@ -51,7 +51,7 @@
   <main id="conteudo" class="contato texto-longo">
 
 <section class="contato-abertura"><h1>Política de privacidade</h1></section>
-<p class="data">Atualizada em 27 de outubro de 2026</p>
+<p class="data">Atualizada em 15 de novembro de 2026</p>
 
 <p>O ÉguaTex é um editor LaTeX gratuito e de código aberto (licença AGPL-3.0) para Windows e Android. Ele roda no computador ou no celular da pessoa e não tem servidor próprio. Esta política explica quais dados o programa usa e para quê.</p>
 
@@ -59,11 +59,15 @@
 <p>O ÉguaTex funciona sem conta e sem internet. Ele não coleta estatísticas de uso, não usa rastreadores e não envia nada para o desenvolvedor. Os documentos ficam em pastas comuns no computador da pessoa.</p>
 
 <h2>2. Login com Google (opcional)</h2>
-<p>A assistente de IA vem desligada. Quem decide ligar entra com a própria conta Google. Nesse caso o programa pede estas permissões:</p>
+<p>O ÉguaTex funciona sem login. Quem quiser guardar projetos no Google Drive entra com a própria conta Google. Nesse login o programa pede estas permissões:</p>
 <ul>
 <li><strong>openid, email e profile:</strong> nome, e-mail e foto da conta, para mostrar na tela quem está conectado.</li>
-<li><strong>cloud-platform:</strong> criar, na conta da própria pessoa, um projeto do Google Cloud chamado "EguaTex" (identificador <code>eguatex-...</code>) e ativar nele a Gemini API. O programa não lê, não altera e não apaga nenhum outro projeto ou recurso.</li>
-<li><strong>generative-language.retriever:</strong> enviar à Gemini API as mensagens que a pessoa escreve na assistente e receber as respostas.</li>
+<li><strong>drive.file:</strong> criar, abrir e atualizar no Google Drive só os arquivos que o próprio ÉguaTex criou ou que a pessoa escolheu no seletor do Google. O programa não vê o restante do Drive.</li>
+</ul>
+<p>A assistente de IA vem desligada. Só quando a pessoa decide ligar a assistente o programa pede mais duas permissões:</p>
+<ul>
+<li><strong>cloud-platform:</strong> criar, na conta da própria pessoa, um projeto do Google Cloud chamado "EguaTex" (identificador <code>eguatex-...</code>) e ativar nele a Gemini API. O programa não lê, não altera e não apaga nenhum outro projeto ou recurso, e não ativa cobrança.</li>
+<li><strong>generative-language.retriever:</strong> enviar à Gemini API as mensagens que a pessoa escreve na assistente e receber as respostas, usando a cota gratuita da conta dela.</li>
 </ul>
 
 <h2>3. Como os dados são usados</h2>
@@ -76,7 +80,7 @@
 </ul>
 
 <h2>4. Onde ficam guardados</h2>
-<p>No Windows, o token de acesso fica no Gerenciador de Credenciais do Windows, no computador da pessoa. A configuração da assistente fica na pasta de dados do programa. Nada fica guardado fora do computador da pessoa, exceto o que o próprio Google guarda na conta dela.</p>
+<p>No Windows, o token de acesso fica no Gerenciador de Credenciais do Windows. No Android, fica na área privada do aplicativo. Nos dois casos o token fica só no aparelho da pessoa. A configuração da assistente fica na pasta de dados do programa. Nada fica guardado fora do aparelho da pessoa, exceto o que o próprio Google guarda na conta dela, como os arquivos que ela salva no Google Drive.</p>
 
 <h2>5. Como apagar</h2>
 <ul>
