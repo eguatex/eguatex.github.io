@@ -5,7 +5,7 @@ window.EGUATEX = {
   // Lançamento: enquanto for false, os botões de download mostram "Em breve" e o site não oferece os instaladores.
   lancado: false,
   // Repositório público do código do app. Os botões de download buscam lá a versão de lançamento mais recente.
-  repositorioCodigo: "eguatex/eguatex",
+  repositorioCodigo: "eguatex/eguatex-codigo",
   // Código do contador de visitas no GoatCounter (o "xxx" de xxx.goatcounter.com). Vazio: nada é contado.
   contadorVisitas: "",
 };

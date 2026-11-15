@@ -1,7 +1,7 @@
 // ÉguaTex: editor de fórmulas ao vivo e busca da versão mais recente dos instaladores (Windows, Android e Linux).
 
 // Os instaladores ficam nas versões do repositório do código (definido em assets/js/config.js).
-const REPO = (window.EGUATEX && window.EGUATEX.repositorioCodigo) || "eguatex/eguatex";
+const REPO = (window.EGUATEX && window.EGUATEX.repositorioCodigo) || "eguatex/eguatex-codigo";
 
 /* ---------------- Experimente: LaTeX ao vivo ---------------- */
 const EXEMPLOS = {
