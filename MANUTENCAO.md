@@ -11,3 +11,7 @@ Nenhuma alteração entra no site sem autorização expressa dela. Isso vale par
 3. A mudança só entra no `main` depois da aprovação da Jéssica Lopes Melo no pull request.
 
 Não envie commits direto para o `main`.
+
+## Textos oficiais
+
+O lema, a descrição curta e o selo do ÉguaTex estão em IDENTIDADE.md. Qualquer texto novo no site segue esse arquivo.
