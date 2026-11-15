@@ -1,0 +1,83 @@
+/* ÉguaTex: página do guia do assistente de IA (chave do Gemini). */
+
+.guia { max-width: 980px; margin: 0 auto; padding: 48px var(--margem) 80px; }
+.guia h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0 0 0.3em; }
+.guia .abre { font-size: 1.15rem; color: var(--texto-suave); max-width: 60ch; }
+.guia h2 { font-size: clamp(1.5rem, 3.4vw, 2rem); margin: 64px 0 18px; }
+.guia p, .guia li { max-width: 62ch; }
+.guia a { color: var(--chama); }
+
+.precisa { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 28px 0 0; padding: 0; list-style: none; }
+.precisa li { max-width: none; background: var(--noite-2); border: 1px solid var(--noite-3); border-radius: 16px; padding: 18px; }
+.precisa strong { display: block; font-family: var(--fonte-titulo); font-size: 1.05rem; margin-bottom: 4px; color: var(--texto); }
+.precisa span { color: var(--texto-suave); font-size: 0.95rem; }
+
+.etapas { list-style: none; counter-reset: etapa; margin: 0; padding: 0; }
+.etapa { max-width: none; counter-increment: etapa; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 32px; align-items: center; padding: 36px 0; border-top: 1px solid var(--noite-3); }
+.etapa:first-child { border-top: 0; }
+.etapa h3 { display: flex; align-items: center; gap: 14px; font-size: 1.35rem; margin: 0 0 10px; }
+.etapa h3::before { content: counter(etapa); flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--roxo); font-size: 1.2rem; }
+.etapa:last-child h3::before { background: var(--verde); }
+.etapa p { color: var(--texto-suave); margin: 0 0 0.7em; }
+@media (max-width: 760px) { .etapa { grid-template-columns: minmax(0, 1fr); gap: 18px; } }
+
+/* telas ilustrativas */
+.tela-ilus { margin: 0; }
+.tela-ilus figcaption { font-size: 0.82rem; color: var(--texto-suave); margin-top: 8px; text-align: center; }
+.janela { border-radius: 14px; overflow: hidden; border: 1px solid #d9d4e2; background: #fff; color: #202124; font-family: var(--fonte-texto); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.janela .barra { display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: #eceaf1; border-bottom: 1px solid #d9d4e2; }
+.janela .barra i { width: 10px; height: 10px; border-radius: 50%; background: #c9c3d4; }
+.janela .barra span { flex: 1; margin-left: 6px; background: #fff; border-radius: 999px; padding: 4px 12px; font-size: 0.78rem; color: #4b4658; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.janela .corpo { padding: 18px; font-size: 0.92rem; }
+.janela .titulo-pag { font-size: 1.15rem; font-weight: 700; margin: 0 0 6px; color: #202124; }
+.janela .cinza { color: #5f6368; font-size: 0.85rem; margin: 0 0 14px; }
+.btn-g { display: inline-block; background: #1a73e8; color: #fff; border-radius: 999px; padding: 8px 16px; font-weight: 700; font-size: 0.88rem; }
+.btn-g.claro { background: #e8f0fe; color: #1a5fc4; }
+.linha-chave { display: flex; align-items: center; gap: 10px; border: 1px solid #dadce0; border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-family: var(--fonte-codigo); font-size: 0.8rem; color: #3c4043; }
+.linha-chave b { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.destaque { position: relative; outline: 3px solid var(--fogo); outline-offset: 3px; border-radius: 999px; }
+.destaque::after { content: "toque aqui"; position: absolute; left: 50%; top: calc(100% + 12px); transform: translateX(-50%); background: var(--fogo); color: #fff; font-size: 0.72rem; font-weight: 700; border-radius: 999px; padding: 3px 10px; white-space: nowrap; font-family: var(--fonte-texto); }
+.destaque.acima::after { top: auto; bottom: calc(100% + 12px); }
+.espaco-dica { height: 34px; }
+
+/* tela do ÉguaTex */
+.app { background: #241035; color: #f3eafb; border-color: #4a2770; }
+.app .barra { background: #1c0a2b; border-color: #4a2770; }
+.app .barra span { background: #2a1140; color: #c7b6d8; }
+.app .rot { font-size: 0.78rem; text-transform: uppercase; letter-spacing: .06em; color: #c9a6f0; margin: 0 0 8px; font-weight: 700; }
+.app .opcao { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1.5px solid #4a2770; border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; }
+.app .opcao.sel { border-color: #ffb627; background: rgba(255,182,39,.08); }
+.app .selo-gratis { font-size: 0.72rem; background: #3f9a37; color: #fff; border-radius: 999px; padding: 2px 9px; font-weight: 700; }
+.app .campo { border: 1.5px solid #4a2770; border-radius: 10px; padding: 10px 12px; font-family: var(--fonte-codigo); font-size: 0.8rem; color: #c7b6d8; margin: 6px 0 14px; }
+.app .btn-e { display: inline-block; background: #ff5f15; color: #fff; border-radius: 999px; padding: 8px 18px; font-weight: 700; font-size: 0.9rem; }
+.app .btn-e.contorno { background: transparent; border: 1.5px solid #c9a6f0; color: #f3eafb; }
+.app .ok { background: rgba(63,154,55,.18); border: 1px solid #3f9a37; color: #cdeec7; border-radius: 10px; padding: 9px 12px; margin-bottom: 12px; font-size: 0.88rem; }
+.app .aviso { background: #2a1140; border: 1px solid #7a35c4; border-radius: 12px; padding: 12px; font-size: 0.85rem; color: #e6dbf3; }
+.app .aviso b { display: block; margin-bottom: 4px; color: #fff; }
+.app .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.app .chips span { border: 1px solid #7a35c4; border-radius: 999px; padding: 4px 10px; font-size: 0.78rem; }
+.app .msg { border: 1.5px solid #4a2770; border-radius: 999px; padding: 9px 14px; color: #a996bd; font-size: 0.85rem; }
+.app .lado { display: grid; grid-template-columns: 54px 1fr; min-height: 230px; }
+.app .lado nav { background: #1c0a2b; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 14px 0; }
+.app .lado nav i { width: 28px; height: 28px; border-radius: 8px; background: #3a1a58; }
+.app .lado nav i.ia { background: #ff5f15; outline: 3px solid #ffb627; outline-offset: 3px; }
+.app .lado .area { padding: 16px; }
+
+.cuidados { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; padding: 0; list-style: none; }
+.cuidados li { background: var(--noite-2); border-left: 4px solid var(--roxo); border-radius: 12px; padding: 16px 18px; color: var(--texto-suave); max-width: none; }
+.cuidados li.alerta { border-left-color: var(--fogo); }
+.cuidados strong { color: var(--texto); }
+
+.problemas { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.problemas th, .problemas td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--noite-3); vertical-align: top; }
+.problemas th { font-family: var(--fonte-titulo); color: var(--roxo-claro); font-size: 0.95rem; }
+.problemas td:first-child { color: var(--texto); font-weight: 700; width: 42%; }
+.problemas td { color: var(--texto-suave); }
+@media (max-width: 560px) {
+  .problemas, .problemas tbody, .problemas tr, .problemas td { display: block; width: 100%; }
+  .problemas thead { display: none; }
+  .problemas tr { border-bottom: 1px solid var(--noite-3); padding: 10px 0; }
+  .problemas td { border: 0; padding: 4px 0; }
+  .problemas td:first-child { width: 100%; }
+}
+.guia .etapa, .guia .precisa li, .guia .cuidados li { max-width: none; }
