@@ -2,7 +2,7 @@
 
 O site do ÉguaTex (este repositório, eguatex/eguatex.github.io) tem uma responsável: Jéssica Lopes Melo.
 
-Nenhuma alteração entra no site sem autorização expressa dela. Isso vale para tudo: páginas, textos, imagens, logo, ícones, estilos, scripts, modelos LaTeX, avaliações, configurações do GitHub Pages e domínio (ver também DOMINIO.md).
+Nenhuma alteração entra no site sem autorização expressa dela. Isso vale para tudo: páginas, textos, imagens, logo, ícones, estilos, scripts, modelos LaTeX, avaliações, configurações do GitHub Pages e domínio.
 
 ## Como propor uma mudança
 

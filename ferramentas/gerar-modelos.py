@@ -39,9 +39,12 @@ MODELOS = RAIZ / "modelos"
 LICENCA = RAIZ / "ferramentas" / "LICENSE-CC0-1.0.txt"
 BUILD = Path(os.environ.get("EGUATEX_MODELOS_BUILD", Path(tempfile.gettempdir()) / "eguatex-modelos-build"))
 
+# Pastas "bin" de cada distribuição. Para usar outras pastas, defina as variáveis de ambiente
+# EGUATEX_TEXLIVE_BIN e EGUATEX_TINYTEX_BIN.
 DISTROS = {
-    "texlive": Path("C:/texlive/2026/bin/windows"),
-    "tinytex": Path("C:/Users/PC/Desktop/JP/eguatex-tinytex/padrao/TinyTeX/bin/windows"),
+    "texlive": Path(os.environ.get("EGUATEX_TEXLIVE_BIN", "C:/texlive/2026/bin/windows")),
+    "tinytex": Path(os.environ.get("EGUATEX_TINYTEX_BIN",
+                                   Path(os.environ.get("APPDATA", Path.home())) / "TinyTeX" / "bin" / "windows")),
 }
 PUBLICA = "texlive"  # o PDF que vai para o site sai desta distribuição
 
