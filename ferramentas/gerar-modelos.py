@@ -29,6 +29,7 @@ import os
 import re
 import shutil
 import subprocess
+import tempfile
 import sys
 import zipfile
 from pathlib import Path
@@ -36,7 +37,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parent.parent
 MODELOS = RAIZ / "modelos"
 LICENCA = RAIZ / "ferramentas" / "LICENSE-CC0-1.0.txt"
-BUILD = Path(os.environ.get("EGUATEX_MODELOS_BUILD", "F:/claude-builds/modelos-build"))
+BUILD = Path(os.environ.get("EGUATEX_MODELOS_BUILD", Path(tempfile.gettempdir()) / "eguatex-modelos-build"))
 
 DISTROS = {
     "texlive": Path("C:/texlive/2026/bin/windows"),
