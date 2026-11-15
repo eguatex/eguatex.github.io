@@ -15,3 +15,7 @@ Não envie commits direto para o `main`.
 ## Textos oficiais
 
 O lema, a descrição curta e o selo do ÉguaTex estão em IDENTIDADE.md. Qualquer texto novo no site segue esse arquivo.
+
+## Versões e instaladores
+
+Este repositório não recebe versões (releases) nem instaladores. Os instaladores do ÉguaTex são publicados só nas versões do repositório público do código do app, e os botões de download do site buscam a versão mais recente de lá (endereço em `assets/js/config.js`, campo `repositorioCodigo`).
