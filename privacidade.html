@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Política de privacidade | ÉguaTex</title>
-  <meta name="description" content="Como o ÉguaTex trata os seus dados.">
+  <meta name="description" content="Política de privacidade do ÉguaTex: quais dados o app e o site usam, para quê e como você controla tudo, conforme a LGPD.">
   <meta name="theme-color" content="#1c0a2b">
   <link rel="icon" href="/favicon.ico?v=www2" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=www2">
@@ -17,7 +17,7 @@
   <meta property="og:locale" content="pt_BR">
   <meta property="og:url" content="https://eguatex.com.br/privacidade.html">
   <meta property="og:title" content="Política de privacidade | ÉguaTex">
-  <meta property="og:description" content="Como o ÉguaTex trata os seus dados.">
+  <meta property="og:description" content="Política de privacidade do ÉguaTex: quais dados o app e o site usam, para quê e como você controla tudo, conforme a LGPD.">
   <meta property="og:image" content="https://eguatex.com.br/assets/img/compartilhar.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -53,48 +53,93 @@
 <section class="contato-abertura"><h1>Política de privacidade</h1></section>
 <p class="data">Atualizada em 15 de novembro de 2026</p>
 
-<p>O ÉguaTex é um editor LaTeX gratuito e de código aberto (licença AGPL-3.0). Ele roda no computador ou no celular da pessoa e não tem servidor próprio. Esta política explica quais dados o programa usa e para quê.</p>
+<p>O ÉguaTex é um editor LaTeX gratuito, offline e de código aberto (licença AGPL-3.0). Ele roda no computador ou no celular de quem usa e não tem servidor próprio. Esta política explica, em linguagem simples, quais dados o app e o site usam, para quê, com quem são compartilhados e como você controla tudo isso. Ela segue a Lei Geral de Proteção de Dados (Lei 13.709/2018, LGPD).</p>
 
-<h2>1. Sem conta, sem telemetria</h2>
-<p>O ÉguaTex funciona sem conta e sem internet. Ele não coleta estatísticas de uso, não usa rastreadores e não envia nada para o desenvolvedor. Os documentos ficam em pastas comuns no computador da pessoa.</p>
+<h2>1. Quem cuida dos dados</h2>
+<p>O ÉguaTex é mantido por José Paulo de Almeida Junior e Jéssica Lopes Melo, que são os controladores dos poucos dados tratados pelo projeto. Para qualquer assunto sobre privacidade, inclusive para exercer os seus direitos, escreva para <a href="mailto:contatoeguatex@gmail.com">contatoeguatex@gmail.com</a>.</p>
 
-<h2>2. Login com Google (opcional)</h2>
-<p>O ÉguaTex funciona sem login. Quem quiser guardar projetos no Google Drive entra com a própria conta Google. Nesse login o programa pede estas permissões:</p>
+<h2>2. Resumo</h2>
+<ul>
+<li>O app funciona sem conta, sem cadastro e sem internet.</li>
+<li>Não há telemetria, rastreadores, anúncios nem venda de dados.</li>
+<li>Os seus documentos ficam no seu aparelho, em pastas comuns.</li>
+<li>Os recursos que usam internet (assistente de IA, Google Drive, tradução e procurar atualização) são opcionais e só funcionam quando você pede.</li>
+<li>Nesses recursos, os dados vão direto do seu aparelho para o serviço escolhido. Nada passa por um servidor do ÉguaTex.</li>
+</ul>
+
+<h2>3. No app</h2>
+
+<h3>3.1 Uso sem internet</h3>
+<p>Escrever, compilar e ver o PDF funcionam sem internet. Os documentos ficam nas pastas que você escolher no computador ou na área do app no celular. O ÉguaTex não envia estatísticas de uso, relatórios de erro nem qualquer outro dado para a equipe.</p>
+
+<h3>3.2 Assistente de IA (opcional)</h3>
+<p>O assistente vem desligado. Para ligar, você cria uma chave gratuita do Gemini, a IA do Google, na sua própria conta Google e cola no app (veja o <a href="assistente-ia.html">passo a passo</a>).</p>
+<ul>
+<li><strong>Onde a chave fica:</strong> só no seu aparelho, guardada de forma cifrada no cofre do app. Ela não vai para os arquivos do projeto, para o histórico das conversas, para registros de erro nem para a equipe do ÉguaTex.</li>
+<li><strong>O que é enviado:</strong> depois que você ativa a IA e aceita o aviso que aparece antes do primeiro envio, vão para o Google o que você escreve no assistente, os trechos dos arquivos do projeto que ele ler, conforme o nível de acesso que você escolher (só conversa, leitura do projeto ou sugerir alterações), e as mensagens de erro da compilação quando você pede ajuda com elas. Alterações nos arquivos só são gravadas quando você aceita cada sugestão.</li>
+<li><strong>Para onde vai:</strong> do seu aparelho direto para a Gemini API do Google, usando a sua chave.</li>
+<li><strong>O que o Google faz com isso:</strong> segundo os termos do Google, o conteúdo enviado pela cota gratuita pode ser usado para melhorar os produtos dele e pode ser lido por revisores humanos. Por isso, não envie ao assistente dados pessoais, sigilosos ou sensíveis. O uso do Gemini segue os <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">termos da Gemini API</a> e a <a href="https://policies.google.com/privacy" rel="noopener">política de privacidade do Google</a>.</li>
+<li><strong>Como desligar:</strong> no assistente, toque em "Remover a chave e desligar a IA". A chave sai do cofre na hora. Para que ela pare de funcionar em qualquer lugar, apague-a também em <a href="https://aistudio.google.com/apikey" rel="noopener">aistudio.google.com/apikey</a>.</li>
+</ul>
+
+<h3>3.3 Login com Google para o Google Drive (opcional)</h3>
+<p>O login com Google serve só para guardar e abrir projetos no Google Drive. Ele não dá acesso ao Gemini. Nesse login, o app pede apenas estas permissões:</p>
 <ul>
 <li><strong>openid, email e profile:</strong> nome, e-mail e foto da conta, para mostrar na tela quem está conectado.</li>
-<li><strong>drive.file:</strong> criar, abrir e atualizar no Google Drive só os arquivos que o próprio ÉguaTex criou ou que a pessoa escolheu no seletor do Google. O programa não vê o restante do Drive.</li>
+<li><strong>drive.file:</strong> criar, abrir e atualizar no Google Drive só os arquivos que o próprio ÉguaTex criou ou que você escolheu no seletor do Google. O app não vê o restante do seu Drive.</li>
 </ul>
-<p>A assistente de IA vem desligada. Só quando a pessoa decide ligar a assistente o programa pede mais duas permissões:</p>
+<p>O código de acesso (token) fica só no seu aparelho: no Windows, no Gerenciador de Credenciais; no Android, na área privada do app. O botão "Sair" revoga o acesso no Google e apaga o token. Você também pode revogar o acesso a qualquer momento em <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>.</p>
+<p>Quem entrou com a conta Google em versões de teste anteriores pode ter dado permissões a mais (Google Cloud e Gemini). A versão atual não usa essas permissões. Para retirá-las, remova o acesso do ÉguaTex em myaccount.google.com/permissions e entre de novo no app.</p>
+
+<h3>3.4 Tradução de trechos (opcional)</h3>
+<p>Quando você seleciona um trecho e pede para traduzir, só esse trecho é enviado ao serviço de tradução do Google, e a tradução volta para a tela. Nada é enviado se você não usar a função.</p>
+
+<h3>3.5 Procurar atualização</h3>
+<p>Quando você clica em "Procurar atualização", o app consulta o GitHub para saber se há uma versão nova. Vão apenas o nome e a versão do app, como o GitHub exige em toda consulta. A busca nunca acontece sozinha.</p>
+
+<h3>3.6 Enviar sugestão e apoiar</h3>
+<p>O botão de enviar sugestão só abre o seu programa de e-mail com uma mensagem pronta, com a versão do app e o sistema do aparelho. Você lê, edita e decide se envia. A tela de apoio mostra os dados para Pix. O app não faz nenhum pagamento e não guarda nenhum dado sobre isso.</p>
+
+<h2>4. No site</h2>
 <ul>
-<li><strong>cloud-platform:</strong> criar, na conta da própria pessoa, um projeto do Google Cloud chamado "EguaTex" (identificador <code>eguatex-...</code>) e ativar nele a Gemini API. O programa não lê, não altera e não apaga nenhum outro projeto ou recurso, e não ativa cobrança.</li>
-<li><strong>generative-language.retriever:</strong> enviar à Gemini API as mensagens que a pessoa escreve na assistente e receber as respostas, usando a cota gratuita da conta dela.</li>
+<li><strong>Hospedagem:</strong> o site fica no GitHub Pages. Como qualquer site, o GitHub registra dados técnicos de acesso, como o endereço IP, para manter o serviço funcionando e seguro.</li>
+<li><strong>Fontes e fórmulas:</strong> as fontes de letra vêm do Google Fonts, e a biblioteca que desenha as fórmulas vem do jsDelivr. Para entregar esses arquivos, esses serviços também recebem o endereço IP do seu navegador.</li>
+<li><strong>Sem rastreamento:</strong> o site não usa cookies, não tem anúncios e não usa ferramentas de rastreamento ou de estatísticas de visita.</li>
+<li><strong>Avaliações:</strong> se você deixar uma avaliação, guardamos o nome que você escreveu, a nota e o comentário numa planilha Google da equipe. O nome, a nota e o comentário aparecem publicamente no site. Não publicamos avaliações com propaganda, ofensas, dados pessoais de outras pessoas ou conteúdo fora do tema. Para corrigir ou apagar a sua avaliação, escreva para o e-mail de contato.</li>
+<li><strong>Contato:</strong> se você nos escrever, usamos o seu e-mail e a sua mensagem só para responder.</li>
 </ul>
 
-<h2>3. Como os dados são usados</h2>
+<h2>5. Por que tratamos esses dados (bases legais)</h2>
 <ul>
-<li>As mensagens da assistente vão direto do computador da pessoa para a Gemini API do Google. O uso entra na cota gratuita da própria conta.</li>
-<li>Conforme o nível de acesso que a pessoa escolhe (só conversa, leitura ou sugestões), a assistente também envia ao Gemini trechos dos arquivos do projeto aberto e as mensagens de erro da compilação. Alterações nos arquivos só são gravadas quando a pessoa aceita cada sugestão.</li>
-<li>Nome, e-mail e foto aparecem só na tela do programa.</li>
-<li>Os dados não passam por nenhum servidor do ÉguaTex, não são vendidos, não são usados para publicidade e não são repassados a ninguém.</li>
-<li>Os dados recebidos das APIs do Google não são usados para treinar modelos de IA.</li>
+<li><strong>Consentimento:</strong> assistente de IA, login com Google e avaliações. Você liga ou envia quando quiser e pode desligar ou pedir para apagar a qualquer momento.</li>
+<li><strong>Atender ao seu pedido:</strong> tradução, procurar atualização e respostas por e-mail.</li>
+<li><strong>Interesse legítimo:</strong> registros técnicos de hospedagem, necessários para o site funcionar e ficar seguro.</li>
 </ul>
 
-<h2>4. Onde ficam guardados</h2>
-<p>No Windows, o token de acesso fica no Gerenciador de Credenciais do Windows. No Android, fica na área privada do aplicativo. Nos dois casos o token fica só no aparelho da pessoa. A configuração da assistente fica na pasta de dados do programa. Nada fica guardado fora do aparelho da pessoa, exceto o que o próprio Google guarda na conta dela, como os arquivos que ela salva no Google Drive.</p>
+<h2>6. Compartilhamento e envio para fora do Brasil</h2>
+<p>Os dados só chegam aos serviços que você usa: Google (Gemini, Drive, tradução, fontes e planilha das avaliações), GitHub (hospedagem do site e consulta de atualização) e jsDelivr (biblioteca de fórmulas do site). Esses serviços podem guardar e processar os dados em servidores fora do Brasil, conforme as políticas de privacidade de cada um. Nós não vendemos, não alugamos e não usamos dados para publicidade.</p>
 
-<h2>5. Como apagar</h2>
+<h2>7. Por quanto tempo</h2>
 <ul>
-<li>O botão "Sair" revoga o acesso no Google e apaga o token do computador.</li>
-<li>Desinstalar o programa também apaga o token e a configuração da assistente.</li>
-<li>O acesso pode ser revogado a qualquer momento em <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
-<li>O projeto "EguaTex" criado no Google Cloud pode ser apagado pela pessoa em <a href="https://console.cloud.google.com">console.cloud.google.com</a>.</li>
+<li>Chave da IA, token do Google e configurações ficam no seu aparelho até você remover, sair ou desinstalar o app.</li>
+<li>Avaliações ficam guardadas enquanto estiverem no site, ou até você pedir para apagar.</li>
+<li>E-mails de contato ficam guardados pelo tempo necessário para atender o pedido.</li>
 </ul>
 
-<h2>6. Uso limitado</h2>
-<p>O uso e a transferência, para qualquer outro app, de informações recebidas das APIs do Google seguem a <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de dados do usuário dos serviços de API do Google</a>, incluindo os requisitos de uso limitado.</p>
+<h2>8. Seus direitos</h2>
+<p>Pela LGPD (artigo 18), você pode pedir a qualquer momento: confirmação de que tratamos dados seus, acesso a eles, correção, anonimização, bloqueio ou eliminação, portabilidade, informação sobre com quem foram compartilhados e revogação do consentimento. Basta escrever para <a href="mailto:contatoeguatex@gmail.com">contatoeguatex@gmail.com</a>. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
 
-<h2>7. Contato</h2>
-<p>José Paulo de Almeida Junior, desenvolvedor do ÉguaTex: <a href="mailto:contatoeguatex@gmail.com">contatoeguatex@gmail.com</a>.</p>
+<h2>9. Crianças e adolescentes</h2>
+<p>O ÉguaTex pode ser usado por estudantes de qualquer idade sem fornecer dado nenhum. O assistente de IA com chave do Gemini é só para maiores de 18 anos, por exigência do Google. Menores de 18 anos só devem deixar avaliações no site com autorização de um dos pais ou responsáveis.</p>
+
+<h2>10. Segurança</h2>
+<p>A chave da IA e o token do Google ficam guardados de forma protegida no aparelho, e as conexões com os serviços usam criptografia (HTTPS). O código do app é aberto, então qualquer pessoa pode conferir o que ele faz. Se encontrar uma falha de segurança, avise pelo e-mail de contato com o assunto "Segurança".</p>
+
+<h2>11. Uso limitado dos dados do Google</h2>
+<p>O uso e a transferência, para qualquer outro app, de informações recebidas das APIs do Google seguem a <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Política de dados do usuário dos serviços de API do Google</a>, incluindo os requisitos de uso limitado. Os dados recebidos das APIs do Google não são usados para treinar modelos de IA.</p>
+
+<h2>12. Mudanças nesta política</h2>
+<p>Esta política pode mudar quando o app ou o site mudarem. A versão em vigor é sempre a publicada nesta página, com a data de atualização no topo. Mudanças importantes também são avisadas nas notas de cada nova versão do app.</p>
 
   </main>
 
@@ -103,7 +148,7 @@
     <div class="rodape-conteudo">
       <p class="rodape-marca"><img src="assets/img/curupira-256.png" alt="" width="40" height="40"> ÉguaTex</p>
       <p>Feito na Amazônia por José Paulo de Almeida Junior e Jéssica Lopes Melo.</p>
-      <p><a href="contato.html">Contato, sugestões e problemas</a>, <a href="privacidade.html">política de privacidade</a> e <a href="termos.html">termos de uso</a>.</p>
+      <p><a href="contato.html">Contato, sugestões e problemas</a>, <a href="assistente-ia.html">assistente de IA</a>, <a href="privacidade.html">política de privacidade</a> e <a href="termos.html">termos de uso</a>.</p>
     </div>
   </footer>
 

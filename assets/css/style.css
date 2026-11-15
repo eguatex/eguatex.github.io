@@ -314,6 +314,7 @@ button.botao { cursor: pointer; }
 .texto-longo p, .texto-longo li { font-size: 1.05rem; line-height: 1.65; }
 .texto-longo ul, .texto-longo ol { padding-left: 1.3em; }
 .texto-longo li { margin-bottom: 0.4em; }
+.texto-longo h3 { font-size: 1.15rem; font-weight: 700; margin: 1.3em 0 0.4em; }
 .texto-longo a { color: var(--chama); }
 
 /* ---------- menu no celular ---------- */
