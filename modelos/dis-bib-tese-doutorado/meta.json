@@ -16,7 +16,7 @@
     "Fonte EB Garamond com títulos em maiúsculas"
   ],
   "licenca": "CC0-1.0",
-  "publicado": true,
+  "publicado": false,
   "previas_paginas": [1, 18, 25],
   "avisos_ignorados": [
     "Package babel Warning: Name 'brazil' is deprecated",

@@ -16,7 +16,7 @@
     "Listas de siglas e de símbolos"
   ],
   "licenca": "CC0-1.0",
-  "publicado": true,
+  "publicado": false,
   "previas_paginas": [1, 16, 19],
   "avisos_ignorados": [
     "Package babel Warning: Name 'brazil' is deprecated",

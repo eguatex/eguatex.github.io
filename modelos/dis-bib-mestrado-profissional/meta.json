@@ -16,7 +16,7 @@
     "Instruções de preenchimento que somem com uma linha"
   ],
   "licenca": "CC0-1.0",
-  "publicado": true,
+  "publicado": false,
   "previas_paginas": [1, 20, 27],
   "avisos_ignorados": [
     "Package babel Warning: Name 'brazil' is deprecated",
