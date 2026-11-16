@@ -1,0 +1,21 @@
+{
+  "id": "art-sbc-oficial",
+  "nome": "Artigo no modelo da SBC",
+  "categoria": "artigo",
+  "curso": "Computação",
+  "classe": "article",
+  "descricao": "Modelo oficial da Sociedade Brasileira de Computação para artigos. O download é feito no site da SBC, para você ter sempre a versão mais atual.",
+  "destaques": [
+    "Modelo mantido pela Sociedade Brasileira de Computação",
+    "Versões em LaTeX, Word e LibreOffice",
+    "Para artigos submetidos a eventos e publicações da SBC",
+    "Download no site oficial da SBC"
+  ],
+  "externo": {
+    "url": "https://www.sbc.org.br/documentosinstitucionais/#publicacoes",
+    "organizacao": "Sociedade Brasileira de Computação (SBC)",
+    "selo": "Modelo oficial da SBC",
+    "credito": "Modelo da Sociedade Brasileira de Computação. Baixe sempre no site oficial."
+  },
+  "publicado": true
+}

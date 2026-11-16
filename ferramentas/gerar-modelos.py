@@ -13,6 +13,10 @@ Subcomandos:
   validar   confere logs, tamanhos, zip, metadados e semelhança entre modelos da mesma categoria
   indice    junta os meta.json em modelos/indice.json
 
+Modelo externo: meta.json com o campo "externo" ({"url", "organizacao", "selo", "credito"})
+e uma miniatura.webp feita por nós. Ele não tem fonte, PDF nem zip: o botão leva ao
+site oficial de quem mantém o modelo. compilar, previas e semelhança pulam esses modelos.
+
 Exemplos:
   python ferramentas/gerar-modelos.py compilar --id rel-fis-lab-basico --tex ambos
   python ferramentas/gerar-modelos.py previas --categoria relatorio
@@ -113,6 +117,10 @@ def sair(msg):
 
 
 # ---------- seleção de modelos ----------
+def eh_externo(meta):
+    return isinstance(meta.get("externo"), dict)
+
+
 def listar_modelos(ids=None, categorias=None):
     """Lê os meta.json e devolve [(pasta, meta)], filtrados por --id e --categoria."""
     escolhidos = set()
@@ -282,6 +290,9 @@ def conferir_log(destino, extras=()):
 def cmd_compilar(args):
     falhas = 0
     for pasta, _meta in listar_modelos(args.id, args.categoria):
+        if eh_externo(_meta):
+            print(f"{pasta.name}: modelo externo, nada a compilar")
+            continue
         resultados = {}
         for distro in distros_da_opcao(args.tex):
             ok, problemas, cache = compilar_um(pasta, distro, args.forcar)
@@ -340,6 +351,9 @@ def cmd_previas(args):
     import pymupdf
     falhas = 0
     for pasta, meta in listar_modelos(args.id, args.categoria):
+        if eh_externo(meta):
+            print(f"{pasta.name}: modelo externo, a miniatura é feita à mão")
+            continue
         pdf = pasta / f"{pasta.name}.pdf"
         if not pdf.exists():
             print(f"{pasta.name}: sem {pdf.name}, rode compilar antes")
@@ -373,7 +387,38 @@ def corpo_do_documento(pasta):
     return sem_comentarios.split()
 
 
+def conferir_meta_externo(pasta, meta):
+    problemas = []
+    for campo in ("id", "nome", "categoria", "curso", "classe", "descricao", "destaques", "publicado"):
+        if campo not in meta:
+            problemas.append(f"meta.json sem o campo {campo}")
+    if meta.get("id") != pasta.name:
+        problemas.append(f"id {meta.get('id')!r} diferente da pasta {pasta.name!r}")
+    if meta.get("categoria") not in FILTRO_DA_CATEGORIA:
+        problemas.append(f"categoria desconhecida: {meta.get('categoria')!r}")
+    if meta.get("curso") not in CURSOS:
+        problemas.append(f"curso fora da lista {CURSOS}: {meta.get('curso')!r}")
+    ext = meta["externo"]
+    for campo in ("url", "organizacao", "selo", "credito"):
+        if not ext.get(campo):
+            problemas.append(f"externo sem o campo {campo}")
+    if not str(ext.get("url", "")).startswith("https://"):
+        problemas.append("externo.url deve começar com https://")
+    if not isinstance(meta.get("destaques"), list) or not meta.get("destaques"):
+        problemas.append("destaques deve ser uma lista não vazia")
+    if not isinstance(meta.get("publicado"), bool):
+        problemas.append("publicado deve ser true ou false")
+    if not (pasta / "miniatura.webp").exists():
+        problemas.append("falta miniatura.webp")
+    for proibido in ("fonte", f"{pasta.name}.pdf", f"{pasta.name}.zip"):
+        if (pasta / proibido).exists():
+            problemas.append(f"modelo externo não guarda cópia: apague {proibido}")
+    return problemas
+
+
 def conferir_meta(pasta, meta):
+    if eh_externo(meta):
+        return conferir_meta_externo(pasta, meta)
     problemas = []
     for campo in CAMPOS_META:
         if campo not in meta:
@@ -476,14 +521,14 @@ def cmd_validar(args):
     distros = distros_da_opcao(args.tex)
     falhas = 0
     for pasta, meta in selecionados:
-        problemas = conferir_meta(pasta, meta) + conferir_arquivos(pasta, distros)
+        problemas = conferir_meta(pasta, meta) + ([] if eh_externo(meta) else conferir_arquivos(pasta, distros))
         print(f"{pasta.name}: {'ok' if not problemas else 'REPROVADO'}")
         for p in problemas:
             print(f"    {p}")
         falhas += bool(problemas)
     # a semelhança compara com todos os modelos da mesma categoria, não só os selecionados
     cats = {m.get("categoria") for _, m in selecionados}
-    todos = [(p, m) for p, m in listar_modelos() if m.get("categoria") in cats]
+    todos = [(p, m) for p, m in listar_modelos() if m.get("categoria") in cats and not eh_externo(m)]
     sem = conferir_semelhanca(todos)
     print(f"semelhança: {'ok' if not sem else 'REPROVADO'} ({len(todos)} modelos comparados)")
     for p in sem:
@@ -492,7 +537,30 @@ def cmd_validar(args):
 
 
 # ---------- índice ----------
+def entrada_do_externo(pasta, meta):
+    from PIL import Image
+    base = f"modelos/{pasta.name}"
+    with Image.open(pasta / "miniatura.webp") as im:
+        mini = [im.width, im.height]
+    return {
+        "id": pasta.name,
+        "nome": meta["nome"],
+        "categoria": meta["categoria"],
+        "filtro": FILTRO_DA_CATEGORIA[meta["categoria"]],
+        "curso": meta["curso"],
+        "classe": meta["classe"],
+        "descricao": meta["descricao"],
+        "destaques": meta["destaques"],
+        "externo": meta["externo"],
+        "arquivos": {"miniatura": f"{base}/miniatura.webp"},
+        "dimensoes": {"miniatura": mini},
+        "publicado": meta["publicado"],
+    }
+
+
 def entrada_do_indice(pasta, meta):
+    if eh_externo(meta):
+        return entrada_do_externo(pasta, meta)
     import pymupdf
     from PIL import Image
     base = f"modelos/{pasta.name}"
@@ -542,8 +610,8 @@ def cmd_indice(args):
     falhas = 0
     for pasta, meta in listar_modelos():
         problemas = conferir_meta(pasta, meta)
-        faltando = [n for n in (f"{pasta.name}.pdf", f"{pasta.name}.zip", "miniatura.webp")
-                    if not (pasta / n).exists()]
+        precisa = ("miniatura.webp",) if eh_externo(meta) else (f"{pasta.name}.pdf", f"{pasta.name}.zip", "miniatura.webp")
+        faltando = [n for n in precisa if not (pasta / n).exists()]
         if problemas or faltando:
             print(f"{pasta.name}: fora do índice ({'; '.join(problemas + ['falta ' + f for f in faltando])})")
             falhas += 1

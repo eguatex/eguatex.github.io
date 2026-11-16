@@ -21,14 +21,16 @@
   const nomeCategoria = (indice, id) => (indice.categorias.find((c) => c.id === id) || {}).nome || id;
 
   // Cartão de um modelo: miniatura em 3/4, nome, descrição curta, curso e classe.
+  // Modelo externo (de outra organização) ganha um selo e abre a página com o link oficial.
   const cartao = (m) => {
     const [w, h] = m.dimensoes.miniatura;
     return `<li class="modelo-cartao">
       <a class="modelo-link" href="modelo.html?id=${encodeURIComponent(m.id)}">
-        <span class="modelo-miniatura"><img src="${esc(m.arquivos.miniatura)}" width="${w}" height="${h}" loading="lazy" decoding="async" alt="Primeira página do modelo ${esc(m.nome)}"></span>
+        <span class="modelo-miniatura"><img src="${esc(m.arquivos.miniatura)}" width="${w}" height="${h}" loading="lazy" decoding="async" alt="${m.externo ? "Ilustração do modelo" : "Primeira página do modelo"} ${esc(m.nome)}"></span>
         <span class="modelo-nome">${esc(m.nome)}</span>
       </a>
       <p class="modelo-resumo">${esc(m.descricao)}</p>
+      ${m.externo ? `<p class="modelo-selo">${esc(m.externo.selo)}</p>` : ""}
       <div class="cat-rodape"><span class="modelo-curso">${esc(m.curso)}</span><code class="cat-classe">${esc(m.classe)}</code></div>
     </li>`;
   };

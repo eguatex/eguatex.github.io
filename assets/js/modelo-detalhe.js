@@ -45,6 +45,38 @@
     return ok;
   };
 
+  // Modelo externo: mantido por outra organização. O site não guarda cópia: o botão leva ao site oficial.
+  const montarExterno = (indice, m, categoria, linkCategoria) => {
+    const [w, h] = m.dimensoes.miniatura;
+    const e = m.externo;
+    return `
+      <div class="modelo-topo">
+        <div class="modelo-previas modelo-previas-externo">
+          <figure class="modelo-previa">
+            <img src="${esc(m.arquivos.miniatura)}" width="${w}" height="${h}" fetchpriority="high" decoding="async" alt="Ilustração do modelo ${esc(m.nome)}">
+            <figcaption>Ilustração. O modelo original fica no site da organização.</figcaption>
+          </figure>
+        </div>
+        <div class="modelo-info">
+          <p class="modelo-selo">${esc(e.selo)}</p>
+          <h1 id="modelo-titulo">${esc(m.nome)}</h1>
+          <p class="modelo-descricao">${esc(m.descricao)}</p>
+          <div class="modelo-acoes">
+            <a class="botao botao-fogo" href="${esc(e.url)}" target="_blank" rel="noopener" id="baixar-externo">Baixar no site oficial</a>
+          </div>
+          <p class="modelo-aviso">${esc(e.credito)}</p>
+          <dl class="modelo-dados">
+            <div><dt>Categoria</dt><dd><a href="${linkCategoria}">${esc(categoria)}</a></dd></div>
+            <div><dt>Curso</dt><dd>${esc(m.curso)}</dd></div>
+            <div><dt>Classe</dt><dd><code>${esc(m.classe)}</code></dd></div>
+            <div><dt>Mantido por</dt><dd>${esc(e.organizacao)}</dd></div>
+          </dl>
+          <h2 class="modelo-subtitulo">O que vem no modelo</h2>
+          <ul class="modelo-destaques">${m.destaques.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>
+        </div>
+      </div>`;
+  };
+
   const montar = (indice, m) => {
     const categoria = nomeCategoria(indice, m.categoria);
     const linkCategoria = `categoria.html?id=${encodeURIComponent(m.categoria)}`;
@@ -53,6 +85,18 @@
     document.querySelector('meta[name="description"]').setAttribute("content", m.descricao);
     migalhaCategoria.innerHTML = `<a href="${linkCategoria}">${esc(categoria)}</a>`;
     migalhaAtual.textContent = m.nome;
+
+    if (m.externo) {
+      const relacionadosExt = indice.modelos.filter((r) => r.publicado && r.id !== m.id && r.categoria === m.categoria).slice(0, 4);
+      alvo.innerHTML = montarExterno(indice, m, categoria, linkCategoria) + (relacionadosExt.length ? `<section class="modelo-relacionados" aria-labelledby="relacionados-titulo">
+        <h2 id="relacionados-titulo" class="galeria-subtitulo">Modelos relacionados</h2>
+        <ul class="modelos-grade">${relacionadosExt.map(cartao).join("")}</ul>
+      </section>` : "");
+      document.getElementById("baixar-externo").addEventListener("click", () => {
+        if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: `externo-${m.id}`, event: true });
+      });
+      return;
+    }
 
     const total = m.arquivos.previas.length;
     const previas = m.arquivos.previas.map((src, i) => {
