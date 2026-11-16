@@ -1,0 +1,91 @@
+% =====================================================================
+% referencias.bib: as obras que voce cita no trabalho
+% EguaTex (www.eguatex.com.br). Licenca CC0 1.0: dominio publico.
+%
+% Cada obra tem uma chave (a palavra logo depois da chave de abertura).
+% No texto, cite pela chave:
+%   \cite{chave}           (Sobrenome, 2024)
+%   \cite[p.~15]{chave}    (Sobrenome, 2024, p. 15)
+%   \citeonline{chave}     Sobrenome (2024)
+% Na lista de referencias entram so as obras citadas, em ordem alfabetica,
+% no formato da ABNT NBR 6023:2025. Voce nao precisa formatar nada.
+%
+% Dicas:
+% - Autores: "Sobrenome, Prenome", separados por "and".
+% - Entidade como autora (instituicao, orgao publico): use o campo
+%   organization no lugar de author. Na lista ela sai em maiusculas e, na
+%   citacao, em maiusculas e minusculas, como pede a NBR 10520:2023.
+% - Os exemplos abaixo sao modelos de cada tipo de documento. Troque pelos
+%   dados das suas obras e apague o que nao usar.
+% =====================================================================
+
+% Livro
+@book{livro2024,
+  author    = {Sobrenome, Prenome},
+  title     = {Título do livro},
+  subtitle  = {subtítulo},
+  edition   = {2},
+  address   = {Cidade},
+  publisher = {Editora},
+  year      = {2024}
+}
+
+% Capitulo de livro organizado por outra pessoa
+@incollection{capitulo2023,
+  author     = {Sobrenome, Prenome},
+  title      = {Título do capítulo},
+  editor     = {Organizador, Prenome},
+  editortype = {org.},
+  booktitle  = {Título do livro},
+  address    = {Cidade},
+  publisher  = {Editora},
+  year       = {2023},
+  pages      = {15-30}
+}
+
+% Artigo de revista consultado on-line
+@article{artigo2025,
+  author        = {Sobrenome, Prenome and Outrosobrenome, Prenome},
+  title         = {Título do artigo},
+  journal       = {Nome da Revista},
+  address       = {Cidade},
+  volume        = {10},
+  number        = {2},
+  pages         = {45-60},
+  month         = {jan./jun.},
+  year          = {2025},
+  url           = {https://www.exemplo.org.br/artigo},
+  urlaccessdate = {10 nov. 2026}
+}
+
+% Trabalho de conclusao de curso
+@monography{tcc2022,
+  author  = {Sobrenome, Prenome},
+  title   = {Título do trabalho},
+  subtitle = {subtítulo},
+  type    = {Bacharelado em Nome do Curso},
+  school  = {Faculdade de Nome, Universidade de Nome},
+  address = {Cidade},
+  year    = {2022}
+}
+
+% Dissertacao de mestrado (para tese, troque mastersthesis por phdthesis
+% e use "Doutorado em ...")
+@mastersthesis{dissertacao2021,
+  author  = {Sobrenome, Prenome},
+  title   = {Título da dissertação},
+  type    = {Mestrado em Nome do Programa},
+  school  = {Instituto de Nome, Universidade de Nome},
+  address = {Cidade},
+  year    = {2021}
+}
+
+% Pagina da internet de uma entidade
+@misc{pagina2025,
+  organization  = {Nome da Instituição},
+  title         = {Título da página},
+  address       = {Cidade},
+  year          = {2025},
+  url           = {https://www.exemplo.org.br},
+  urlaccessdate = {10 nov. 2026}
+}

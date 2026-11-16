@@ -67,7 +67,7 @@
           <p class="modelo-aviso">${esc(e.credito)}</p>
           <dl class="modelo-dados">
             <div><dt>Categoria</dt><dd><a href="${linkCategoria}">${esc(categoria)}</a></dd></div>
-            <div><dt>Curso</dt><dd>${esc(m.curso)}</dd></div>
+            ${m.curso ? `<div><dt>Curso</dt><dd>${esc(m.curso)}</dd></div>` : ""}
             <div><dt>Classe</dt><dd><code>${esc(m.classe)}</code></dd></div>
             <div><dt>Mantido por</dt><dd>${esc(e.organizacao)}</dd></div>
           </dl>
@@ -129,7 +129,7 @@
           <p class="modelo-aviso" id="copiar-aviso" role="status" aria-live="polite"></p>
           <dl class="modelo-dados">
             <div><dt>Categoria</dt><dd><a href="${linkCategoria}">${esc(categoria)}</a></dd></div>
-            <div><dt>Curso</dt><dd>${esc(m.curso)}</dd></div>
+            ${m.curso ? `<div><dt>Curso</dt><dd>${esc(m.curso)}</dd></div>` : ""}
             <div><dt>Classe</dt><dd><code>${esc(m.classe)}</code></dd></div>
             <div><dt>Motor</dt><dd>${esc(MOTORES[m.motor] || m.motor)}</dd></div>
             <div><dt>Bibliografia</dt><dd>${esc(BIBLIOGRAFIAS[m.bibliografia] || m.bibliografia)}</dd></div>

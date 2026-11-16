@@ -1,0 +1,24 @@
+{
+  "id": "rel-abnt-tecnico",
+  "nome": "Relatório técnico e científico no padrão ABNT",
+  "categoria": "relatorio",
+  "curso": "",
+  "classe": "article",
+  "motor": "pdflatex",
+  "bibliografia": "abntex2cite",
+  "descricao": "Esqueleto de relatório técnico ou científico segundo a NBR 10719:2015, sem tema pronto. Traz capa opcional, folha de rosto na ordem da norma, equipe técnica, resumo, seções, referências automáticas e formulário de identificação.",
+  "destaques": [
+    "Folha de rosto com código de identificação e classificação de segurança",
+    "Verso com equipe técnica e espaço da ficha catalográfica",
+    "Espaçamento simples, como recomenda a NBR 10719:2015",
+    "Referências montadas sozinhas pelo BibTeX, no formato da NBR 6023:2025",
+    "Formulário de identificação no fim"
+  ],
+  "licenca": "CC0-1.0",
+  "publicado": true,
+  "previas_paginas": [
+    2,
+    9,
+    12
+  ]
+}

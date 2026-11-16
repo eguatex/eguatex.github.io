@@ -1,0 +1,24 @@
+{
+  "id": "pro-abnt-pesquisa",
+  "nome": "Projeto de pesquisa no padrão ABNT",
+  "categoria": "tcc",
+  "curso": "",
+  "classe": "article",
+  "motor": "pdflatex",
+  "bibliografia": "abntex2cite",
+  "descricao": "Esqueleto de projeto de pesquisa segundo a NBR 15287:2011, sem tema pronto. Traz as partes que a norma pede: tema, problema, hipóteses, objetivos, justificativa, referencial teórico, metodologia, recursos e cronograma.",
+  "destaques": [
+    "Capa e folha de rosto com o orientador",
+    "Todas as partes do texto pedidas pela NBR 15287:2011",
+    "Cronograma em quadro",
+    "Citações no formato da NBR 10520:2023",
+    "Referências montadas sozinhas pelo BibTeX, no formato da NBR 6023:2025"
+  ],
+  "licenca": "CC0-1.0",
+  "publicado": true,
+  "previas_paginas": [
+    2,
+    6,
+    11
+  ]
+}

@@ -70,6 +70,178 @@
   ],
   "modelos": [
     {
+      "id": "pro-abnt-pesquisa",
+      "nome": "Projeto de pesquisa no padrão ABNT",
+      "categoria": "tcc",
+      "filtro": "pesquisa",
+      "curso": "",
+      "classe": "article",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Esqueleto de projeto de pesquisa segundo a NBR 15287:2011, sem tema pronto. Traz as partes que a norma pede: tema, problema, hipóteses, objetivos, justificativa, referencial teórico, metodologia, recursos e cronograma.",
+      "destaques": [
+        "Capa e folha de rosto com o orientador",
+        "Todas as partes do texto pedidas pela NBR 15287:2011",
+        "Cronograma em quadro",
+        "Citações no formato da NBR 10520:2023",
+        "Referências montadas sozinhas pelo BibTeX, no formato da NBR 6023:2025"
+      ],
+      "paginas": 12,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/pro-abnt-pesquisa/fonte/main.tex",
+        "zip": "modelos/pro-abnt-pesquisa/pro-abnt-pesquisa.zip",
+        "pdf": "modelos/pro-abnt-pesquisa/pro-abnt-pesquisa.pdf",
+        "miniatura": "modelos/pro-abnt-pesquisa/miniatura.webp",
+        "previas": [
+          "modelos/pro-abnt-pesquisa/previa-1.webp",
+          "modelos/pro-abnt-pesquisa/previa-2.webp",
+          "modelos/pro-abnt-pesquisa/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 71923,
+        "zip": 27695
+      },
+      "sha256_fonte": "daf367f48479412c8604f6796a49336276a205006b6004d895811ec433fcd8f2",
+      "publicado": true
+    },
+    {
+      "id": "tcc-abnt-padrao",
+      "nome": "Trabalho acadêmico no padrão ABNT (TCC, dissertação e tese)",
+      "categoria": "tcc",
+      "filtro": "pesquisa",
+      "curso": "",
+      "classe": "article",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Esqueleto de trabalho acadêmico segundo a NBR 14724:2024, sem tema pronto: cada parte traz só a orientação do que escrever. Serve para TCC, monografia, dissertação e tese, trocando o tipo do trabalho na folha de rosto.",
+      "destaques": [
+        "Capa, folha de rosto, espaço da ficha catalográfica e folha de aprovação",
+        "Resumo e abstract com palavras-chave no formato da NBR 6028:2021",
+        "Seções até o quinto nível, iguais no sumário e no texto",
+        "Citações no formato da NBR 10520:2023, como (Sobrenome, 2024, p. 15)",
+        "Referências montadas sozinhas pelo BibTeX, no formato da NBR 6023:2025",
+        "Figura, quadro e tabela com título em cima e fonte embaixo"
+      ],
+      "paginas": 24,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/tcc-abnt-padrao/fonte/main.tex",
+        "zip": "modelos/tcc-abnt-padrao/tcc-abnt-padrao.zip",
+        "pdf": "modelos/tcc-abnt-padrao/tcc-abnt-padrao.pdf",
+        "miniatura": "modelos/tcc-abnt-padrao/miniatura.webp",
+        "previas": [
+          "modelos/tcc-abnt-padrao/previa-1.webp",
+          "modelos/tcc-abnt-padrao/previa-2.webp",
+          "modelos/tcc-abnt-padrao/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 98599,
+        "zip": 30141
+      },
+      "sha256_fonte": "22f3bf1c8e225cded2140d0a8cdbcb8ac4e9a3f190bfb23a21e1903570395811",
+      "publicado": true
+    },
+    {
+      "id": "art-abnt-padrao",
+      "nome": "Artigo científico no padrão ABNT",
+      "categoria": "artigo",
+      "filtro": "pesquisa",
+      "curso": "",
+      "classe": "article",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Esqueleto de artigo de periódico segundo a NBR 6022:2018, sem tema pronto. Traz título, autoria com nota de currículo, resumo e abstract, datas de submissão e aprovação, seções, referências automáticas e agradecimentos no fim.",
+      "destaques": [
+        "Elementos pré-textuais da NBR 6022:2018, com datas de submissão e aprovação",
+        "Nota de autor com chamada própria, separada das notas do texto",
+        "Resumo de 100 a 250 palavras e palavras-chave no formato da NBR 6028:2021",
+        "Citações no formato da NBR 10520:2023",
+        "Referências montadas sozinhas pelo BibTeX, no formato da NBR 6023:2025"
+      ],
+      "paginas": 3,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/art-abnt-padrao/fonte/main.tex",
+        "zip": "modelos/art-abnt-padrao/art-abnt-padrao.zip",
+        "pdf": "modelos/art-abnt-padrao/art-abnt-padrao.pdf",
+        "miniatura": "modelos/art-abnt-padrao/miniatura.webp",
+        "previas": [
+          "modelos/art-abnt-padrao/previa-1.webp",
+          "modelos/art-abnt-padrao/previa-2.webp",
+          "modelos/art-abnt-padrao/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 75958,
+        "zip": 28304
+      },
+      "sha256_fonte": "72889a3188ff2dacc599353c8063d3a0d7cfa541467d92a40860c7bbd4577335",
+      "publicado": true
+    },
+    {
       "id": "art-sbc-oficial",
       "nome": "Artigo no modelo da SBC",
       "categoria": "artigo",
@@ -98,6 +270,63 @@
           510
         ]
       },
+      "publicado": true
+    },
+    {
+      "id": "rel-abnt-tecnico",
+      "nome": "Relatório técnico e científico no padrão ABNT",
+      "categoria": "relatorio",
+      "filtro": "pesquisa",
+      "curso": "",
+      "classe": "article",
+      "motor": "pdflatex",
+      "bibliografia": "abntex2cite",
+      "descricao": "Esqueleto de relatório técnico ou científico segundo a NBR 10719:2015, sem tema pronto. Traz capa opcional, folha de rosto na ordem da norma, equipe técnica, resumo, seções, referências automáticas e formulário de identificação.",
+      "destaques": [
+        "Folha de rosto com código de identificação e classificação de segurança",
+        "Verso com equipe técnica e espaço da ficha catalográfica",
+        "Espaçamento simples, como recomenda a NBR 10719:2015",
+        "Referências montadas sozinhas pelo BibTeX, no formato da NBR 6023:2025",
+        "Formulário de identificação no fim"
+      ],
+      "paginas": 14,
+      "licenca": "CC0-1.0",
+      "arquivos": {
+        "main": "modelos/rel-abnt-tecnico/fonte/main.tex",
+        "zip": "modelos/rel-abnt-tecnico/rel-abnt-tecnico.zip",
+        "pdf": "modelos/rel-abnt-tecnico/rel-abnt-tecnico.pdf",
+        "miniatura": "modelos/rel-abnt-tecnico/miniatura.webp",
+        "previas": [
+          "modelos/rel-abnt-tecnico/previa-1.webp",
+          "modelos/rel-abnt-tecnico/previa-2.webp",
+          "modelos/rel-abnt-tecnico/previa-3.webp"
+        ]
+      },
+      "dimensoes": {
+        "miniatura": [
+          360,
+          510
+        ],
+        "previas": [
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ],
+          [
+            900,
+            1273
+          ]
+        ]
+      },
+      "bytes": {
+        "pdf": 68114,
+        "zip": 28406
+      },
+      "sha256_fonte": "ab02e23e6bd379c21bc7e701dbe4b62ec14490e1d6dcbf5a841377fe8a21db54",
       "publicado": true
     }
   ]

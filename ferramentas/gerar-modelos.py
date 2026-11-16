@@ -396,8 +396,8 @@ def conferir_meta_externo(pasta, meta):
         problemas.append(f"id {meta.get('id')!r} diferente da pasta {pasta.name!r}")
     if meta.get("categoria") not in FILTRO_DA_CATEGORIA:
         problemas.append(f"categoria desconhecida: {meta.get('categoria')!r}")
-    if meta.get("curso") not in CURSOS:
-        problemas.append(f"curso fora da lista {CURSOS}: {meta.get('curso')!r}")
+    if meta.get("curso") not in CURSOS and meta.get("curso") != "":
+        problemas.append(f"curso fora da lista {CURSOS} (ou vazio, para modelo de qualquer curso): {meta.get('curso')!r}")
     ext = meta["externo"]
     for campo in ("url", "organizacao", "selo", "credito"):
         if not ext.get(campo):
@@ -429,8 +429,8 @@ def conferir_meta(pasta, meta):
         problemas.append(f"categoria desconhecida: {meta.get('categoria')!r}")
     if "filtro" in meta and meta["filtro"] != FILTRO_DA_CATEGORIA.get(meta.get("categoria")):
         problemas.append(f"filtro {meta['filtro']!r} não bate com a categoria")
-    if meta.get("curso") not in CURSOS:
-        problemas.append(f"curso fora da lista {CURSOS}: {meta.get('curso')!r}")
+    if meta.get("curso") not in CURSOS and meta.get("curso") != "":
+        problemas.append(f"curso fora da lista {CURSOS} (ou vazio, para modelo de qualquer curso): {meta.get('curso')!r}")
     if meta.get("motor") != "pdflatex":
         problemas.append("motor deve ser pdflatex")
     if meta.get("bibliografia") not in BIBLIOGRAFIAS:

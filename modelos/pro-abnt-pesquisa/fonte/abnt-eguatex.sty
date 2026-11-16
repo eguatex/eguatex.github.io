@@ -1,0 +1,479 @@
+% =====================================================================
+% abnt-eguatex.sty
+% Formatacao ABNT dos modelos do EguaTex (www.eguatex.com.br)
+% Licenca: CC0 1.0 (dominio publico). Use, mude e compartilhe como quiser.
+%
+% Voce NAO precisa mexer neste arquivo. Ele cuida da formatacao para que
+% voce se preocupe so com o conteudo, que fica no main.tex.
+%
+% Normas seguidas (edicoes em vigor em novembro de 2026):
+%   ABNT NBR 14724:2024  Trabalhos academicos
+%   ABNT NBR 15287:2011  Projeto de pesquisa
+%   ABNT NBR 10719:2015  Relatorio tecnico e/ou cientifico
+%   ABNT NBR 6022:2018   Artigo em publicacao periodica
+%   ABNT NBR 6023:2025   Referencias
+%   ABNT NBR 6024:2012   Numeracao progressiva das secoes
+%   ABNT NBR 6027:2012   Sumario
+%   ABNT NBR 6028:2021   Resumo
+%   ABNT NBR 10520:2023  Citacoes
+%   IBGE, Normas de apresentacao tabular, 3. ed., 1993
+%
+% Os comentarios indicam a norma e a secao de cada regra, para conferir.
+% Nenhum trecho das normas foi copiado: as regras estao resumidas com
+% palavras proprias.
+% =====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{abnt-eguatex}[2026/11/16 v1.0 Formatacao ABNT dos modelos do EguaTex]
+
+% ---------------------------------------------------------------------
+% Tipo de documento (opcao do pacote)
+%   academico  TCC, dissertacao e tese (NBR 14724)
+%   projeto    projeto de pesquisa (NBR 15287)
+%   relatorio  relatorio tecnico e/ou cientifico (NBR 10719)
+%   artigo     artigo de periodico (NBR 6022)
+% ---------------------------------------------------------------------
+\newif\ifabnt@artigo
+\newif\ifabnt@relatorio
+\newif\ifabnt@simples   % espacamento simples no texto todo
+\DeclareOption{academico}{}
+\DeclareOption{projeto}{}
+\DeclareOption{relatorio}{\abnt@relatoriotrue\abnt@simplestrue}
+\DeclareOption{artigo}{\abnt@artigotrue\abnt@simplestrue}
+\ProcessOptions\relax
+
+% ---------------------------------------------------------------------
+% Idioma e fonte
+% ---------------------------------------------------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+% Portugues como idioma principal; ingles para hifenizar o abstract.
+\RequirePackage[english,brazil]{babel}
+% Fonte Times. As normas nao exigem uma familia de fonte, so o tamanho.
+% Se a sua instituicao pedir Arial, troque a linha abaixo por:
+%   \RequirePackage[scaled]{helvet}\renewcommand{\familydefault}{\sfdefault}
+% lmodern fica para as fontes sem serifa e monoespacada (enderecos);
+% mathptmx troca o texto e a matematica para Times.
+\RequirePackage{lmodern}
+\RequirePackage{mathptmx}
+\RequirePackage{textcomp}
+\RequirePackage{amsmath}
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage{calc}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+
+% ---------------------------------------------------------------------
+% Papel e margens
+% NBR 14724:2024, 5.1; NBR 15287:2011, 5.1; NBR 10719:2015, 5.1
+% A4; margens do anverso: esquerda e superior 3 cm, direita e inferior 2 cm.
+% A NBR 6022 deixa o projeto grafico do artigo a criterio do editor;
+% usamos as mesmas margens. Se a revista tiver modelo proprio, siga a revista.
+%
+% Numero da pagina: canto superior direito, a 2 cm da borda de cima, com o
+% ultimo algarismo a 2 cm da borda direita (NBR 14724:2024, 5.3).
+% headheight + headsep = 1,1 cm faz o topo dos algarismos ficar a 2 cm.
+% ---------------------------------------------------------------------
+\RequirePackage[a4paper,left=3cm,top=3cm,right=2cm,bottom=2cm,
+  headheight=13pt,headsep=0.643cm,footskip=1cm,includehead=false]{geometry}
+
+% ---------------------------------------------------------------------
+% Espacamento entre linhas
+% Trabalho academico e projeto: 1,5 no texto (NBR 14724:2024, 5.2;
+% NBR 15287:2011, 5.2). Relatorio: recomenda simples (NBR 10719:2015, 5.1).
+% Artigo: recomenda simples (NBR 6022:2018, 6.1).
+% Citacoes longas, notas, referencias, titulos, fontes e legendas das
+% ilustracoes e tabelas e a natureza do trabalho ficam em espaco simples.
+% ---------------------------------------------------------------------
+\RequirePackage{setspace}
+\ifabnt@simples\singlespacing\else\onehalfspacing\fi
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0pt}
+
+% Tamanho menor e uniforme (10 pt) para citacoes longas, notas, numero de
+% pagina, ficha catalografica, fontes e legendas (NBR 14724:2024, 5.1).
+\newcommand{\abntmenor}{\footnotesize}
+
+% ---------------------------------------------------------------------
+% Numero de pagina
+% Folhas pre-textuais sao contadas, mas nao numeradas. O numero aparece a
+% partir da primeira folha do texto (NBR 14724:2024, 5.3).
+% ---------------------------------------------------------------------
+\RequirePackage{fancyhdr}
+\fancypagestyle{abntnumerada}{%
+  \fancyhf{}%
+  \fancyhead[R]{\abntmenor\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}%
+  \ifabnt@artigo\fancyhead[R]{\abntmenor\thepage}\fi}
+\ifabnt@artigo
+  \pagestyle{abntnumerada}
+\else
+  \pagestyle{empty}
+\fi
+% Chame \textual antes da Introducao. A partir dali as paginas mostram numero.
+\newcommand{\textual}{\clearpage\pagestyle{abntnumerada}}
+
+% ---------------------------------------------------------------------
+% Titulos das secoes
+% NBR 6024:2012, 4.1; NBR 14724:2024, 5.2.2
+% - indicativo em algarismo arabico, separado do titulo por um espaco,
+%   sem ponto, hifen ou travessao entre eles;
+% - ate a secao quinaria;
+% - destaque diferente para cada nivel, igual no texto e no sumario;
+% - titulo com mais de uma linha: a segunda linha comeca sob a primeira
+%   letra do titulo;
+% - secao primaria comeca em pagina nova, no alto da mancha grafica
+%   (exceto no artigo);
+% - uma linha em branco antes e depois dos titulos das subsecoes, e depois
+%   do titulo da secao primaria.
+% Destaques usados:
+%   1         SECAO PRIMARIA     maiusculas e negrito
+%   1.1       SECAO SECUNDARIA   maiusculas
+%   1.1.1     Secao terciaria    negrito
+%   1.1.1.1   Secao quaternaria  normal
+%   1.1.1.1.1 Secao quinaria     italico
+% ---------------------------------------------------------------------
+\RequirePackage{titlesec}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\renewcommand{\theparagraph}{\thesubsubsection.\arabic{paragraph}}
+\renewcommand{\thesubparagraph}{\theparagraph.\arabic{subparagraph}}
+\newcommand{\abnt@espaco}{\fontdimen2\font}
+\titleformat{\section}[hang]{\normalfont\normalsize\bfseries\raggedright}{\thesection}{\abnt@espaco}{\MakeUppercase}
+\titleformat{\subsection}[hang]{\normalfont\normalsize\raggedright}{\thesubsection}{\abnt@espaco}{\MakeUppercase}
+\titleformat{\subsubsection}[hang]{\normalfont\normalsize\bfseries\raggedright}{\thesubsubsection}{\abnt@espaco}{}
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\raggedright}{\theparagraph}{\abnt@espaco}{}
+\titleformat{\subparagraph}[hang]{\normalfont\normalsize\itshape\raggedright}{\thesubparagraph}{\abnt@espaco}{}
+\ifabnt@artigo
+  \titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+\else
+  \titlespacing*{\section}{0pt}{0pt}{\baselineskip}
+  \preto{\section}{\clearpage}
+\fi
+\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
+\titlespacing*{\subsubsection}{0pt}{\baselineskip}{\baselineskip}
+\titlespacing*{\paragraph}{0pt}{\baselineskip}{\baselineskip}
+\titlespacing*{\subparagraph}{0pt}{\baselineskip}{\baselineskip}
+
+% ---------------------------------------------------------------------
+% Titulos sem indicativo numerico: centralizados, com o mesmo destaque da
+% secao primaria (NBR 14724:2024, 5.2.3; NBR 6024:2012, 4.1 h).
+% Elementos pre-textuais nao entram no sumario (NBR 6027:2012, 6.3).
+% Os pos-textuais (referencias, glossario, apendices, anexos) entram.
+% ---------------------------------------------------------------------
+\newcommand{\abnt@titulocentral}[1]{%
+  \begingroup\centering\normalfont\normalsize\bfseries\MakeUppercase{#1}\par\endgroup
+  \vspace{\baselineskip}}
+\newcommand{\abnt@novapagina}{\ifabnt@artigo\par\vspace{\baselineskip}\else\clearpage\fi}
+% titulo de elemento pre-textual (fora do sumario)
+\newcommand{\titulopretextual}[1]{\clearpage\abnt@titulocentral{#1}}
+% titulo de elemento pos-textual (entra no sumario, alinhado aos titulos)
+\newcommand{\titulopostextual}[1]{%
+  \abnt@novapagina\phantomsection
+  \addcontentsline{toc}{section}{\protect\numberline{}#1}%
+  \abnt@titulocentral{#1}}
+
+% Apendices e anexos: palavra APENDICE ou ANEXO, letra maiuscula,
+% travessao e titulo, com o destaque da secao primaria
+% (NBR 14724:2024, 4.2.3.3 e 4.2.3.4; NBR 6022:2018, 5.3.3 e 5.3.4).
+\newcounter{abntapendice}
+\newcounter{abntanexo}
+\newcommand{\apendice}[1]{\stepcounter{abntapendice}%
+  \titulopostextual{Apêndice \Alph{abntapendice} \textemdash\ #1}}
+\newcommand{\anexo}[1]{\stepcounter{abntanexo}%
+  \titulopostextual{Anexo \Alph{abntanexo} \textemdash\ #1}}
+
+% ---------------------------------------------------------------------
+% Sumario (NBR 6027:2012)
+% - palavra SUMARIO centralizada, com a fonte das secoes primarias (6.1);
+% - indicativos alinhados a esquerda (5.1);
+% - titulos alinhados pela margem do indicativo mais longo, inclusive os
+%   pos-textuais (5.2);
+% - mesmo destaque das secoes do texto (6.2);
+% - pagina a direita (5.4).
+% ---------------------------------------------------------------------
+\RequirePackage{titletoc}
+\newlength{\abnt@indicativo}
+\AtBeginDocument{\settowidth{\abnt@indicativo}{\normalfont\normalsize 0.0.0.0.0\hspace{0.6em}}}
+\newcommand{\abnt@pontos}{\titlerule*[0.6em]{.}}
+\titlecontents{section}[\abnt@indicativo]{\normalfont\bfseries}
+  {\contentslabel{\abnt@indicativo}\MakeUppercase}{\MakeUppercase}{\abnt@pontos\normalfont\contentspage}
+\titlecontents{subsection}[\abnt@indicativo]{\normalfont}
+  {\contentslabel{\abnt@indicativo}\MakeUppercase}{\MakeUppercase}{\abnt@pontos\contentspage}
+\titlecontents{subsubsection}[\abnt@indicativo]{\normalfont\bfseries}
+  {\contentslabel{\abnt@indicativo}}{}{\abnt@pontos\normalfont\contentspage}
+\titlecontents{paragraph}[\abnt@indicativo]{\normalfont}
+  {\contentslabel{\abnt@indicativo}}{}{\abnt@pontos\contentspage}
+\titlecontents{subparagraph}[\abnt@indicativo]{\normalfont\itshape}
+  {\contentslabel{\abnt@indicativo}}{}{\abnt@pontos\normalfont\contentspage}
+\newcommand{\sumario}{\titulopretextual{Sumário}\@starttoc{toc}}
+
+% ---------------------------------------------------------------------
+% Ilustracoes e tabelas
+% NBR 14724:2024, 5.8 e 5.9
+% - em cima: palavra designativa, numero, travessao e titulo;
+% - embaixo: fonte (sempre, mesmo quando a ilustracao e do proprio autor),
+%   legenda e notas, em letra menor;
+% - tudo acompanhando as margens da ilustracao;
+% - tabelas no padrao do IBGE: linhas horizontais em cima, embaixo e
+%   abaixo do cabecalho, sem linhas verticais nas laterais.
+% ---------------------------------------------------------------------
+\RequirePackage{newfloat}
+\DeclareFloatingEnvironment[fileext=loq,listname={Lista de quadros},name=Quadro,placement=htbp]{quadro}
+\RequirePackage{caption}
+\DeclareCaptionLabelSeparator{travessao}{ \textemdash\ }
+\captionsetup{position=top,labelsep=travessao,singlelinecheck=false,
+  justification=justified,font={normalsize,stretch=1},skip=4pt}
+\captionsetup[figure]{name=Figura}
+\captionsetup[table]{name=Tabela}
+% Bloco que deixa titulo, fonte e notas na largura da ilustracao.
+% Uso: \begin{ilustracao}{0.7\textwidth} ... \end{ilustracao}
+\newenvironment{ilustracao}[1]{\centering\begin{minipage}{#1}}{\end{minipage}\par}
+\newcommand{\fonte}[1]{\par\vspace{3pt}{\abntmenor\setstretch{1}\raggedright Fonte: #1\par}}
+\newcommand{\nota}[1]{{\abntmenor\setstretch{1}\raggedright Nota: #1\par}}
+\newcommand{\legenda}[1]{{\abntmenor\setstretch{1}\raggedright Legenda: #1\par}}
+
+% Listas de ilustracoes e de tabelas (NBR 14724:2024, 4.2.1.9 e 4.2.1.10):
+% nome, numero, travessao, titulo e pagina.
+\titlecontents{figure}[0pt]{\normalfont}{Figura \thecontentslabel\ \textemdash\ }{}{\abnt@pontos\contentspage}
+\titlecontents{quadro}[0pt]{\normalfont}{Quadro \thecontentslabel\ \textemdash\ }{}{\abnt@pontos\contentspage}
+\titlecontents{table}[0pt]{\normalfont}{Tabela \thecontentslabel\ \textemdash\ }{}{\abnt@pontos\contentspage}
+\newcommand{\listadefiguras}{\titulopretextual{Lista de figuras}\@starttoc{lof}}
+\newcommand{\listadequadros}{\titulopretextual{Lista de quadros}\@starttoc{loq}}
+\newcommand{\listadetabelas}{\titulopretextual{Lista de tabelas}\@starttoc{lot}}
+
+% Lista de abreviaturas e siglas (ordem alfabetica) e lista de simbolos
+% (ordem em que aparecem no texto). NBR 14724:2024, 4.2.1.11 e 4.2.1.12.
+\newenvironment{listadesiglas}[1][Lista de abreviaturas e siglas]
+  {\titulopretextual{#1}\begin{list}{}{\setlength{\leftmargin}{3cm}\setlength{\labelwidth}{3cm}%
+   \setlength{\labelsep}{0pt}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{0pt}}}
+  {\end{list}}
+\newcommand{\sigla}[2]{\item[#1\hfill]#2}
+
+% ---------------------------------------------------------------------
+% Alineas e subalineas (NBR 6024:2012, 4.2 e 4.3)
+% - texto antes das alineas termina em dois-pontos;
+% - alinea: letra minuscula e parentese, com recuo da margem esquerda;
+%   texto comeca com minuscula e termina em ponto e virgula, e a ultima
+%   termina em ponto;
+% - subalinea: travessao e espaco, com recuo em relacao a alinea;
+% - a segunda linha comeca sob a primeira letra do texto.
+% ---------------------------------------------------------------------
+\RequirePackage{enumitem}
+\newlist{alineas}{enumerate}{1}
+\setlist[alineas]{label=\alph*),labelindent=\parindent,leftmargin=*,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+\newlist{subalineas}{itemize}{1}
+\setlist[subalineas]{label=\textemdash,labelindent=0.6cm,leftmargin=*,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+% ---------------------------------------------------------------------
+% Citacoes (NBR 10520:2023)
+% - ate tres linhas: no texto, entre aspas duplas (7.1);
+% - mais de tres linhas: recuo de 4 cm, letra menor, espaco simples e sem
+%   aspas (7.1.1). Use o ambiente citacao.
+% - sistema autor-data: sobrenome em maiusculas e minusculas, ano e pagina,
+%   por exemplo (Sobrenome, 2024, p. 15) (6.1).
+% ---------------------------------------------------------------------
+\newenvironment{citacao}
+  {\par\vspace{\baselineskip}\begin{list}{}{\setlength{\leftmargin}{4cm}\setlength{\rightmargin}{0pt}%
+   \setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}\setlength{\parsep}{0pt}\setlength{\itemsep}{0pt}%
+   \setlength{\listparindent}{0pt}}\item[]\abntmenor\setstretch{1}}
+  {\end{list}\par\vspace{\baselineskip}}
+
+% ---------------------------------------------------------------------
+% Notas de rodape (NBR 14724:2024, 5.2.1; NBR 10520:2023, 8)
+% Filete de 5 cm a partir da margem esquerda, letra menor, espaco simples,
+% segunda linha alinhada sob a primeira letra da nota, sem espaco entre
+% uma nota e outra.
+% ---------------------------------------------------------------------
+\renewcommand{\footnoterule}{\vspace*{-3pt}\noindent\rule{5cm}{0.4pt}\vspace*{2.6pt}}
+\renewcommand{\@makefntext}[1]{%
+  \setlength{\parindent}{0pt}%
+  \sbox\z@{\@makefnmark\ }%
+  \hangindent\wd\z@\hangafter\@ne
+  \noindent\usebox\z@#1}
+\setlength{\footnotesep}{8pt}
+
+% Referencias: montadas pelo BibTeX, ver o fim deste arquivo.
+
+% Glossario em ordem alfabetica (NBR 14724:2024, 4.2.3.2)
+\newenvironment{glossario}{\titulopostextual{Glossário}\begingroup\setlength{\parindent}{0pt}}{\endgroup}
+\newcommand{\termo}[2]{\textbf{#1}: #2\par}
+
+% ---------------------------------------------------------------------
+% Dados do trabalho (preenchidos no main.tex)
+% ---------------------------------------------------------------------
+\newcommand{\abnt@instituicao}{}\newcommand{\instituicao}[1]{\renewcommand{\abnt@instituicao}{#1}}
+\newcommand{\abnt@autor}{}\newcommand{\autor}[1]{\renewcommand{\abnt@autor}{#1}}
+\newcommand{\abnt@titulo}{}\newcommand{\titulo}[1]{\renewcommand{\abnt@titulo}{#1}}
+\newcommand{\abnt@subtitulo}{}\newcommand{\subtitulo}[1]{\renewcommand{\abnt@subtitulo}{#1}}
+\newcommand{\abnt@volume}{}\newcommand{\volume}[1]{\renewcommand{\abnt@volume}{#1}}
+\newcommand{\abnt@natureza}{}\newcommand{\natureza}[1]{\renewcommand{\abnt@natureza}{#1}}
+\newcommand{\abnt@orientador}{}\newcommand{\orientador}[1]{\renewcommand{\abnt@orientador}{#1}}
+\newcommand{\abnt@coorientador}{}\newcommand{\coorientador}[1]{\renewcommand{\abnt@coorientador}{#1}}
+\newcommand{\abnt@local}{}\newcommand{\local}[1]{\renewcommand{\abnt@local}{#1}}
+\newcommand{\abnt@ano}{}\newcommand{\ano}[1]{\renewcommand{\abnt@ano}{#1}}
+
+% Titulo com subtitulo: o subtitulo vem depois de dois-pontos
+% (NBR 14724:2024, 4.1.1 d).
+\newcommand{\abnt@titulocompleto}{%
+  {\bfseries\MakeUppercase{\abnt@titulo}}%
+  \ifx\abnt@subtitulo\@empty\else{\bfseries:} \abnt@subtitulo\fi}
+
+% Natureza do trabalho: do meio da mancha grafica ate a margem direita,
+% em espaco simples (NBR 14724:2024, 5.2).
+\newcommand{\abnt@blocodanatureza}{%
+  \par\noindent\hspace*{0.5\textwidth}%
+  \begin{minipage}[t]{0.5\textwidth}\setstretch{1}\setlength{\parindent}{0pt}%
+    \abnt@natureza
+    \ifx\abnt@orientador\@empty\else\par\vspace{\baselineskip}\abnt@orientador\fi
+    \ifx\abnt@coorientador\@empty\else\par\abnt@coorientador\fi
+  \end{minipage}\par}
+
+% ---------------------------------------------------------------------
+% Capa (NBR 14724:2024, 4.1.1; NBR 15287:2011, 4.1.1)
+% Ordem: instituicao (opcional), autor, titulo, subtitulo, volume,
+% local e ano de entrega. A capa nao e contada.
+% ---------------------------------------------------------------------
+\newcommand{\imprimircapa}{%
+  \begin{titlepage}\centering\setstretch{1}\normalsize
+    \ifx\abnt@instituicao\@empty\else{\MakeUppercase{\abnt@instituicao}}\par\fi
+    \vspace{2.5cm}
+    {\MakeUppercase{\abnt@autor}}\par
+    \vfill
+    \abnt@titulocompleto\par
+    \ifx\abnt@volume\@empty\else\vspace{\baselineskip}\abnt@volume\par\fi
+    \vfill
+    \abnt@local\par
+    \abnt@ano\par
+  \end{titlepage}%
+  \setcounter{page}{1}}
+
+% ---------------------------------------------------------------------
+% Folha de rosto, anverso (NBR 14724:2024, 4.2.1.1.1; NBR 15287:2011, 4.2.1.1)
+% Ordem: autor, titulo, subtitulo, volume, natureza, orientador,
+% local e ano. E a primeira folha contada.
+% ---------------------------------------------------------------------
+\newcommand{\imprimirfolhaderosto}{%
+  \clearpage\thispagestyle{empty}%
+  \begingroup\centering\setstretch{1}\normalsize
+    {\MakeUppercase{\abnt@autor}}\par
+    \vspace*{\fill}
+    \abnt@titulocompleto\par
+    \ifx\abnt@volume\@empty\else\vspace{\baselineskip}\abnt@volume\par\fi
+    \vspace{2\baselineskip}
+    \raggedright\abnt@blocodanatureza
+    \vspace*{\fill}
+    \centering\abnt@local\par\abnt@ano\par
+  \endgroup\clearpage}
+
+% ---------------------------------------------------------------------
+% Ficha catalografica (verso da folha de rosto)
+% NBR 14724:2024, 4.2.1.1.2 e 5.3: em arquivo eletronico vem logo depois
+% da folha de rosto e nao e contada nem numerada.
+% Quem faz a ficha e a biblioteca da instituicao, por bibliotecario com
+% registro no CRB, seguindo o codigo de catalogacao vigente.
+% ---------------------------------------------------------------------
+\newcommand{\imprimirficha}[1][]{%
+  \clearpage\thispagestyle{empty}%
+  \vspace*{\fill}
+  \begin{center}
+  \fbox{\begin{minipage}[c][7.5cm][c]{12.5cm}\centering\abntmenor\setstretch{1}%
+    \ifx\relax#1\relax
+      Espaço da ficha catalográfica.\\[4pt]
+      Peça a ficha à biblioteca da sua instituição depois da versão final.\\
+      Ela é feita por bibliotecário com registro no CRB.
+    \else #1\fi
+  \end{minipage}}
+  \end{center}
+  \clearpage\addtocounter{page}{-1}}
+
+% ---------------------------------------------------------------------
+% Folha de aprovacao, sem titulo (NBR 14724:2024, 4.2.1.3 e 5.2.4)
+% Autor, titulo, subtitulo, natureza, data de aprovacao e banca (nome,
+% titulacao, instituicao e assinatura). Data e assinaturas so depois da
+% aprovacao.
+% ---------------------------------------------------------------------
+\newcommand{\membrodabanca}[2]{%
+  \par\vspace{2\baselineskip}\centering\rule{9cm}{0.4pt}\par
+  #1\par #2\par}
+\newenvironment{folhadeaprovacao}
+  {\clearpage\thispagestyle{empty}\begingroup\centering\setstretch{1}\normalsize
+   {\MakeUppercase{\abnt@autor}}\par\vspace{2\baselineskip}
+   \abnt@titulocompleto\par\vspace{2\baselineskip}
+   \raggedright{\renewcommand{\abnt@orientador}{}\renewcommand{\abnt@coorientador}{}\abnt@blocodanatureza}
+   \vspace{2\baselineskip}\raggedright Aprovado em: \rule{1cm}{0.4pt}/\rule{1cm}{0.4pt}/\rule{1.6cm}{0.4pt}.\par
+   \vspace{\baselineskip}\centering BANCA EXAMINADORA\par}
+  {\par\endgroup\clearpage}
+
+% ---------------------------------------------------------------------
+% Dedicatoria e epigrafe: sem titulo, do meio da mancha ate a margem
+% direita, na parte de baixo da pagina (NBR 14724:2024, 5.2.4).
+% ---------------------------------------------------------------------
+\newenvironment{dedicatoria}
+  {\clearpage\thispagestyle{empty}\vspace*{\fill}\noindent\hspace*{0.5\textwidth}%
+   \begin{minipage}{0.5\textwidth}\setlength{\parindent}{0pt}}
+  {\end{minipage}\clearpage}
+\newenvironment{epigrafe}
+  {\clearpage\thispagestyle{empty}\vspace*{\fill}\noindent\hspace*{0.5\textwidth}%
+   \begin{minipage}{0.5\textwidth}\setlength{\parindent}{0pt}}
+  {\end{minipage}\clearpage}
+\newcommand{\autoriadaepigrafe}[1]{\par\raggedleft #1\par}
+
+% Agradecimentos: titulo centralizado, fora do sumario
+\newenvironment{agradecimentos}{\titulopretextual{Agradecimentos}}{\clearpage}
+
+% ---------------------------------------------------------------------
+% Resumo e resumo em lingua estrangeira (NBR 6028:2021)
+% Paragrafo unico, frases concisas, verbo na terceira pessoa.
+% Palavras-chave logo abaixo, depois de "Palavras-chave:", separadas por
+% ponto e virgula e terminadas em ponto, com inicial minuscula (exceto nomes
+% proprios e cientificos) (4.1.7).
+% Extensao (4.1.8): 150 a 500 palavras em trabalhos academicos e relatorios;
+% 100 a 250 palavras em artigos.
+% ---------------------------------------------------------------------
+\newenvironment{resumo}[1][Resumo]
+  {\ifabnt@artigo\par\vspace{\baselineskip}\abnt@titulocentral{#1}\else\titulopretextual{#1}\fi
+   \setlength{\parindent}{0pt}}
+  {\par\ifabnt@artigo\else\clearpage\fi}
+\newcommand{\palavraschave}[2][Palavras-chave]{\par\vspace{\baselineskip}\noindent\textbf{#1:} #2\par}
+
+% ---------------------------------------------------------------------
+% Links sem cor: o texto deve ser preto (NBR 14724:2024, 5.1)
+% ---------------------------------------------------------------------
+\RequirePackage[hidelinks,bookmarksnumbered,hypertexnames=false]{hyperref}
+
+% ---------------------------------------------------------------------
+% Citacoes e referencias automaticas, com BibTeX
+% As obras ficam no arquivo referencias.bib. No texto, use:
+%   \cite{chave}            (Sobrenome, 2024)
+%   \cite[p.~15]{chave}     (Sobrenome, 2024, p. 15)
+%   \citeonline{chave}      Sobrenome (2024)
+% A lista de referencias e montada sozinha por \bibliography{referencias}.
+%
+% Citacao (NBR 10520:2023): sistema autor-data, sobrenome em maiusculas e
+% minusculas (6.1.1); quatro autores ou mais, o primeiro seguido de et al.
+% (6.1.2). O estilo abnt-eguatex.bst faz essa forma de citacao.
+% Referencias (NBR 6023:2025): todos os autores na lista (8.1.1.2),
+% titulo em negrito em todas (6.7), espaco simples, alinhadas a esquerda
+% e separadas por uma linha em branco (6.3), endereco eletronico depois
+% de "Disponivel em:" e data depois de "Acesso em:" (6.6).
+% O hyperref precisa vir antes do abntex2cite.
+% ---------------------------------------------------------------------
+\RequirePackage[alf,bibleftalign,abnt-emphasize=bf,abnt-full-initials=yes,
+  abnt-etal-list=0,abnt-etal-cite=3,abnt-url-package=url,
+  abnt-thesis-year=both]{abntex2cite}
+% Endereco eletronico sem os sinais < >, como na NBR 6023:2025, 6.6.
+\def\UrlLeft{}\def\UrlRight{}
+\bibliographystyle{abnt-eguatex}
+% Titulo REFERENCIAS centralizado e no sumario, como os outros elementos
+% pos-textuais, e uma linha em branco entre as referencias.
+\patchcmd{\thebibliographyBkUp}{\section*{\refname}}{\titulopostextual{\refname}}{}{%
+  \PackageWarning{abnt-eguatex}{Nao consegui ajustar o titulo das referencias}}
+\patchcmd{\thebibliographyBkUp}{\@mkboth{\MakeUppercase\refname}{\MakeUppercase\refname}}{}{}{}
+\AfterTheBibliography{\setlength{\itemsep}{\baselineskip}\setlength{\parsep}{0pt}%
+  \setlength{\topsep}{0pt}\normalsize}
+
+\endinput

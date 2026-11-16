@@ -1,0 +1,251 @@
+% =====================================================================
+% Modelo ABNT de trabalho academico (TCC, monografia, dissertacao, tese)
+% EguaTex (www.eguatex.com.br). Licenca CC0 1.0: dominio publico.
+%
+% Segue a ABNT NBR 14724:2024 e as normas que ela chama: NBR 6023:2025
+% (referencias), NBR 6024:2012 (secoes), NBR 6027:2012 (sumario),
+% NBR 6028:2021 (resumo) e NBR 10520:2023 (citacoes).
+%
+% Como usar:
+%   1. Preencha os dados do trabalho logo abaixo.
+%   2. Troque cada texto de exemplo pelo seu conteudo.
+%   3. Apague o que for opcional e voce nao quiser usar.
+%   4. Coloque as obras que voce citar no arquivo referencias.bib.
+%   5. Compile com pdfLaTeX e BibTeX (o EguaTex faz isso sozinho).
+% A formatacao fica toda no arquivo abnt-eguatex.sty. Nao precisa mexer nele.
+%
+% Antes de entregar, confira o manual da sua instituicao: ela pode pedir
+% detalhes que a ABNT deixa livres (fonte, lombada, modelo de capa).
+% =====================================================================
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[academico]{abnt-eguatex}
+
+% ---------------------------------------------------------------------
+% DADOS DO TRABALHO
+% ---------------------------------------------------------------------
+\instituicao{Nome da instituição}   % opcional na capa; deixe {} vazio para tirar
+\autor{Nome do autor}
+\titulo{Título do trabalho}
+\subtitulo{subtítulo, se houver}    % deixe {} vazio se nao houver
+\local{Cidade}
+\ano{2026}                          % ano da entrega
+% Natureza: tipo do trabalho, objetivo, instituicao e area de concentracao.
+% Para dissertacao ou tese, troque o tipo e o grau pretendido.
+\natureza{Trabalho de conclusão de curso apresentado ao Curso de Nome do Curso
+  da Nome da Instituição, como requisito parcial para obtenção do grau de
+  Bacharel em Nome do Curso.\par\vspace{\baselineskip}
+  Área de concentração: nome da área.}
+\orientador{Orientador(a): Prof.(ª) Dr.(ª) Nome do orientador}
+\coorientador{Coorientador(a): Prof.(ª) Dr.(ª) Nome do coorientador} % apague se nao houver
+
+\begin{document}
+
+% =====================================================================
+% PARTE EXTERNA
+% =====================================================================
+\imprimircapa          % obrigatoria (NBR 14724:2024, 4.1.1)
+
+% =====================================================================
+% ELEMENTOS PRE-TEXTUAIS (contados, mas sem numero na pagina)
+% =====================================================================
+\imprimirfolhaderosto  % obrigatoria (4.2.1.1)
+\imprimirficha         % verso da folha de rosto; a biblioteca faz a ficha
+
+% Errata (opcional, 4.2.1.2): so existe depois do trabalho impresso.
+% Tire os sinais de % das linhas abaixo para usar.
+% \titulopretextual{Errata}
+% \noindent SOBRENOME, Prenome. \textbf{Título do trabalho}: subtítulo. 2026. Trabalho de Conclusão de Curso (Bacharelado em Nome do Curso) -- Nome da Instituição, Cidade, 2026.
+% \par\vspace{\baselineskip}
+% \begin{tabular}{llll}\toprule Folha & Linha & Onde se lê & Leia-se \\ \midrule 16 & 10 & texo & texto \\ \bottomrule\end{tabular}
+
+% Folha de aprovacao (obrigatoria, 4.2.1.3). Data e assinaturas so depois
+% da defesa.
+\begin{folhadeaprovacao}
+  \membrodabanca{Prof.(ª) Dr.(ª) Nome do orientador (orientador)}{Nome da Instituição}
+  \membrodabanca{Prof.(ª) Dr.(ª) Nome do avaliador}{Nome da Instituição}
+  \membrodabanca{Prof.(ª) Dr.(ª) Nome do avaliador}{Nome da Instituição}
+\end{folhadeaprovacao}
+
+% Dedicatoria (opcional, 4.2.1.4)
+\begin{dedicatoria}
+  Aqui vai a dedicatória, se você quiser. Ela não tem título.
+\end{dedicatoria}
+
+% Agradecimentos (opcional, 4.2.1.5)
+\begin{agradecimentos}
+  Aqui vão os agradecimentos a quem contribuiu de forma relevante para o trabalho.
+\end{agradecimentos}
+
+% Epigrafe (opcional, 4.2.1.6): uma citacao ligada ao tema, com a autoria.
+\begin{epigrafe}
+  Aqui vai a epígrafe, uma citação relacionada ao tema do trabalho.
+  \autoriadaepigrafe{Nome do autor da citação}
+\end{epigrafe}
+
+% Resumo na lingua do texto (obrigatorio, 4.2.1.7; NBR 6028:2021)
+% Paragrafo unico, verbo na terceira pessoa, de 150 a 500 palavras.
+\begin{resumo}
+Aqui vai o resumo do trabalho, escrito em um único parágrafo, com frases curtas e o verbo na terceira pessoa. Ele apresenta o objetivo, o método, os resultados e as conclusões, de modo que o leitor entenda o trabalho sem precisar ler o texto inteiro. Em trabalhos acadêmicos, o resumo tem de 150 a 500 palavras. Evite símbolos, fórmulas e abreviações que não sejam de uso comum.
+\palavraschave{palavra-chave; segunda palavra-chave; terceira palavra-chave.}
+\end{resumo}
+
+% Resumo em lingua estrangeira (obrigatorio, 4.2.1.8)
+\begin{otherlanguage}{english}
+\begin{resumo}[Abstract]
+Here goes the abstract, the translation of the summary into a language of international circulation, such as English. It follows the same rules as the summary in Portuguese: a single paragraph, concise sentences and the same content.
+\palavraschave[Keywords]{keyword; second keyword; third keyword.}
+\end{resumo}
+\end{otherlanguage}
+
+% Listas (opcionais, 4.2.1.9 a 4.2.1.12). Apague as que nao usar.
+\listadefiguras
+\listadequadros
+\listadetabelas
+
+\begin{listadesiglas}
+  \sigla{ABNT}{Associação Brasileira de Normas Técnicas}
+  \sigla{IBGE}{Instituto Brasileiro de Geografia e Estatística}
+  \sigla{NBR}{Norma Brasileira}
+\end{listadesiglas}
+
+\begin{listadesiglas}[Lista de símbolos]
+  \sigla{$v$}{Velocidade}
+  \sigla{$\Delta t$}{Intervalo de tempo}
+\end{listadesiglas}
+
+% Sumario (obrigatorio, 4.2.1.13; NBR 6027:2012). E montado sozinho.
+\sumario
+
+% =====================================================================
+% ELEMENTOS TEXTUAIS (a partir daqui as paginas tem numero)
+% O nome das secoes fica a seu criterio. O trabalho e dividido em secoes,
+% nao em capitulos (4.2.2).
+% =====================================================================
+\textual
+
+\section{Introdução}
+
+Aqui começa o texto. A introdução apresenta o tema, o objetivo do trabalho e as razões que levaram à pesquisa. O texto usa letra tamanho 12 e espaçamento de 1,5 entre as linhas.
+
+Quando uma sigla aparece pela primeira vez, escreva o nome completo e a sigla entre parênteses, como em Associação Brasileira de Normas Técnicas (ABNT). Depois, use só a sigla.
+
+\section{Desenvolvimento}
+
+O desenvolvimento detalha a pesquisa. Ele pode ser dividido em quantas seções forem necessárias, até o quinto nível, como nos exemplos abaixo. Toda seção precisa ter algum texto.
+
+\subsection{Seção secundária}
+
+Texto da seção secundária. As citações seguem o sistema autor-data: o sobrenome vem em letras maiúsculas e minúsculas, seguido do ano e da página, como em \cite[p.~15]{livro2024}. Quando o nome do autor faz parte da frase, só o ano e a página ficam entre parênteses, como em \citeonline[p.~15]{livro2024}. No código, a citação é feita com \texttt{\textbackslash cite\{chave\}}, e a obra entra sozinha na lista de referências.
+
+Uma citação direta de até três linhas fica no próprio parágrafo, entre aspas duplas: “aqui vai o trecho copiado da obra” \cite[p.~32]{livro2024}. A citação direta com mais de três linhas fica em destaque, como no exemplo a seguir.
+
+\begin{citacao}
+Aqui vai uma citação direta com mais de três linhas. Ela tem recuo de 4 cm da margem esquerda, letra menor que a do texto, espaçamento simples e não leva aspas. A indicação da fonte vem no final, entre parênteses, com o sobrenome do autor, o ano e a página de onde o trecho foi tirado \cite[p.~47]{capitulo2023}.
+\end{citacao}
+
+Uma citação indireta resume a ideia do autor com as suas palavras e não precisa de aspas \cite{artigo2025}. Obras de vários tipos entram na lista do mesmo jeito, como um trabalho de conclusão de curso \cite{tcc2022} ou uma página da internet \cite{pagina2025}. Notas de rodapé servem para explicações que não cabem no texto\footnote{Aqui vai a nota de rodapé. Ela tem letra menor, espaçamento simples e fica separada do texto por um traço de 5 cm. Quando a nota passa de uma linha, a segunda linha começa embaixo da primeira letra da nota.}.
+
+\subsubsection{Seção terciária}
+
+Assuntos sem título próprio dentro de uma seção podem ser divididos em alíneas, e o texto que vem antes delas termina em dois-pontos:
+\begin{alineas}
+  \item a alínea começa com letra minúscula e termina em ponto e vírgula;
+  \item a alínea que tem subalíneas termina em dois-pontos:
+  \begin{subalineas}
+    \item a subalínea começa com travessão e termina em ponto e vírgula;
+    \item a última subalínea termina em ponto e vírgula se ainda houver alínea depois;
+  \end{subalineas}
+  \item a última alínea termina em ponto.
+\end{alineas}
+
+\paragraph{Seção quaternária}
+
+Texto da seção quaternária.
+
+\subparagraph{Seção quinária}
+
+Texto da seção quinária, o último nível permitido.
+
+\subsection{Ilustrações, tabelas e equações}
+
+Toda ilustração é citada no texto, como a Figura~\ref{fig:exemplo}, e fica o mais perto possível do trecho em que é mencionada. Em cima vêm o nome, o número, um travessão e o título. Embaixo vem a fonte, sempre, mesmo quando a ilustração é sua.
+
+\begin{figure}[htbp]
+  \begin{ilustracao}{0.75\textwidth}
+    \caption{Título da figura}\label{fig:exemplo}
+    \fbox{\parbox[c][5cm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\centering Coloque a imagem aqui com\\\texttt{\textbackslash includegraphics[width=\textbackslash linewidth]\{arquivo\}}}}
+    \fonte{elaborada pelo autor (2026).}
+    \nota{aqui vai uma nota sobre a figura, se for preciso.}
+  \end{ilustracao}
+\end{figure}
+
+Quadros organizam informações em texto, com linhas fechando as laterais, como o Quadro~\ref{qua:exemplo}.
+
+\begin{quadro}[htbp]
+  \begin{ilustracao}{0.75\textwidth}
+    \caption{Título do quadro}\label{qua:exemplo}
+    \setstretch{1}
+    \begin{tabular}{|p{0.3\linewidth}|p{0.6\linewidth}|}
+      \hline
+      \textbf{Coluna 1} & \textbf{Coluna 2} \\ \hline
+      Informação & Descrição em texto \\ \hline
+      Informação & Descrição em texto \\ \hline
+    \end{tabular}
+    \fonte{\citeonline[p.~20]{livro2024}.}
+  \end{ilustracao}
+\end{quadro}
+
+Tabelas apresentam dados numéricos e seguem as normas de apresentação tabular do IBGE: traços horizontais em cima, embaixo e abaixo do cabeçalho, sem traços nas laterais, como a Tabela~\ref{tab:exemplo}.
+
+\begin{table}[htbp]
+  \begin{ilustracao}{0.75\textwidth}
+    \caption{Título da tabela, com o que, onde e quando}\label{tab:exemplo}
+    \setstretch{1}\centering
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr}
+      \toprule
+      Categoria & Quantidade & Percentual (\%) \\
+      \midrule
+      Categoria A & 120 & 60,0 \\
+      Categoria B & 80 & 40,0 \\
+      \midrule
+      Total & 200 & 100,0 \\
+      \bottomrule
+    \end{tabular*}
+    \fonte{elaborada pelo autor (2026).}
+  \end{ilustracao}
+\end{table}
+
+Equações ficam em destaque e, se preciso, numeradas à direita, entre parênteses, como a Equação~\eqref{eq:exemplo}.
+\begin{equation}
+  v = \frac{\Delta s}{\Delta t}
+  \label{eq:exemplo}
+\end{equation}
+
+\section{Conclusão}
+
+A conclusão retoma os objetivos e apresenta os resultados alcançados.
+
+% =====================================================================
+% ELEMENTOS POS-TEXTUAIS
+% =====================================================================
+
+% Referencias (obrigatorias; NBR 6023:2025). A lista e montada sozinha
+% a partir do arquivo referencias.bib: entram so as obras citadas no texto,
+% em ordem alfabetica e no formato da norma.
+\bibliography{referencias}
+
+% Glossario (opcional, 4.2.3.2), em ordem alfabetica
+\begin{glossario}
+  \termo{Termo}{definição do termo técnico usado no texto.}
+  \termo{Outro termo}{definição do outro termo.}
+\end{glossario}
+
+% Apendices (opcionais, 4.2.3.3): textos feitos por voce
+\apendice{Título do apêndice}
+Aqui vai o conteúdo do apêndice, como um questionário ou um roteiro de entrevista.
+
+% Anexos (opcionais, 4.2.3.4): textos de outros autores
+\anexo{Título do anexo}
+Aqui vai o conteúdo do anexo, como um documento oficial. A referência do anexo fica em nota de rodapé ou numa lista própria.
+
+\end{document}

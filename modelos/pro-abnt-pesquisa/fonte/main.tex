@@ -1,0 +1,137 @@
+% =====================================================================
+% Modelo ABNT de projeto de pesquisa
+% EguaTex (www.eguatex.com.br). Licenca CC0 1.0: dominio publico.
+%
+% Segue a ABNT NBR 15287:2011 e as normas que ela chama: NBR 6023:2025
+% (referencias), NBR 6024:2012 (secoes), NBR 6027:2012 (sumario) e
+% NBR 10520:2023 (citacoes).
+%
+% Como usar: preencha os dados abaixo, troque os textos de exemplo pelo
+% seu conteudo, coloque as suas obras no arquivo referencias.bib e compile
+% com pdfLaTeX e BibTeX (o EguaTex faz isso sozinho).
+% A formatacao fica no arquivo abnt-eguatex.sty.
+% =====================================================================
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[projeto]{abnt-eguatex}
+
+% ---------------------------------------------------------------------
+% DADOS DO PROJETO
+% ---------------------------------------------------------------------
+\instituicao{Nome da entidade}     % na capa, quando a entidade pedir
+\autor{Nome do autor}
+\titulo{Título do projeto}
+\subtitulo{subtítulo, se houver}
+\local{Cidade}
+\ano{2026}
+% Tipo de projeto e entidade a que ele e submetido (4.2.1.1 e)
+\natureza{Projeto de pesquisa apresentado ao Curso de Nome do Curso da Nome
+  da Instituição, como requisito parcial da disciplina Nome da Disciplina.}
+\orientador{Orientador(a): Prof.(ª) Dr.(ª) Nome do orientador}
+
+\begin{document}
+
+% Capa (opcional, 4.1.1). Apague a linha abaixo se nao quiser capa.
+\imprimircapa
+
+% Folha de rosto (obrigatoria, 4.2.1.1)
+\imprimirfolhaderosto
+
+% Listas (opcionais, 4.2.1.2 a 4.2.1.5). Apague as que nao usar.
+\listadequadros
+
+\begin{listadesiglas}
+  \sigla{ABNT}{Associação Brasileira de Normas Técnicas}
+  \sigla{IBGE}{Instituto Brasileiro de Geografia e Estatística}
+\end{listadesiglas}
+
+% Sumario (obrigatorio, 4.2.1.6)
+\sumario
+
+% =====================================================================
+% ELEMENTOS TEXTUAIS (4.2.2)
+% O projeto apresenta: tema, problema, hipoteses (quando houver),
+% objetivos, justificativa, referencial teorico, metodologia, recursos e
+% cronograma. Os nomes e a ordem das secoes abaixo sao uma sugestao.
+% =====================================================================
+\textual
+
+\section{Introdução}
+
+Aqui vai a apresentação do tema do projeto. O texto usa letra tamanho 12 e espaçamento de 1,5 entre as linhas.
+
+\subsection{Problema}
+
+Aqui vai o problema de pesquisa, de preferência em forma de pergunta.
+
+\subsection{Hipóteses}
+
+Aqui vão as hipóteses, quando couberem.
+
+\subsection{Objetivos}
+
+\subsubsection{Objetivo geral}
+
+Aqui vai o objetivo geral, começando por um verbo no infinitivo.
+
+\subsubsection{Objetivos específicos}
+
+Os objetivos específicos podem ser escritos em alíneas, como mostra o exemplo:
+\begin{alineas}
+  \item primeiro objetivo específico;
+  \item segundo objetivo específico;
+  \item terceiro objetivo específico.
+\end{alineas}
+
+\subsection{Justificativa}
+
+Aqui vai a justificativa: por que a pesquisa é importante e para quem.
+
+\section{Referencial teórico}
+
+Aqui vai o referencial teórico que embasa o projeto. As citações seguem o sistema autor-data, como em \cite[p.~15]{livro2024} ou \citeonline[p.~15]{livro2024}. No código, a citação é feita com \texttt{\textbackslash cite\{chave\}}, e a obra entra sozinha na lista de referências. Uma citação indireta não leva aspas \cite{artigo2025,dissertacao2021}.
+
+\begin{citacao}
+Aqui vai uma citação direta com mais de três linhas. Ela tem recuo de 4 cm da margem esquerda, letra menor que a do texto, espaçamento simples e não leva aspas. A fonte vem no final, entre parênteses, com o sobrenome, o ano e a página \cite[p.~47]{capitulo2023}.
+\end{citacao}
+
+\section{Metodologia}
+
+Aqui vai a metodologia: tipo de pesquisa, população ou corpus, instrumentos de coleta e forma de análise dos dados.
+
+\section{Recursos}
+
+Aqui vão os recursos humanos, materiais e financeiros necessários.
+
+\section{Cronograma}
+
+O Quadro~\ref{qua:cronograma} mostra as etapas da pesquisa ao longo dos meses.
+
+\begin{quadro}[htbp]
+  \begin{ilustracao}{\textwidth}
+    \caption{Cronograma da pesquisa}\label{qua:cronograma}
+    \setstretch{1}\centering
+    \begin{tabular}{|p{0.36\linewidth}|*{6}{c|}}
+      \hline
+      \textbf{Etapa} & \textbf{Mês 1} & \textbf{Mês 2} & \textbf{Mês 3} & \textbf{Mês 4} & \textbf{Mês 5} & \textbf{Mês 6} \\ \hline
+      Revisão de literatura & X & X &   &   &   &   \\ \hline
+      Coleta de dados       &   & X & X &   &   &   \\ \hline
+      Análise dos dados     &   &   & X & X &   &   \\ \hline
+      Redação final         &   &   &   & X & X & X \\ \hline
+    \end{tabular}
+    \fonte{elaborado pelo autor (2026).}
+  \end{ilustracao}
+\end{quadro}
+
+% =====================================================================
+% ELEMENTOS POS-TEXTUAIS (4.2.3)
+% =====================================================================
+% Referencias (obrigatorias; NBR 6023:2025). A lista e montada sozinha
+% a partir do arquivo referencias.bib: entram so as obras citadas no texto,
+% em ordem alfabetica e no formato da norma.
+\bibliography{referencias}
+
+% Apendices e anexos (opcionais, 4.2.3.3 e 4.2.3.4)
+\apendice{Roteiro de entrevista}
+Aqui vai o instrumento de coleta de dados feito por você. Apague se não houver.
+
+\end{document}

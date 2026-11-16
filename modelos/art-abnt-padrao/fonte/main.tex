@@ -1,0 +1,148 @@
+% =====================================================================
+% Modelo ABNT de artigo cientifico
+% EguaTex (www.eguatex.com.br). Licenca CC0 1.0: dominio publico.
+%
+% Segue a ABNT NBR 6022:2018 e as normas que ela chama: NBR 6023:2025
+% (referencias), NBR 6024:2012 (secoes), NBR 6028:2021 (resumo) e
+% NBR 10520:2023 (citacoes).
+%
+% Se a revista tiver modelo proprio, siga o modelo da revista: a NBR 6022
+% deixa o projeto grafico a criterio do editor.
+%
+% Como usar: troque cada texto de exemplo pelo seu conteudo, coloque as
+% suas obras no arquivo referencias.bib e compile com pdfLaTeX e BibTeX
+% (o EguaTex faz isso sozinho). A formatacao fica no arquivo abnt-eguatex.sty.
+% =====================================================================
+\documentclass[12pt,a4paper,oneside]{article}
+\usepackage[artigo]{abnt-eguatex}
+
+% Nota de autor com chamada propria (asterisco), diferente das notas
+% numericas do texto (NBR 6022:2018, 5.1.2).
+\newcommand{\notadeautor}[2]{#1\begingroup\renewcommand{\thefootnote}{\fnsymbol{footnote}}%
+  \footnote{#2}\addtocounter{footnote}{-1}\endgroup}
+
+\begin{document}
+
+% =====================================================================
+% ELEMENTOS PRE-TEXTUAIS (NBR 6022:2018, 5.1)
+% =====================================================================
+
+% Titulo e subtitulo, separados por dois-pontos, no idioma do texto (5.1.1)
+\begin{center}
+  {\bfseries TÍTULO DO ARTIGO: subtítulo, se houver}\par
+  \vspace{\baselineskip}
+  % Titulo em outro idioma, opcional, logo abaixo do titulo
+  {\itshape Title of the article: subtitle, if any}\par
+\end{center}
+
+% Autores em ordem direta: prenome e sobrenome (5.1.2). O curriculo
+% resumido, a vinculacao e o contato ficam em nota de rodape.
+\vspace{\baselineskip}
+\begin{flushright}
+  \setcounter{footnote}{0}
+  \notadeautor{Nome do Primeiro Autor}{Titulação. Instituição de vínculo. E-mail: autor1@exemplo.org.br.}\par
+  \setcounter{footnote}{1}
+  \notadeautor{Nome do Segundo Autor}{Titulação. Instituição de vínculo. E-mail: autor2@exemplo.org.br.}\par
+\end{flushright}
+\setcounter{footnote}{0}
+
+% Resumo no idioma do texto, de 100 a 250 palavras (NBR 6028:2021, 4.1.8)
+\begin{resumo}
+Aqui vai o resumo do artigo, em um único parágrafo, com frases curtas e o verbo na terceira pessoa. Ele informa o objetivo, o método, os resultados e as conclusões. Em artigos de periódicos, o resumo tem de 100 a 250 palavras.
+\palavraschave{palavra-chave; segunda palavra-chave; terceira palavra-chave.}
+\end{resumo}
+
+% Resumo em outro idioma, opcional, depois do resumo no idioma do texto (5.1.3)
+\begin{otherlanguage}{english}
+\begin{resumo}[Abstract]
+Here goes the abstract, the translation of the summary into another language. It follows the same rules as the summary in Portuguese.
+\palavraschave[Keywords]{keyword; second keyword; third keyword.}
+\end{resumo}
+\end{otherlanguage}
+
+% Datas de submissao e aprovacao: dia, mes e ano (obrigatorio, 5.1.4)
+% Identificacao e disponibilidade: DOI ou endereco (opcional, 5.1.5)
+\par\vspace{\baselineskip}\noindent
+Data de submissão: dia mês ano.\\
+Data de aprovação: dia mês ano.\\
+DOI: \url{https://doi.org/10.0000/exemplo}
+
+% =====================================================================
+% ELEMENTOS TEXTUAIS (NBR 6022:2018, 5.2)
+% O nome das secoes fica a seu criterio.
+% =====================================================================
+
+\section{Introdução}
+
+A introdução apresenta o assunto do artigo, os objetivos da pesquisa e o que mais for preciso para situar o tema. O artigo usa letra tamanho 12 e espaçamento simples em todo o texto.
+
+\section{Desenvolvimento}
+
+O desenvolvimento expõe o assunto de forma ordenada e pode ser dividido em seções e subseções.
+
+\subsection{Seção secundária}
+
+As citações seguem o sistema autor-data, como em \cite[p.~15]{livro2024} ou \citeonline[p.~15]{livro2024}. No código, a citação é feita com \texttt{\textbackslash cite\{chave\}}, e a obra entra sozinha na lista de referências. Uma citação direta de até três linhas fica no parágrafo, entre aspas duplas: “aqui vai o trecho copiado da obra” \cite[p.~32]{livro2024}. Uma citação indireta não leva aspas \cite{artigo2025}.
+
+\begin{citacao}
+Aqui vai uma citação direta com mais de três linhas. Ela tem recuo de 4 cm da margem esquerda, letra menor que a do texto, espaçamento simples e não leva aspas. A fonte vem no final, entre parênteses, com o sobrenome, o ano e a página \cite[p.~47]{capitulo2023}.
+\end{citacao}
+
+Notas explicativas usam números\footnote{Aqui vai uma nota explicativa, com letra menor e espaçamento simples.}, e a chamada das notas de autor usa asterisco, para não se confundir com elas.
+
+\subsection{Ilustrações e tabelas}
+
+Toda ilustração é citada no texto, como a Figura~\ref{fig:exemplo}, com o título em cima e a fonte embaixo.
+
+\begin{figure}[htbp]
+  \begin{ilustracao}{0.7\textwidth}
+    \caption{Título da figura}\label{fig:exemplo}
+    \fbox{\parbox[c][4cm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\centering Coloque a imagem aqui com\\\texttt{\textbackslash includegraphics[width=\textbackslash linewidth]\{arquivo\}}}}
+    \fonte{elaborada pelos autores (2026).}
+  \end{ilustracao}
+\end{figure}
+
+As tabelas seguem as normas de apresentação tabular do IBGE, como a Tabela~\ref{tab:exemplo}.
+
+\begin{table}[htbp]
+  \begin{ilustracao}{0.7\textwidth}
+    \caption{Título da tabela, com o que, onde e quando}\label{tab:exemplo}
+    \centering
+    \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr}
+      \toprule
+      Categoria & Quantidade & Percentual (\%) \\
+      \midrule
+      Categoria A & 120 & 60,0 \\
+      Categoria B & 80 & 40,0 \\
+      \midrule
+      Total & 200 & 100,0 \\
+      \bottomrule
+    \end{tabular*}
+    \fonte{elaborada pelos autores (2026).}
+  \end{ilustracao}
+\end{table}
+
+\section{Considerações finais}
+
+As considerações finais respondem aos objetivos e às hipóteses apresentados na introdução.
+
+% =====================================================================
+% ELEMENTOS POS-TEXTUAIS (NBR 6022:2018, 5.3)
+% Ordem: referencias, glossario, apendice, anexo e agradecimentos (o
+% ultimo).
+% =====================================================================
+% Referencias (obrigatorias; NBR 6023:2025). A lista e montada sozinha
+% a partir do arquivo referencias.bib: entram so as obras citadas no texto,
+% em ordem alfabetica e no formato da norma.
+\bibliography{referencias}
+
+\apendice{Título do apêndice}
+Aqui vai o conteúdo do apêndice, feito pelos autores. Apague se não houver.
+
+\anexo{Título do anexo}
+Aqui vai o conteúdo do anexo, de outra autoria. Apague se não houver.
+
+\titulopostextual{Agradecimentos}
+Aqui vão os agradecimentos, em texto curto, aprovado pela revista.
+
+\end{document}
