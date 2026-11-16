@@ -1,9 +1,0 @@
-# Posições de ressonância em um tubo fechado (dados de exemplo)
-# n: ordem da ressonância; x = (2n-1)/4; L: posição medida (m); sL: incerteza de L (m)
-n  x     L      sL
-1  0.25  0.074  0.002
-2  0.75  0.246  0.002
-3  1.25  0.416  0.002
-4  1.75  0.589  0.002
-5  2.25  0.761  0.002
-6  2.75  0.930  0.002
