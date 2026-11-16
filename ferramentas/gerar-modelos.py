@@ -18,7 +18,7 @@ e uma miniatura.webp feita por nós. Ele não tem fonte, PDF nem zip: o botão l
 site oficial de quem mantém o modelo. compilar, previas e semelhança pulam esses modelos.
 
 Exemplos:
-  python ferramentas/gerar-modelos.py compilar --id rel-fis-lab-basico --tex ambos
+  python ferramentas/gerar-modelos.py compilar --id tcc-abnt-padrao --tex ambos
   python ferramentas/gerar-modelos.py previas --categoria relatorio
   python ferramentas/gerar-modelos.py validar --tex ambos
   python ferramentas/gerar-modelos.py indice
