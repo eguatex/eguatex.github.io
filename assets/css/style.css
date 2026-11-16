@@ -612,3 +612,23 @@ button.botao-linha { background: transparent; cursor: pointer; }
 .opcao ol { margin: 0; }
 .conferir-titulo { font-size: 1.3rem; margin: 1.6em 0 .4em; }
 @media (max-width: 560px) { .passos li:not(:last-child)::after { display: none; } }
+
+/* ---------- primeiros passos ---------- */
+.etapas-guia { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 0 0 clamp(40px, 6vw, 64px); }
+.etapas-guia a { display: grid; gap: 4px; padding: 18px 20px; border-radius: 16px; background: var(--noite-2); border: 1.5px solid var(--noite-3); color: var(--texto); text-decoration: none; }
+.etapas-guia a:hover { border-color: var(--chama); }
+.etapas-guia strong { font-family: var(--fonte-titulo); font-size: 1.1rem; }
+.etapas-guia span:not(.num) { color: var(--texto-suave); font-size: .95rem; }
+.etapas-guia .num, .bloco-titulo .num { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--roxo); color: #fff; font-family: var(--fonte-titulo); font-weight: 800; font-size: 1rem; }
+.bloco-guia { margin-top: clamp(40px, 6vw, 72px); }
+.bloco-titulo { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; margin: 0 0 .4em; }
+.bloco-sub { color: var(--texto-suave); margin: 0; }
+.selo-guia { font-family: var(--fonte-texto); font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--chama); border: 1.5px solid var(--chama); border-radius: 999px; padding: 3px 10px; }
+.botao-pequeno { margin-top: 12px; padding: 8px 16px; font-size: .9rem; }
+.trilha { font-size: .9rem; color: var(--texto-suave); margin-bottom: 18px; }
+.trilha a { color: var(--chama); }
+.instalar-pagina .bloco-titulo { font-size: clamp(2rem, 5vw, 2.8rem); }
+.instalar-pagina .sistema h2 { font-size: clamp(1.4rem, 3.2vw, 1.8rem); }
+.instalar-pagina #instalar .sistemas { margin-bottom: clamp(28px, 4vw, 40px); }
+.texto-longo a.botao-fogo { color: #1a0700; text-decoration: none; }
+.bloco-guia .sub { max-width: var(--medida); }

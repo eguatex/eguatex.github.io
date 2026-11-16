@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Como instalar | ÉguaTex</title>
-  <meta name="description" content="Como instalar o ÉguaTex no computador ou no celular, passo a passo, e como usar outra distribuição LaTeX, como MiKTeX ou TeX Live.">
+  <title>Primeiros passos | ÉguaTex</title>
+  <meta name="description" content="Primeiros passos no ÉguaTex: como instalar no computador ou no celular, ligar o assistente de IA e usar outra distribuição LaTeX.">
   <meta name="theme-color" content="#1c0a2b">
   <link rel="icon" href="/favicon.ico?v=www2" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=www2">
@@ -16,8 +16,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:url" content="https://eguatex.com.br/instalar.html">
-  <meta property="og:title" content="Como instalar | ÉguaTex">
-  <meta property="og:description" content="Como instalar o ÉguaTex no computador ou no celular, passo a passo, e como usar outra distribuição LaTeX, como MiKTeX ou TeX Live.">
+  <meta property="og:title" content="Primeiros passos | ÉguaTex">
+  <meta property="og:description" content="Primeiros passos no ÉguaTex: como instalar no computador ou no celular, ligar o assistente de IA e usar outra distribuição LaTeX.">
   <meta property="og:image" content="https://eguatex.com.br/assets/img/compartilhar.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261115b">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261115c">
 </head>
 <body>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -41,7 +41,7 @@
       <a href="index.html#portal">Como funciona</a>
       <a href="index.html#experimente">Experimente</a>
       <a href="index.html#curupira">O Curupira</a>
-      <a href="instalar.html" aria-current="page">Instalar</a>
+      <a href="instalar.html" aria-current="page">Primeiros passos</a>
       <a href="templates.html">Templates</a>
       <a href="contato.html">Contato</a>
       <a class="nav-baixar" href="index.html#baixar">Baixar</a>
@@ -50,8 +50,19 @@
 
     <main id="conteudo" class="instalar-pagina">
     <section class="instalar-abertura" aria-labelledby="instalar-titulo">
-      <h1 id="instalar-titulo">Como instalar</h1>
-      <p>A instalação leva uns dois minutos e não pede conta nem cadastro. Escolha o seu sistema.</p>
+      <h1 id="instalar-titulo">Primeiros passos</h1>
+      <p>Instale o ÉguaTex e deixe tudo pronto para escrever. A instalação leva uns dois minutos e não pede conta nem cadastro.</p>
+    </section>
+
+    <nav class="etapas-guia" aria-label="Partes desta página">
+      <a href="#instalar"><span class="num">1</span><strong>Instalar</strong><span>No computador ou no celular.</span></a>
+      <a href="#assistente"><span class="num">2</span><strong>Ligar o assistente de IA</strong><span>Opcional. Ajuda a revisar e a seguir a ABNT.</span></a>
+      <a href="#outras-distribuicoes"><span class="num">3</span><strong>Outra distribuição LaTeX</strong><span>Avançado. Só para quem precisa.</span></a>
+    </nav>
+
+    <section class="bloco-guia" id="instalar" aria-labelledby="bloco-instalar">
+      <h2 id="bloco-instalar" class="bloco-titulo"><span class="num">1</span> Instalar</h2>
+      <p class="bloco-sub">Escolha o seu sistema.</p>
       <nav class="sistemas" aria-label="Sistemas">
         <a href="#windows">Windows</a>
         <a href="#android">Android</a>
@@ -63,7 +74,7 @@
       <h2 id="windows-titulo">No Windows</h2>
       <p class="requisito">Windows 10 ou 11, 64 bits.</p>
       <ol class="passos">
-        <li><h3>Baixe o instalador</h3><p>Na <a href="index.html#baixar">página inicial</a>, clique em “Baixar” no quadro do Windows. O instalador, com nome parecido com <code>EguaTex_instalador_1.0.0.exe</code>, vai para a pasta Downloads.</p></li>
+        <li><h3>Baixe o instalador</h3><p>Na <a href="index.html#baixar">página inicial</a>, clique em “Baixar” no quadro do Windows. O instalador, com nome parecido com <code>EguaTex_instalador_1.0.0.exe</code>, vai para a pasta Downloads.</p> <a class="botao botao-linha botao-pequeno" href="index.html#baixar">Ir para o download</a></li>
         <li><h3>Abra o arquivo baixado</h3><p>Dê dois cliques no instalador. Se o Windows mostrar “O Windows protegeu o computador”, clique em “Mais informações” e depois em “Executar assim mesmo”. O aviso aparece porque o programa ainda não tem assinatura digital.</p></li>
         <li><h3>Instale</h3><p>Siga as telas do instalador. Não precisa ser administrador nem instalar o LaTeX à parte: o TinyTeX já vem junto.</p></li>
         <li><h3>Abra e escreva</h3><p>O Curupira aparece no menu Iniciar. Crie um documento em branco, escreva e clique em Compilar para ver o PDF.</p></li>
@@ -74,7 +85,7 @@
       <h2 id="android-titulo">No Android</h2>
       <p class="requisito">Android 8.0 ou mais novo.</p>
       <ol class="passos">
-        <li><h3>Baixe o APK</h3><p>Pelo celular, abra a <a href="index.html#baixar">página inicial</a> e toque em “Baixar” no quadro do Android. O arquivo <code>EguaTex_android.apk</code> vai para a pasta Downloads. Ele é grande, então vale baixar no Wi-Fi.</p></li>
+        <li><h3>Baixe o APK</h3><p>Pelo celular, abra a <a href="index.html#baixar">página inicial</a> e toque em “Baixar” no quadro do Android. O arquivo <code>EguaTex_android.apk</code> vai para a pasta Downloads. Ele é grande, então vale baixar no Wi-Fi.</p> <a class="botao botao-linha botao-pequeno" href="index.html#baixar">Ir para o download</a></li>
         <li><h3>Libere a instalação</h3><p>Toque no arquivo baixado. Como o app não vem da Play Store, o Android pede permissão: toque em “Configurações” e ative “Permitir desta fonte” para o navegador que baixou o arquivo.</p></li>
         <li><h3>Instale</h3><p>Volte e toque em “Instalar”. Se o Play Protect avisar que o app é desconhecido, toque em “Mais detalhes” e depois em “Instalar assim mesmo”. O LaTeX já vem dentro do app.</p></li>
         <li><h3>Abra e escreva</h3><p>O Curupira aparece entre os seus apps. Crie um documento, escreva e toque em Compilar para ver o PDF.</p></li>
@@ -87,13 +98,14 @@
       <p class="sistema-aviso">A versão para Linux está a caminho. Quando ela sair, o arquivo aparece no quadro do Linux na <a href="index.html#baixar">página inicial</a> e o passo a passo fica aqui.</p>
     </section>
 
-    <section class="outras-distribuicoes texto-longo" id="assistente" aria-labelledby="assistente-titulo">
-      <h2 id="assistente-titulo">Assistente de IA (opcional)</h2>
-      <p class="sub">O ÉguaTex tem um assistente que ajuda a revisar o texto, entender erros de compilação e seguir a ABNT. Ele vem desligado. Para ligar, basta uma chave gratuita do Gemini, a IA do Google. Veja o <a href="assistente-ia.html">passo a passo com imagens</a>.</p>
+    <section class="bloco-guia texto-longo" id="assistente" aria-labelledby="assistente-titulo">
+      <h2 id="assistente-titulo" class="bloco-titulo"><span class="num">2</span> Ligar o assistente de IA <span class="selo-guia">opcional</span></h2>
+      <p class="sub">O ÉguaTex tem um assistente que ajuda a revisar o texto, entender erros de compilação e seguir a ABNT. Ele vem desligado. Para ligar, basta uma chave gratuita do Gemini, a IA do Google, criada na sua própria conta. Leva uns três minutos.</p>
+      <p><a class="botao botao-fogo" href="assistente-ia.html">Ver o passo a passo com imagens</a></p>
     </section>
 
-    <section class="outras-distribuicoes texto-longo" id="outras-distribuicoes" aria-labelledby="outras-titulo">
-      <h2 id="outras-titulo">Outras distribuições LaTeX</h2>
+    <section class="outras-distribuicoes bloco-guia texto-longo" id="outras-distribuicoes" aria-labelledby="outras-titulo">
+      <h2 id="outras-titulo" class="bloco-titulo"><span class="num">3</span> Usar outra distribuição LaTeX <span class="selo-guia">avançado</span></h2>
       <p class="sub">Esta parte vale para o computador. O instalador do ÉguaTex já traz o TinyTeX, então ela serve só para quem quer outra distribuição ou recebeu o aviso “Nenhum compilador LaTeX foi encontrado”. No Android não é preciso: o LaTeX já vem dentro do app.</p>
 
       <div class="opcoes">
@@ -132,7 +144,7 @@
     </div>
   </footer>
 
-  <script defer src="assets/js/config.js?v=20261115b"></script>
-  <script defer src="assets/js/navegacao.js?v=20261115b"></script>
+  <script defer src="assets/js/config.js?v=20261115c"></script>
+  <script defer src="assets/js/navegacao.js?v=20261115c"></script>
 </body>
 </html>
