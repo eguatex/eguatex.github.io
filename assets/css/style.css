@@ -632,3 +632,15 @@ button.botao-linha { background: transparent; cursor: pointer; }
 .instalar-pagina #instalar .sistemas { margin-bottom: clamp(28px, 4vw, 40px); }
 .texto-longo a.botao-fogo { color: #1a0700; text-decoration: none; }
 .bloco-guia .sub { max-width: var(--medida); }
+
+/* ---------- voltar ao topo ---------- */
+.voltar-topo {
+  position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 40;
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+  background: var(--noite-2); color: var(--texto); border: 1.5px solid var(--roxo);
+  font-family: var(--fonte-titulo); font-weight: 700; font-size: .9rem; cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+.voltar-topo:hover { border-color: var(--chama); color: var(--chama); }
+.voltar-topo[hidden] { display: none; }
+.voltar-topo span { font-size: 1.1rem; line-height: 1; }

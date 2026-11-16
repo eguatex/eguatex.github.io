@@ -107,3 +107,29 @@
     setTimeout(esconder, TEMPO_TROCA);
   });
 })();
+
+/* ---------- botão "Voltar ao topo" nas páginas longas ---------- */
+(() => {
+  const botao = document.createElement("button");
+  botao.type = "button";
+  botao.className = "voltar-topo";
+  botao.innerHTML = '<span aria-hidden="true">↑</span> Voltar ao topo';
+  botao.hidden = true;
+  document.body.appendChild(botao);
+
+  const suave = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  botao.addEventListener("click", () => {
+    scrollTo({ top: 0, behavior: suave ? "smooth" : "auto" });
+    const inicio = document.getElementById("conteudo") || document.querySelector("main");
+    if (inicio) { inicio.setAttribute("tabindex", "-1"); inicio.focus({ preventScroll: true }); }
+  });
+
+  // Só aparece em páginas com bastante conteúdo, depois que a pessoa já rolou um bom pedaço.
+  const atualizar = () => {
+    const longa = document.documentElement.scrollHeight > innerHeight * 2.5;
+    botao.hidden = !(longa && scrollY > innerHeight * 1.2);
+  };
+  addEventListener("scroll", atualizar, { passive: true });
+  addEventListener("resize", atualizar);
+  atualizar();
+})();
