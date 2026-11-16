@@ -644,3 +644,6 @@ button.botao-linha { background: transparent; cursor: pointer; }
 .voltar-topo:hover { border-color: var(--chama); color: var(--chama); }
 .voltar-topo[hidden] { display: none; }
 .voltar-topo span { font-size: 1.1rem; line-height: 1; }
+
+.av-privacidade { font-size: .85rem; color: var(--texto-suave); margin: 4px 0 14px; }
+.av-privacidade a { color: var(--chama); }
