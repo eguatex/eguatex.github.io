@@ -77,6 +77,13 @@ function ligar(id, arquivo) {
   link.className = "botao botao-fogo";
   link.href = arquivo.browser_download_url;
   link.textContent = "Baixar";
+  // Conta o clique no contador de visitas (GoatCounter), separado por sistema. Sem dados pessoais.
+  link.addEventListener("click", () => {
+    const sistema = id.replace("p-", "");
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: "baixar-" + sistema, title: "Baixar " + sistema, event: true });
+    }
+  });
   atual.replaceWith(link);
   caixa.querySelector(".tam").textContent = tamanhoLegivel(arquivo.size);
   caixa.classList.add("pronto");

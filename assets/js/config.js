@@ -7,5 +7,5 @@ window.EGUATEX = {
   // Repositório público do código do app. Os botões de download buscam lá a versão de lançamento mais recente.
   repositorioCodigo: "eguatex/eguatex-codigo",
   // Código do contador de visitas no GoatCounter (o "xxx" de xxx.goatcounter.com). Vazio: nada é contado.
-  contadorVisitas: "",
+  contadorVisitas: "eguatex",
 };
