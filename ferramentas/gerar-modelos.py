@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ÉguaTex: gera, valida e indexa os modelos LaTeX da galeria do site.
+"""ÉguaTeX: gera, valida e indexa os modelos LaTeX da galeria do site.
 
 Cada modelo mora em modelos/<id>/:
   meta.json          dados escritos à mão (nome, categoria, curso, descrição...)
@@ -638,7 +638,7 @@ def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
         sys.stderr.reconfigure(encoding="utf-8")
-    ap = argparse.ArgumentParser(description="Gera, valida e indexa os modelos LaTeX da galeria do ÉguaTex.")
+    ap = argparse.ArgumentParser(description="Gera, valida e indexa os modelos LaTeX da galeria do ÉguaTeX.")
     sub = ap.add_subparsers(dest="comando", required=True)
 
     def comuns(p, com_tex=True):

@@ -1,8 +1,8 @@
 %% abnt-eguatex.bst
-%% Estilo de referencias dos modelos ABNT do EguaTex (www.eguatex.com.br).
+%% Estilo de referencias dos modelos ABNT do EguaTeX (www.eguatex.com.br).
 %% Obra derivada de abntex2-alf.bst v-1.9.7 (grupo abnTeX2, Lauro Cesar
 %% Araujo), distribuida sob a LaTeX Project Public License 1.3c, como o
-%% original. Mudancas feitas pelo EguaTex em 2026:
+%% original. Mudancas feitas pelo EguaTeX em 2026:
 %%   - citacao com o sobrenome em maiusculas e minusculas, inclusive de
 %%     entidades, como pede a ABNT NBR 10520:2023, 6.1.1;
 %%   - sobrenomes e entidades em maiusculas com \MakeUppercase, para que
@@ -283,7 +283,7 @@ FUNCTION {bbl.missing.year}
   {"[s.d.]"} %#1
   {""}       %#0
  if$}
-FUNCTION {bbl.monography} { "Trabalho de Conclus{\~a}o de Curso" } %EguaTex: termo da NBR 6023:2025, 7.1.2
+FUNCTION {bbl.monography} { "Trabalho de Conclus{\~a}o de Curso" } %EguaTeX: termo da NBR 6023:2025, 7.1.2
 FUNCTION {bbl.mthesis} { "Disserta\c{c}\~{a}o" }
 FUNCTION {bbl.no.address} {"[S.l.]"}
 FUNCTION {bbl.no.address.no.publisher} {"[S.l.: s.n.]"}
@@ -1975,7 +1975,7 @@ FUNCTION {sort.format.names}
   s num.names$ 'numnames :=
   numnames 'namesleft :=
     { namesleft #0 > }
-    { s nameptr "{ll}{ jj}{ ff}{ vv}" format.name$ 't :=  %EguaTex: ordena sem o \MakeUppercase
+    { s nameptr "{ll}{ jj}{ ff}{ vv}" format.name$ 't :=  %EguaTeX: ordena sem o \MakeUppercase
       nameptr #1 >
         {
           nameptr #3
@@ -2050,7 +2050,7 @@ FUNCTION {set.default.abnt.variables}
   "$Revision: v-1.9.7 $" extract.cvs.key 'abnt.bst.revision :=
   #0 'abnt.and.type     :=     % #0 "e"; #1 "&"
   "\emph" 'abnt.emphasize :=
-  #1 'abnt.cite.style :=       %EguaTex: (Author, YEAR), NBR 10520:2023
+  #1 'abnt.cite.style :=       %EguaTeX: (Author, YEAR), NBR 10520:2023
                                %#0 \cite=(AUTHOR, YEAR)
 			       %#1 \cite=(Author, YEAR)
   #0 'abnt.experimental :=
