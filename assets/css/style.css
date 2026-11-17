@@ -647,3 +647,13 @@ button.botao-linha { background: transparent; cursor: pointer; }
 
 .av-privacidade { font-size: .85rem; color: var(--texto-suave); margin: 4px 0 14px; }
 .av-privacidade a { color: var(--chama); }
+
+/* ---------- página Apoie o projeto ---------- */
+.apoie-pix { text-align: center; }
+.apoie-qr { margin: 8px auto 20px; }
+.apoie-qr img { display: block; margin: 0 auto; width: min(260px, 70vw); height: auto; background: #fff; border-radius: 18px; padding: 14px; box-shadow: 0 14px 34px rgba(0,0,0,.35); }
+.apoie-qr figcaption { color: var(--texto-suave); font-size: .95rem; margin-top: 12px; }
+.apoie-rotulo { margin: 8px 0 8px; font-size: .85rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--roxo-claro); }
+.apoie-chave { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+.apoie-chave code { font-family: var(--fonte-codigo); font-size: clamp(1.05rem, 4.2vw, 1.5rem); font-weight: 600; color: var(--noite); background: var(--chama); border-radius: 999px; padding: 10px 22px; overflow-wrap: anywhere; }
+.apoie-recebedor { margin-top: 14px; color: var(--texto-suave); font-size: .95rem; }

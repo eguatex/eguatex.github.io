@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apoie o projeto | ÉguaTex</title>
+  <meta name="description" content="Apoie o ÉguaTex com um Pix para a chave contatoeguatex@gmail.com e ajude a manter o editor LaTeX gratuito e offline, feito na Amazônia.">
+  <meta name="theme-color" content="#1c0a2b">
+  <link rel="icon" href="/favicon.ico?v=www2" sizes="any">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=www2">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png?v=www2">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=www2">
+  <link rel="manifest" href="/site.webmanifest?v=www2">
+  <link rel="canonical" href="https://eguatex.com.br/apoie.html">
+  <meta property="og:site_name" content="ÉguaTex">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://eguatex.com.br/apoie.html">
+  <meta property="og:title" content="Apoie o projeto | ÉguaTex">
+  <meta property="og:description" content="Apoie o ÉguaTex com um Pix para a chave contatoeguatex@gmail.com e ajude a manter o editor LaTeX gratuito e offline, feito na Amazônia.">
+  <meta property="og:image" content="https://eguatex.com.br/assets/img/compartilhar.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ÉguaTex. Escreva LaTeX de qualquer lugar, mesmo sem internet. Feito na Amazônia.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261117a">
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topo">
+    <a class="marca" href="index.html" aria-label="ÉguaTex, início">
+      <img src="assets/img/curupira-256.png" alt="" width="48" height="48">
+      <span>ÉguaTex</span>
+    </a>
+    <nav aria-label="Seções">
+      <a href="index.html#portal">Como funciona</a>
+      <a href="index.html#experimente">Experimente</a>
+      <a href="index.html#curupira">O Curupira</a>
+      <a href="primeiros-passos.html">Primeiros passos</a>
+      <a href="templates.html">Templates</a>
+      <a href="contato.html">Contato</a>
+      <a href="apoie.html" aria-current="page">Apoie</a>
+      <a class="nav-baixar" href="index.html#baixar">Baixar</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="contato apoie">
+    <section class="contato-abertura" aria-labelledby="apoie-titulo">
+      <h1 id="apoie-titulo">Apoie o projeto</h1>
+      <p>O ÉguaTex é gratuito, não pede cadastro e não mostra anúncios. Se ele ajuda você nos estudos, na pesquisa ou no TCC, um Pix de qualquer valor ajuda a manter o projeto vivo e a trazer as próximas versões.</p>
+    </section>
+
+    <section class="contato-email apoie-pix" aria-labelledby="pix-titulo">
+      <h2 id="pix-titulo">Doe via Pix</h2>
+      <figure class="apoie-qr">
+        <img src="assets/img/pix-eguatex.svg" width="260" height="260" alt="QR Code do Pix do ÉguaTex, para a chave contatoeguatex@gmail.com">
+        <figcaption>Aponte a câmera do app do seu banco para o código.</figcaption>
+      </figure>
+      <p class="apoie-rotulo">Chave Pix (e-mail)</p>
+      <div class="apoie-chave">
+        <code id="chave-pix">contatoeguatex@gmail.com</code>
+        <button type="button" class="botao botao-fogo" id="copiar-chave">Copiar chave</button>
+      </div>
+      <p class="apoie-recebedor">Recebedor: José Paulo de Almeida Junior</p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-faixa" aria-hidden="true"></div>
+    <div class="rodape-conteudo">
+      <p class="rodape-marca"><img src="assets/img/curupira-256.png" alt="" width="40" height="40"> ÉguaTex</p>
+      <p>Feito na Amazônia por José Paulo de Almeida Junior e Jéssica Lopes Melo.</p>
+      <p><a href="contato.html">Contato, sugestões e problemas</a>, <a href="apoie.html">apoie o projeto</a>, <a href="assistente-ia.html">assistente de IA</a>, <a href="privacidade.html">política de privacidade</a> e <a href="termos.html">termos de uso</a>.</p>
+    </div>
+  </footer>
+
+  <script defer src="assets/js/config.js?v=20261116c"></script>
+  <script defer src="assets/js/navegacao.js?v=20261116a"></script>
+  <script>
+    (() => {
+      const botao = document.getElementById("copiar-chave");
+      const chave = document.getElementById("chave-pix");
+      botao.addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(chave.textContent); botao.textContent = "Chave copiada"; }
+        catch (e) { const r = document.createRange(); r.selectNodeContents(chave); const s = getSelection(); s.removeAllRanges(); s.addRange(r); botao.textContent = "Chave selecionada"; }
+        if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "copiar-chave-pix", event: true });
+        setTimeout(() => { botao.textContent = "Copiar chave"; }, 2500);
+      });
+    })();
+  </script>
+</body>
+</html>
