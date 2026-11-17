@@ -31,7 +31,7 @@
       </a>
       <p class="modelo-resumo">${esc(m.descricao)}</p>
       ${m.externo ? `<p class="modelo-selo">${esc(m.externo.selo)}</p>` : ""}
-      <div class="cat-rodape"><span class="modelo-curso">${esc(m.curso)}</span><code class="cat-classe">${esc(m.classe)}</code></div>
+      <div class="cat-rodape">${m.curso ? `<span class="modelo-curso">${esc(m.curso)}</span>` : ""}<code class="cat-classe">${esc(m.classe)}</code></div>
     </li>`;
   };
 

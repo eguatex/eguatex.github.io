@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ÉguaTex: gera, valida e indexa os modelos LaTeX da galeria do site.
+"""ÉguaTeX: gera, valida e indexa os modelos LaTeX da galeria do site.
 
 Cada modelo mora em modelos/<id>/:
   meta.json          dados escritos à mão (nome, categoria, curso, descrição...)
@@ -396,8 +396,8 @@ def conferir_meta_externo(pasta, meta):
         problemas.append(f"id {meta.get('id')!r} diferente da pasta {pasta.name!r}")
     if meta.get("categoria") not in FILTRO_DA_CATEGORIA:
         problemas.append(f"categoria desconhecida: {meta.get('categoria')!r}")
-    if meta.get("curso") not in CURSOS:
-        problemas.append(f"curso fora da lista {CURSOS}: {meta.get('curso')!r}")
+    if meta.get("curso") not in CURSOS and meta.get("curso") != "":
+        problemas.append(f"curso fora da lista {CURSOS} (ou vazio, para modelo de qualquer curso): {meta.get('curso')!r}")
     ext = meta["externo"]
     for campo in ("url", "organizacao", "selo", "credito"):
         if not ext.get(campo):
@@ -429,8 +429,8 @@ def conferir_meta(pasta, meta):
         problemas.append(f"categoria desconhecida: {meta.get('categoria')!r}")
     if "filtro" in meta and meta["filtro"] != FILTRO_DA_CATEGORIA.get(meta.get("categoria")):
         problemas.append(f"filtro {meta['filtro']!r} não bate com a categoria")
-    if meta.get("curso") not in CURSOS:
-        problemas.append(f"curso fora da lista {CURSOS}: {meta.get('curso')!r}")
+    if meta.get("curso") not in CURSOS and meta.get("curso") != "":
+        problemas.append(f"curso fora da lista {CURSOS} (ou vazio, para modelo de qualquer curso): {meta.get('curso')!r}")
     if meta.get("motor") != "pdflatex":
         problemas.append("motor deve ser pdflatex")
     if meta.get("bibliografia") not in BIBLIOGRAFIAS:
@@ -638,7 +638,7 @@ def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
         sys.stderr.reconfigure(encoding="utf-8")
-    ap = argparse.ArgumentParser(description="Gera, valida e indexa os modelos LaTeX da galeria do ÉguaTex.")
+    ap = argparse.ArgumentParser(description="Gera, valida e indexa os modelos LaTeX da galeria do ÉguaTeX.")
     sub = ap.add_subparsers(dest="comando", required=True)
 
     def comuns(p, com_tex=True):
