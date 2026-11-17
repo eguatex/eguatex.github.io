@@ -1,6 +1,6 @@
 # Segurança
 
-Se você encontrou uma falha de segurança no ÉguaTex ou neste site, avise a equipe em particular, pelo e-mail **contatoeguatex@gmail.com**, com o assunto "Segurança".
+Se você encontrou uma falha de segurança no ÉguaTeX ou neste site, avise a equipe em particular, pelo e-mail **contatoeguatex@gmail.com**, com o assunto "Segurança".
 
 Por favor, não abra uma issue pública para isso. Assim a falha pode ser corrigida antes de ficar conhecida.
 

@@ -1,12 +1,12 @@
-# Textos oficiais do ÉguaTex
+# Textos oficiais do ÉguaTeX
 
-Este arquivo guarda os textos que apresentam o ÉguaTex. Eles devem ser escritos exatamente assim em todo lugar: app, instaladores, lojas, READMEs, site, capas, posts e qualquer material novo.
+Este arquivo guarda os textos que apresentam o ÉguaTeX. Eles devem ser escritos exatamente assim em todo lugar: app, instaladores, lojas, READMEs, site, capas, posts e qualquer material novo.
 
 Nenhum desses textos muda sem autorização expressa da Jéssica Lopes Melo. Uma cópia igual deste arquivo fica no repositório do app (eguatex/eguatex-app, ramos `main` e `android`) e no repositório do site (eguatex/eguatex.github.io). Se um texto mudar, as cópias mudam juntas.
 
 ## Os três textos
 
-- **Nome:** ÉguaTex
+- **Nome:** ÉguaTeX
 - **Lema:** "Escreva LaTeX de qualquer lugar, mesmo sem internet."
 - **Descrição curta:** "Editor LaTeX gratuito e offline, feito na Amazônia."
 - **Selo:** "Feito na Amazônia"
@@ -29,3 +29,4 @@ Nenhum desses textos muda sem autorização expressa da Jéssica Lopes Melo. Uma
 6. Páginas de privacidade e termos podem dizer "gratuito e de código aberto", porque ali a licença é uma informação legal.
 7. Nenhum texto usa travessão.
 8. O nome Curupira é escrito com inicial maiúscula.
+9. O nome ÉguaTeX é escrito com o "X" maiúsculo, como em LaTeX. Endereços, e-mails e nomes técnicos continuam em minúsculas (eguatex.com.br, contatoeguatex@gmail.com, eguatex-codigo).

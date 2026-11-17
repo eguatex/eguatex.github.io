@@ -1,6 +1,6 @@
 # Como contribuir
 
-Obrigado por querer ajudar o ÉguaTex. Este repositório guarda o site oficial (www.eguatex.com.br) e a galeria de modelos LaTeX.
+Obrigado por querer ajudar o ÉguaTeX. Este repositório guarda o site oficial (www.eguatex.com.br) e a galeria de modelos LaTeX.
 
 ## Jeitos de ajudar
 
