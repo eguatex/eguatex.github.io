@@ -1,4 +1,4 @@
-// ÉguaTex: menu no celular e tela de carregamento ao trocar de aba (vale para todas as páginas).
+// ÉguaTeX: menu no celular e tela de carregamento ao trocar de aba (vale para todas as páginas).
 
 (() => {
   const TEMPO_TROCA = 1500; // quanto tempo a tela do Curupira fica ao trocar de aba, em milissegundos
@@ -19,10 +19,10 @@
     .join("");
 
   document.body.insertAdjacentHTML("afterbegin", `
-    <div class="carregando" id="carregando" role="status" aria-live="polite" aria-label="Carregando o ÉguaTex">
+    <div class="carregando" id="carregando" role="status" aria-live="polite" aria-label="Carregando o ÉguaTeX">
       <div class="carregando-centro">
         <img class="carregando-logo" src="assets/img/curupira-256.png" alt="" width="176" height="176">
-        <div class="carregando-fundo" aria-hidden="true"><span>ÉguaTex</span></div>
+        <div class="carregando-fundo" aria-hidden="true"><span>ÉguaTeX</span></div>
         <div class="trilha">
           <svg class="pegadas-carga" viewBox="0 0 360 64" aria-hidden="true">
             <defs>

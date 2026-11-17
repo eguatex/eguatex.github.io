@@ -1,4 +1,4 @@
-// ÉguaTex: página de templates (busca, filtros, cartões que viram para mostrar o código e entradas animadas).
+// ÉguaTeX: página de templates (busca, filtros, cartões que viram para mostrar o código e entradas animadas).
 
 (() => {
   const raiz = document.documentElement;

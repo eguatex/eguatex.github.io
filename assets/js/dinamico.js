@@ -1,4 +1,4 @@
-// ÉguaTex: tela de carregamento, entradas animadas, portal do código ao PDF, vaga-lumes e editor que se digita.
+// ÉguaTeX: tela de carregamento, entradas animadas, portal do código ao PDF, vaga-lumes e editor que se digita.
 (() => {
   const raiz = document.documentElement;
   const calmo = () => raiz.classList.contains("calmo");

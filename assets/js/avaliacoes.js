@@ -1,4 +1,4 @@
-// ÉguaTex: seção de avaliações da página inicial (média, lista e formulário).
+// ÉguaTeX: seção de avaliações da página inicial (média, lista e formulário).
 // As avaliações ficam numa planilha Google. O endereço do app da Web
 // fica em assets/js/config.js; sem endereço, a seção fica escondida.
 
@@ -62,7 +62,7 @@
               <p>${escapar(a.comentario).replace(/\n/g, "<br>")}</p>
               <time>${dataLegivel(a.criado_em)}</time>
             </li>`).join("")
-        : '<li class="av-vazio">Nenhuma avaliação ainda. Baixou o ÉguaTex? Conte aqui o que achou.</li>';
+        : '<li class="av-vazio">Nenhuma avaliação ainda. Baixou o ÉguaTeX? Conte aqui o que achou.</li>';
     } catch {
       lista.innerHTML = '<li class="av-vazio">Não deu para carregar as avaliações agora. Recarregue a página em alguns minutos.</li>';
     }
@@ -99,7 +99,7 @@
       });
       if (status >= 400) { mostrarAviso(corpo.erro || "Não deu para enviar. Confira os campos.", "erro"); return; }
       form.reset(); marcar(""); contador.textContent = "0 de 1000";
-      mostrarAviso("Avaliação enviada. Obrigado por contar o que achou do ÉguaTex!", "certo");
+      mostrarAviso("Avaliação enviada. Obrigado por contar o que achou do ÉguaTeX!", "certo");
     } catch {
       mostrarAviso("Sem conexão com o servidor. Confira a internet e tente de novo.", "erro");
     } finally {

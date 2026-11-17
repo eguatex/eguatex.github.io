@@ -1,4 +1,4 @@
-// ÉguaTex: página de um modelo (modelo.html?id=<id>): prévias, metadados, downloads e relacionados.
+// ÉguaTeX: página de um modelo (modelo.html?id=<id>): prévias, metadados, downloads e relacionados.
 // Depende de modelos-galeria.js, que carrega o índice e desenha os cartões.
 
 (() => {
@@ -17,7 +17,7 @@
     : `${Math.round(bytes / 1024)} KB`);
 
   const naoEncontrado = (texto) => {
-    document.title = "Modelo não encontrado | ÉguaTex";
+    document.title = "Modelo não encontrado | ÉguaTeX";
     migalhaAtual.textContent = "Modelo não encontrado";
     migalhaCategoria.hidden = true;
     alvo.innerHTML = `<section class="modelo-erro" aria-labelledby="erro-titulo">
@@ -81,7 +81,7 @@
     const categoria = nomeCategoria(indice, m.categoria);
     const linkCategoria = `categoria.html?id=${encodeURIComponent(m.categoria)}`;
     const [licenca, linkLicenca] = LICENCAS[m.licenca] || [m.licenca, ""];
-    document.title = `${m.nome} | ÉguaTex`;
+    document.title = `${m.nome} | ÉguaTeX`;
     document.querySelector('meta[name="description"]').setAttribute("content", m.descricao);
     migalhaCategoria.innerHTML = `<a href="${linkCategoria}">${esc(categoria)}</a>`;
     migalhaAtual.textContent = m.nome;
@@ -155,7 +155,7 @@
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const ok = await copiar(await r.text());
         aviso.innerHTML = ok
-          ? "main.tex copiado. Cole no ÉguaTex ou no seu editor."
+          ? "main.tex copiado. Cole no ÉguaTeX ou no seu editor."
           : `Não deu para copiar. <a href="${esc(m.arquivos.main)}" target="_blank" rel="noopener">Abra o main.tex</a> e copie de lá.`;
       } catch {
         aviso.textContent = "Não foi possível baixar o main.tex agora. Tente de novo.";

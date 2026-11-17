@@ -1,4 +1,4 @@
-// ÉguaTex: galeria de modelos LaTeX (lê modelos/indice.json, monta os cartões, filtros na URL).
+// ÉguaTeX: galeria de modelos LaTeX (lê modelos/indice.json, monta os cartões, filtros na URL).
 // Templates: cada cartão de categoria abre o álbum (categoria.html?id=...). Também serve modelo.html: as funções comuns ficam em window.EGUATEX_MODELOS.
 
 (() => {
@@ -112,7 +112,7 @@
     const cat = indice.categorias.find((c) => c.id === id);
     const migalha = document.getElementById("migalha-atual");
     if (!cat) {
-      document.title = "Categoria não encontrada | ÉguaTex";
+      document.title = "Categoria não encontrada | ÉguaTeX";
       migalha.textContent = "Categoria não encontrada";
       document.getElementById("album-titulo").textContent = "Categoria não encontrada";
       document.getElementById("album-descricao").innerHTML = 'Volte para a <a href="templates.html">página de templates</a> e escolha uma categoria.';
@@ -120,7 +120,7 @@
       album.querySelector(".album-controles").hidden = true;
       return;
     }
-    document.title = `${cat.nome} | ÉguaTex`;
+    document.title = `${cat.nome} | ÉguaTeX`;
     migalha.textContent = cat.nome;
     document.getElementById("album-titulo").textContent = cat.nome;
     document.getElementById("album-descricao").textContent = DESCRICOES[cat.id] || "";
