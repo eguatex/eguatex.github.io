@@ -29,7 +29,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css?v=20261118a">
   <link rel="stylesheet" href="assets/css/modelos.css?v=20261117a">
-  <link rel="stylesheet" href="assets/css/ilustracoes.css?v=20261126a">
+  <link rel="stylesheet" href="assets/css/ilustracoes.css?v=20261126b">
   <script>
     document.documentElement.classList.add("js");
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("calmo");
@@ -53,18 +53,33 @@
     </nav>
   </header>
 
-  <main id="conteudo" class="galeria album-pagina">
-    <section class="album" aria-labelledby="ilus-titulo">
-      <p class="ilus-rotulo">Ilustrações científicas</p>
-      <h1 id="ilus-titulo" class="album-titulo">Figuras prontas em LaTeX</h1>
-      <p class="album-descricao">Desenhos para trabalhos, provas e aulas, feitos em TikZ. Baixe, mude os números que quiser e compile no ÉguaTeX, mesmo sem internet.</p>
-      <div class="album-controles">
+  <main id="conteudo" class="galeria">
+    <section class="galeria-abertura" aria-labelledby="galeria-titulo">
+      <h1 id="galeria-titulo">Ilustrações</h1>
+
+      <form class="galeria-busca" role="search" id="ilus-busca-form">
+        <label for="ilus-busca" class="sr">Procurar ilustração</label>
+        <input id="ilus-busca" type="search" placeholder="Procurar: elemento de volume, coordenadas, integral…" autocomplete="off">
+      </form>
+    </section>
+
+    <div class="faixa-classes" aria-hidden="true"><div class="faixa-trilho"><span>\begin{tikzpicture}</span> <span>\draw[->] (0,0) -- (1,0);</span> <span>\fill[pattern=Lines]</span> <span>\node[midway, sloped]</span> <span>plot[domain=0:90]</span> <span>\usetikzlibrary{patterns.meta}</span> <span>\tikzdeclarecoordinatesystem</span> <span>\begin{axis}</span> <span>\filldraw[fill=black!10]</span> <span>\foreach \x in {1,...,5}</span> <span>\coordinate (P) at (1,2);</span> <span>\end{tikzpicture}</span><span>\begin{tikzpicture}</span> <span>\draw[->] (0,0) -- (1,0);</span> <span>\fill[pattern=Lines]</span> <span>\node[midway, sloped]</span> <span>plot[domain=0:90]</span> <span>\usetikzlibrary{patterns.meta}</span> <span>\tikzdeclarecoordinatesystem</span> <span>\begin{axis}</span> <span>\filldraw[fill=black!10]</span> <span>\foreach \x in {1,...,5}</span> <span>\coordinate (P) at (1,2);</span> <span>\end{tikzpicture}</span></div></div>
+
+    <section aria-labelledby="areas-titulo">
+      <div class="galeria-cabeca">
+        <h2 id="areas-titulo" class="galeria-subtitulo">Áreas</h2>
         <div class="filtros" role="group" aria-label="Filtrar por área" id="ilus-areas"></div>
       </div>
-      <p class="modelos-contagem" id="ilus-contagem" aria-live="polite">Carregando as ilustrações…</p>
-      <ul class="modelos-grade album-grade" id="ilus-grade"></ul>
+      <ul class="categorias" id="ilus-grade"></ul>
+      <p class="galeria-vazia" id="ilus-vazio" hidden>Nenhuma ilustração com esse nome. Que tal <a href="contato.html">sugerir essa figura</a>?</p>
+      <noscript><p class="galeria-vazia">Ative o JavaScript para ver as ilustrações.</p></noscript>
     </section>
-    <noscript><p class="galeria-vazia">Ative o JavaScript para ver as ilustrações.</p></noscript>
+
+    <section class="galeria-sugestao" aria-labelledby="sugestao-titulo">
+      <h2 id="sugestao-titulo">Sentiu falta de alguma ilustração?</h2>
+      <p>Conte qual figura você precisa para o seu trabalho, prova ou aula. As sugestões ajudam a decidir o que entra primeiro.</p>
+      <a class="botao botao-fogo" href="contato.html">Sugerir uma ilustração</a>
+    </section>
   </main>
 
   <footer class="rodape">
@@ -77,7 +92,7 @@
     </div>
   </footer>
 
-  <script defer src="assets/js/ilustracoes.js?v=20261126a"></script>
+  <script defer src="assets/js/ilustracoes.js?v=20261126b"></script>
   <script defer src="assets/js/config.js?v=20261117a"></script>
   <script defer src="assets/js/navegacao.js?v=20261117a"></script>
 </body>

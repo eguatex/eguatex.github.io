@@ -14,11 +14,19 @@
   });
   const nomeArea = (indice, id) => (indice.areas.find((a) => a.id === id) || {}).nome || id;
 
-  /* ---------- ilustracoes.html: a galeria ---------- */
+  /* ---------- ilustracoes.html: a galeria, no mesmo padrão da página de templates ---------- */
   const grade = document.getElementById("ilus-grade");
   if (grade) {
     const areas = document.getElementById("ilus-areas");
-    const contagem = document.getElementById("ilus-contagem");
+    const campo = document.getElementById("ilus-busca");
+    const vazio = document.getElementById("ilus-vazio");
+    const semAcento = (t) => String(t ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const CORES = ["cor-roxo", "cor-verde", "cor-fogo", "cor-brasa"];
+    const entrada = "IntersectionObserver" in window ? new IntersectionObserver((itens) => {
+      itens.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visto"); entrada.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" }) : null;
+    document.getElementById("ilus-busca-form").addEventListener("submit", (e) => e.preventDefault());
+
     carregar().then((indice) => {
       const lista = indice.ilustracoes.filter((i) => i.publicado);
       const usadas = indice.areas.filter((a) => lista.some((i) => i.areas.includes(a.id)));
@@ -28,23 +36,35 @@
       areas.innerHTML = [{ id: "", nome: "Todas" }, ...usadas]
         .map((a) => `<button type="button" data-area="${esc(a.id)}" aria-pressed="${a.id === filtro}">${esc(a.nome)}</button>`).join("");
 
-      const cartao = (i) => {
+      // Cartão igual aos de categoria dos templates: arte colorida com a figura no papel, nome, descrição e rodapé.
+      const cartao = (i, n) => {
         const v = i.variantes.find((x) => x.id === i.capa) || i.variantes[0];
         const [w, h] = v.dimensoes;
-        return `<li class="modelo-cartao">
-          <a class="modelo-link" href="ilustracao.html?id=${encodeURIComponent(i.id)}">
-            <span class="modelo-miniatura ilus-miniatura"><img src="${esc(v.imagem)}" width="${w}" height="${h}" loading="lazy" decoding="async" alt="${esc(v.alt)}"></span>
-            <span class="modelo-nome">${esc(i.nome)}</span>
+        const versoes = i.variantes.length > 1 ? `<span class="em-breve">${plural(i.variantes.length, "versão", "versões")}</span>` : "";
+        return `<li class="categoria ilus-cartao">
+          <a class="ilus-link" href="ilustracao.html?id=${encodeURIComponent(i.id)}">
+            <div class="cat-arte ${CORES[n % CORES.length]}"><span class="ilus-papel"><img src="${esc(v.imagem)}" width="${w}" height="${h}" loading="lazy" decoding="async" alt="${esc(v.alt)}"></span></div>
+            <h3>${esc(i.nome)}</h3>
           </a>
-          <p class="modelo-resumo">${esc(i.descricao)}</p>
-          <div class="cat-rodape">${i.areas.map((a) => `<span class="modelo-curso">${esc(nomeArea(indice, a))}</span>`).join("")}<code class="cat-classe">${esc(i.ferramenta)}</code></div>
+          <p>${esc(i.descricao)}</p>
+          <div class="cat-rodape">${versoes}<code class="cat-classe">${esc(i.ferramenta)}</code></div>
         </li>`;
       };
+      const textoBusca = (i) => semAcento([i.nome, i.descricao, i.texto, i.busca, i.ferramenta,
+        ...i.areas.map((a) => nomeArea(indice, a)), ...i.variantes.map((v) => v.nome)].join(" "));
 
       const desenhar = () => {
-        const vistas = lista.filter((i) => !filtro || i.areas.includes(filtro));
+        const termos = semAcento(campo.value).split(/\s+/).filter(Boolean);
+        const vistas = lista.filter((i) => (!filtro || i.areas.includes(filtro))
+          && termos.every((t) => textoBusca(i).includes(t)));
         grade.innerHTML = vistas.map(cartao).join("");
-        contagem.textContent = plural(vistas.length, "ilustração", "ilustrações");
+        // Mesma entrada suave dos cartões de templates (a classe "visto" mostra o cartão).
+        grade.querySelectorAll(".categoria").forEach((c, n) => {
+          if (!("IntersectionObserver" in window)) { c.classList.add("visto"); return; }
+          c.style.transitionDelay = `${Math.min(n, 5) * 60}ms`;
+          entrada.observe(c);
+        });
+        vazio.hidden = vistas.length > 0;
         areas.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.area === filtro)));
       };
       areas.addEventListener("click", (e) => {
@@ -56,9 +76,11 @@
         history.replaceState(null, "", url);
         desenhar();
       });
+      campo.addEventListener("input", desenhar);
       desenhar();
     }).catch(() => {
-      contagem.textContent = "Não foi possível carregar as ilustrações agora. Tente recarregar a página.";
+      vazio.textContent = "Não foi possível carregar as ilustrações agora. Tente recarregar a página.";
+      vazio.hidden = false;
     });
     return;
   }
