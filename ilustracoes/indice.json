@@ -1,0 +1,70 @@
+{
+  "versao": 1,
+  "areas": [
+    {
+      "id": "fisica",
+      "nome": "Física"
+    },
+    {
+      "id": "calculo",
+      "nome": "Cálculo"
+    }
+  ],
+  "ilustracoes": [
+    {
+      "id": "elemento-de-volume",
+      "publicado": true,
+      "nome": "Elemento de volume",
+      "descricao": "O dV em coordenadas cartesianas, cilíndricas e esféricas.",
+      "texto": "O pedacinho de volume dV em três sistemas de coordenadas, com cada aresta medida no desenho. Útil em integrais triplas, eletromagnetismo e mecânica.",
+      "areas": [
+        "fisica",
+        "calculo"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz, com a biblioteca patterns.meta",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "esfericas",
+      "inicial": "esfericas",
+      "variantes": [
+        {
+          "id": "cartesianas",
+          "nome": "Cartesianas",
+          "alt": "Elemento de volume em coordenadas cartesianas",
+          "tex": "ilustracoes/elemento-de-volume/elemento-volume-cartesianas.tex",
+          "pdf": "ilustracoes/elemento-de-volume/elemento-volume-cartesianas.pdf",
+          "imagem": "ilustracoes/elemento-de-volume/elemento-volume-cartesianas.webp",
+          "dimensoes": [
+            909,
+            932
+          ]
+        },
+        {
+          "id": "cilindricas",
+          "nome": "Cilíndricas",
+          "alt": "Elemento de volume em coordenadas cilíndricas",
+          "tex": "ilustracoes/elemento-de-volume/elemento-volume-cilindricas.tex",
+          "pdf": "ilustracoes/elemento-de-volume/elemento-volume-cilindricas.pdf",
+          "imagem": "ilustracoes/elemento-de-volume/elemento-volume-cilindricas.webp",
+          "dimensoes": [
+            909,
+            934
+          ]
+        },
+        {
+          "id": "esfericas",
+          "nome": "Esféricas",
+          "alt": "Elemento de volume em coordenadas esféricas",
+          "tex": "ilustracoes/elemento-de-volume/elemento-volume-esfericas.tex",
+          "pdf": "ilustracoes/elemento-de-volume/elemento-volume-esfericas.pdf",
+          "imagem": "ilustracoes/elemento-de-volume/elemento-volume-esfericas.webp",
+          "dimensoes": [
+            903,
+            932
+          ]
+        }
+      ]
+    }
+  ]
+}
