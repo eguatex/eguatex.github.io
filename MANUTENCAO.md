@@ -6,11 +6,11 @@ Nenhuma alteração entra no site sem autorização expressa dela. Isso vale par
 
 ## Como propor uma mudança
 
-1. Crie um ramo a partir do `main`.
-2. Faça a mudança nesse ramo e abra um pull request explicando o que muda e por quê, com uma imagem de antes e depois quando a mudança for visível.
-3. A mudança só entra no `main` depois da aprovação da Jéssica Lopes Melo no pull request.
+1. Descreva a mudança para a Jéssica Lopes Melo: o que muda e por quê, com uma imagem de antes e depois quando a mudança for visível.
+2. Espere a autorização expressa dela.
+3. Com a autorização, envie a mudança direto para o `main`, sem pull request, para não deixar ramos e pedidos sobrando no repositório.
 
-Não envie commits direto para o `main`.
+Sem autorização, nada vai para o `main`.
 
 ## Textos oficiais
 
