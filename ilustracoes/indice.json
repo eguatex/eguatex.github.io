@@ -6,8 +6,20 @@
       "nome": "Física"
     },
     {
+      "id": "matematica",
+      "nome": "Matemática"
+    },
+    {
       "id": "calculo",
       "nome": "Cálculo"
+    },
+    {
+      "id": "computacao",
+      "nome": "Computação"
+    },
+    {
+      "id": "pesquisa",
+      "nome": "Pesquisa"
     }
   ],
   "ilustracoes": [
@@ -66,6 +78,464 @@
         }
       ],
       "busca": "elemento de volume dv integral tripla coordenadas cartesianas cilindricas esfericas jacobiano fisica calculo tikz 3d perspectiva"
+    },
+    {
+      "id": "circulo-trigonometrico",
+      "publicado": true,
+      "nome": "Círculo trigonométrico",
+      "descricao": "Seno, cosseno e tangente, com os ângulos notáveis.",
+      "texto": "O círculo de raio 1 com seno, cosseno e tangente de um ângulo destacado e os ângulos notáveis marcados. Mude o ângulo e as projeções acompanham.",
+      "areas": [
+        "matematica"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz e amsmath",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "graus",
+      "inicial": "graus",
+      "busca": "trigonometria seno cosseno tangente angulos notaveis radianos graus circulo unitario ciclo",
+      "variantes": [
+        {
+          "id": "graus",
+          "nome": "Em graus",
+          "alt": "Círculo trigonométrico com os ângulos em graus",
+          "tex": "ilustracoes/circulo-trigonometrico/circulo-trigonometrico-graus.tex",
+          "pdf": "ilustracoes/circulo-trigonometrico/circulo-trigonometrico-graus.pdf",
+          "imagem": "ilustracoes/circulo-trigonometrico/circulo-trigonometrico-graus.webp",
+          "dimensoes": [
+            760,
+            709
+          ]
+        },
+        {
+          "id": "radianos",
+          "nome": "Em radianos",
+          "alt": "Círculo trigonométrico com os ângulos em radianos",
+          "tex": "ilustracoes/circulo-trigonometrico/circulo-trigonometrico-radianos.tex",
+          "pdf": "ilustracoes/circulo-trigonometrico/circulo-trigonometrico-radianos.pdf",
+          "imagem": "ilustracoes/circulo-trigonometrico/circulo-trigonometrico-radianos.webp",
+          "dimensoes": [
+            741,
+            715
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plano-inclinado",
+      "publicado": true,
+      "nome": "Plano inclinado",
+      "descricao": "Bloco na rampa com peso, componentes, normal e atrito.",
+      "texto": "Diagrama de forças de um bloco num plano inclinado: o peso, suas componentes ao longo e contra a rampa, a normal e o atrito. Mude o ângulo e as setas acompanham.",
+      "areas": [
+        "fisica"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz (bibliotecas calc, angles, quotes e patterns.meta) e amsmath",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "padrao",
+      "inicial": "padrao",
+      "busca": "forcas dinamica newton rampa peso normal atrito diagrama de corpo livre mecanica",
+      "variantes": [
+        {
+          "id": "padrao",
+          "nome": "Plano inclinado",
+          "alt": "Bloco num plano inclinado com o diagrama de forças",
+          "tex": "ilustracoes/plano-inclinado/plano-inclinado.tex",
+          "pdf": "ilustracoes/plano-inclinado/plano-inclinado.pdf",
+          "imagem": "ilustracoes/plano-inclinado/plano-inclinado.webp",
+          "dimensoes": [
+            732,
+            492
+          ]
+        }
+      ]
+    },
+    {
+      "id": "area-sob-a-curva",
+      "publicado": true,
+      "nome": "Área sob a curva",
+      "descricao": "Integral definida e soma de Riemann.",
+      "texto": "A área entre a curva e o eixo x, como integral definida e como soma de Riemann. Mude a função, o intervalo e o número de retângulos.",
+      "areas": [
+        "calculo"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz e amsmath",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "riemann",
+      "inicial": "riemann",
+      "busca": "integral definida soma de riemann retangulos area funcao grafico",
+      "variantes": [
+        {
+          "id": "integral",
+          "nome": "Integral",
+          "alt": "Área sob a curva sombreada, com a integral definida",
+          "tex": "ilustracoes/area-sob-a-curva/area-sob-a-curva-integral.tex",
+          "pdf": "ilustracoes/area-sob-a-curva/area-sob-a-curva-integral.pdf",
+          "imagem": "ilustracoes/area-sob-a-curva/area-sob-a-curva-integral.webp",
+          "dimensoes": [
+            720,
+            520
+          ]
+        },
+        {
+          "id": "riemann",
+          "nome": "Soma de Riemann",
+          "alt": "Soma de Riemann com retângulos sob a curva",
+          "tex": "ilustracoes/area-sob-a-curva/area-sob-a-curva-riemann.tex",
+          "pdf": "ilustracoes/area-sob-a-curva/area-sob-a-curva-riemann.pdf",
+          "imagem": "ilustracoes/area-sob-a-curva/area-sob-a-curva-riemann.webp",
+          "dimensoes": [
+            720,
+            585
+          ]
+        }
+      ]
+    },
+    {
+      "id": "circuitos",
+      "publicado": true,
+      "nome": "Circuitos RC e RLC",
+      "descricao": "Circuitos em série com resistor, capacitor e indutor.",
+      "texto": "Circuito RC com bateria e chave, e circuito RLC com fonte alternada, nos símbolos americanos. Uma palavra no código troca para os símbolos europeus.",
+      "areas": [
+        "fisica"
+      ],
+      "ferramenta": "CircuiTikZ",
+      "pacotes": "circuitikz",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "rc",
+      "inicial": "rc",
+      "busca": "eletricidade circuito resistor capacitor indutor bateria fonte alternada eletromagnetismo engenharia",
+      "variantes": [
+        {
+          "id": "rc",
+          "nome": "RC",
+          "alt": "Circuito RC em série com bateria e chave",
+          "tex": "ilustracoes/circuitos/circuito-rc.tex",
+          "pdf": "ilustracoes/circuitos/circuito-rc.pdf",
+          "imagem": "ilustracoes/circuitos/circuito-rc.webp",
+          "dimensoes": [
+            620,
+            392
+          ]
+        },
+        {
+          "id": "rlc",
+          "nome": "RLC",
+          "alt": "Circuito RLC em série com fonte alternada",
+          "tex": "ilustracoes/circuitos/circuito-rlc.tex",
+          "pdf": "ilustracoes/circuitos/circuito-rlc.pdf",
+          "imagem": "ilustracoes/circuitos/circuito-rlc.webp",
+          "dimensoes": [
+            719,
+            389
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fluxograma-metodologia",
+      "publicado": true,
+      "nome": "Fluxograma da metodologia",
+      "descricao": "As etapas da pesquisa em caixas numeradas.",
+      "texto": "As etapas da metodologia em caixas numeradas, ligadas por setas. Escreva as suas etapas numa lista e o fluxograma se monta sozinho.",
+      "areas": [
+        "pesquisa"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz (biblioteca positioning)",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "padrao",
+      "inicial": "padrao",
+      "busca": "tcc metodologia etapas fluxograma pesquisa projeto diagrama",
+      "variantes": [
+        {
+          "id": "padrao",
+          "nome": "Fluxograma",
+          "alt": "Fluxograma vertical com as etapas da metodologia de pesquisa",
+          "tex": "ilustracoes/fluxograma-metodologia/fluxograma-metodologia.tex",
+          "pdf": "ilustracoes/fluxograma-metodologia/fluxograma-metodologia.pdf",
+          "imagem": "ilustracoes/fluxograma-metodologia/fluxograma-metodologia.webp",
+          "dimensoes": [
+            679,
+            995
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cronograma-pesquisa",
+      "publicado": true,
+      "nome": "Cronograma de pesquisa",
+      "descricao": "Atividades por mês, em gráfico de Gantt.",
+      "texto": "O cronograma do projeto em gráfico de Gantt: cada atividade com o mês de início e de fim. Mude os meses e as atividades numa lista.",
+      "areas": [
+        "pesquisa"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "padrao",
+      "inicial": "padrao",
+      "busca": "cronograma gantt projeto de pesquisa tcc atividades meses prazo",
+      "variantes": [
+        {
+          "id": "padrao",
+          "nome": "Cronograma",
+          "alt": "Cronograma de pesquisa em gráfico de Gantt",
+          "tex": "ilustracoes/cronograma-pesquisa/cronograma-pesquisa.tex",
+          "pdf": "ilustracoes/cronograma-pesquisa/cronograma-pesquisa.pdf",
+          "imagem": "ilustracoes/cronograma-pesquisa/cronograma-pesquisa.webp",
+          "dimensoes": [
+            1361,
+            482
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vetores-unitarios",
+      "publicado": true,
+      "nome": "Vetores unitários",
+      "descricao": "Os vetores da base em cartesianas, cilíndricas e esféricas.",
+      "texto": "Os vetores unitários num ponto P, em coordenadas cartesianas, cilíndricas e esféricas. Mude o ponto e os vetores acompanham.",
+      "areas": [
+        "fisica",
+        "calculo"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz e amsmath",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "esfericas",
+      "inicial": "esfericas",
+      "busca": "vetor unitario versor base coordenadas cartesianas cilindricas esfericas 3d eletromagnetismo",
+      "variantes": [
+        {
+          "id": "cartesianas",
+          "nome": "Cartesianas",
+          "alt": "Vetores unitários em coordenadas cartesianas",
+          "tex": "ilustracoes/vetores-unitarios/vetores-unitarios-cartesianas.tex",
+          "pdf": "ilustracoes/vetores-unitarios/vetores-unitarios-cartesianas.pdf",
+          "imagem": "ilustracoes/vetores-unitarios/vetores-unitarios-cartesianas.webp",
+          "dimensoes": [
+            759,
+            668
+          ]
+        },
+        {
+          "id": "cilindricas",
+          "nome": "Cilíndricas",
+          "alt": "Vetores unitários em coordenadas cilíndricas",
+          "tex": "ilustracoes/vetores-unitarios/vetores-unitarios-cilindricas.tex",
+          "pdf": "ilustracoes/vetores-unitarios/vetores-unitarios-cilindricas.pdf",
+          "imagem": "ilustracoes/vetores-unitarios/vetores-unitarios-cilindricas.webp",
+          "dimensoes": [
+            759,
+            668
+          ]
+        },
+        {
+          "id": "esfericas",
+          "nome": "Esféricas",
+          "alt": "Vetores unitários em coordenadas esféricas",
+          "tex": "ilustracoes/vetores-unitarios/vetores-unitarios-esfericas.tex",
+          "pdf": "ilustracoes/vetores-unitarios/vetores-unitarios-esfericas.pdf",
+          "imagem": "ilustracoes/vetores-unitarios/vetores-unitarios-esfericas.webp",
+          "dimensoes": [
+            759,
+            668
+          ]
+        }
+      ]
+    },
+    {
+      "id": "optica",
+      "publicado": true,
+      "nome": "Lentes e espelhos",
+      "descricao": "Formação de imagem com os raios notáveis.",
+      "texto": "Formação de imagem numa lente convergente e num espelho côncavo, com os três raios notáveis. A posição e o tamanho da imagem saem da equação, a partir da distância do objeto.",
+      "areas": [
+        "fisica"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz (biblioteca patterns.meta no espelho)",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "lente-convergente",
+      "inicial": "lente-convergente",
+      "busca": "optica lente convergente espelho concavo raios notaveis foco imagem objeto",
+      "variantes": [
+        {
+          "id": "lente-convergente",
+          "nome": "Lente convergente",
+          "alt": "Formação de imagem numa lente convergente",
+          "tex": "ilustracoes/optica/optica-lente-convergente.tex",
+          "pdf": "ilustracoes/optica/optica-lente-convergente.pdf",
+          "imagem": "ilustracoes/optica/optica-lente-convergente.webp",
+          "dimensoes": [
+            1008,
+            537
+          ]
+        },
+        {
+          "id": "espelho-concavo",
+          "nome": "Espelho côncavo",
+          "alt": "Formação de imagem num espelho côncavo",
+          "tex": "ilustracoes/optica/optica-espelho-concavo.tex",
+          "pdf": "ilustracoes/optica/optica-espelho-concavo.pdf",
+          "imagem": "ilustracoes/optica/optica-espelho-concavo.webp",
+          "dimensoes": [
+            662,
+            358
+          ]
+        }
+      ]
+    },
+    {
+      "id": "automato-finito",
+      "publicado": true,
+      "nome": "Autômato finito",
+      "descricao": "Estados, transições e estado de aceitação.",
+      "texto": "Um autômato finito determinístico que aceita as cadeias terminadas em 01. Mude os estados e as transições para montar o seu.",
+      "areas": [
+        "computacao"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz (bibliotecas automata e positioning)",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "padrao",
+      "inicial": "padrao",
+      "busca": "automato finito afd estados transicoes linguagens formais teoria da computacao maquina de estados",
+      "variantes": [
+        {
+          "id": "padrao",
+          "nome": "Autômato",
+          "alt": "Autômato finito determinístico com três estados",
+          "tex": "ilustracoes/automato-finito/automato-finito.tex",
+          "pdf": "ilustracoes/automato-finito/automato-finito.pdf",
+          "imagem": "ilustracoes/automato-finito/automato-finito.webp",
+          "dimensoes": [
+            775,
+            349
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grafo-ponderado",
+      "publicado": true,
+      "nome": "Grafo ponderado",
+      "descricao": "Vértices, arestas com pesos e um caminho destacado.",
+      "texto": "Um grafo com pesos nas arestas e um caminho destacado, no exemplo o mais curto de A até F. Vértices, arestas e caminho ficam em listas fáceis de mudar.",
+      "areas": [
+        "computacao",
+        "matematica"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "padrao",
+      "inicial": "padrao",
+      "busca": "grafo ponderado arestas vertices caminho minimo dijkstra estruturas de dados algoritmos",
+      "variantes": [
+        {
+          "id": "padrao",
+          "nome": "Grafo",
+          "alt": "Grafo ponderado com o caminho mais curto destacado",
+          "tex": "ilustracoes/grafo-ponderado/grafo-ponderado.tex",
+          "pdf": "ilustracoes/grafo-ponderado/grafo-ponderado.pdf",
+          "imagem": "ilustracoes/grafo-ponderado/grafo-ponderado.webp",
+          "dimensoes": [
+            755,
+            382
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rede-neural",
+      "publicado": true,
+      "nome": "Rede neural",
+      "descricao": "Camadas de entrada, ocultas e de saída.",
+      "texto": "Uma rede neural em camadas, com todas as ligações. Escreva quantos neurônios tem cada camada e a figura se monta sozinha.",
+      "areas": [
+        "computacao"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "padrao",
+      "inicial": "padrao",
+      "busca": "rede neural perceptron multicamadas inteligencia artificial aprendizado de maquina deep learning camadas",
+      "variantes": [
+        {
+          "id": "padrao",
+          "nome": "Rede neural",
+          "alt": "Rede neural com camada de entrada, duas ocultas e camada de saída",
+          "tex": "ilustracoes/rede-neural/rede-neural.tex",
+          "pdf": "ilustracoes/rede-neural/rede-neural.pdf",
+          "imagem": "ilustracoes/rede-neural/rede-neural.webp",
+          "dimensoes": [
+            982,
+            528
+          ]
+        }
+      ]
+    },
+    {
+      "id": "diagrama-de-venn",
+      "publicado": true,
+      "nome": "Diagrama de Venn",
+      "descricao": "Dois e três conjuntos, com a região escolhida pintada.",
+      "texto": "Conjuntos dentro do universo U. Na versão com dois conjuntos, escolha a região pintada: interseção, união, diferença ou complementar.",
+      "areas": [
+        "matematica"
+      ],
+      "ferramenta": "TikZ",
+      "pacotes": "tikz e amsmath",
+      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
+      "licenca": "CC0-1.0",
+      "capa": "dois",
+      "inicial": "dois",
+      "busca": "conjuntos venn uniao intersecao diferenca complementar logica",
+      "variantes": [
+        {
+          "id": "dois",
+          "nome": "Dois conjuntos",
+          "alt": "Diagrama de Venn com dois conjuntos e a interseção pintada",
+          "tex": "ilustracoes/diagrama-de-venn/diagrama-de-venn-dois.tex",
+          "pdf": "ilustracoes/diagrama-de-venn/diagrama-de-venn-dois.pdf",
+          "imagem": "ilustracoes/diagrama-de-venn/diagrama-de-venn-dois.webp",
+          "dimensoes": [
+            582,
+            461
+          ]
+        },
+        {
+          "id": "tres",
+          "nome": "Três conjuntos",
+          "alt": "Diagrama de Venn com três conjuntos e a interseção dos três destacada",
+          "tex": "ilustracoes/diagrama-de-venn/diagrama-de-venn-tres.tex",
+          "pdf": "ilustracoes/diagrama-de-venn/diagrama-de-venn-tres.pdf",
+          "imagem": "ilustracoes/diagrama-de-venn/diagrama-de-venn-tres.webp",
+          "dimensoes": [
+            634,
+            586
+          ]
+        }
+      ]
     }
   ]
 }

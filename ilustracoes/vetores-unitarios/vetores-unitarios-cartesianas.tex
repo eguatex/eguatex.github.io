@@ -1,0 +1,41 @@
+% Vetores unitários em coordenadas cartesianas
+% Feito para o ÉguaTeX (eguatex.com.br). Uso livre (CC0 1.0).
+%
+% Compile e pronto: sai só a figura, em PDF.
+% Para pôr no seu trabalho, use o PDF com \includegraphics ou copie
+% o bloco tikzpicture para dentro de uma figure.
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath}
+
+\colorlet{corVet}{red!75!black}
+
+\begin{document}
+\begin{tikzpicture}[
+  x={(-0.4435cm,-0.3663cm)}, y={(0.9768cm,-0.1715cm)}, z={(0cm,1cm)},
+  line cap=round, line join=round, >=stealth,
+  eixo/.style={line width=0.75pt},
+  guia/.style={line width=0.55pt, black!35, dashed},
+  vetor/.style={->, line width=1.4pt, corVet}]
+
+% Mude estes números e o desenho e os rótulos acompanham.
+\def\px{2.5} \def\py{3.2} \def\pz{2.4} % ponto P = (x, y, z)
+\def\tam{1.3}                          % tamanho dos vetores, em cm
+
+% eixos
+\draw[eixo] (0,0,0) -- (5,0,0) node[below left] {$x$};
+\draw[eixo] (0,0,0) -- (0,5.5,0) node[right] {$y$};
+\draw[eixo] (0,0,0) -- (0,0,4.8) node[above] {$z$};
+
+% caixa de guias até o ponto
+\draw[guia] (\px,0,0) -- (\px,\py,0) -- (0,\py,0);
+\draw[guia] (\px,\py,0) -- (\px,\py,\pz);
+\fill (\px,\py,\pz) circle[radius=1.8pt] node[left=2pt] {$P$};
+
+% vetores unitários no ponto P
+\draw[vetor] (\px,\py,\pz) -- ++(\tam,0,0) node[below left=-1pt] {$\hat{\mathbf{x}}$};
+\draw[vetor] (\px,\py,\pz) -- ++(0,\tam,0) node[right] {$\hat{\mathbf{y}}$};
+\draw[vetor] (\px,\py,\pz) -- ++(0,0,\tam) node[above] {$\hat{\mathbf{z}}$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,31 @@
+% Circuito RLC em série, com fonte alternada
+% Feito para o ÉguaTeX (eguatex.com.br). Uso livre (CC0 1.0).
+%
+% Compile e pronto: sai só a figura, em PDF.
+% Para pôr no seu trabalho, use o PDF com \includegraphics ou copie
+% o bloco circuitikz para dentro de uma figure e ponha no preâmbulo
+% \usepackage[american]{circuitikz}.
+% Para os símbolos europeus (resistor em retângulo), troque american por european.
+\documentclass[border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[american]{circuitikz}
+
+\begin{document}
+\begin{circuitikz}[line cap=round, line join=round]
+
+% Mude estes textos e tamanhos.
+\def\fonte{$v(t)$}         % fonte alternada
+\def\resistor{$R$}         % resistor
+\def\indutor{$L$}          % indutor
+\def\capacitor{$C$}        % capacitor
+\def\largura{6}            % largura do circuito, em cm
+\def\altura{3.5}           % altura do circuito, em cm
+
+\draw (0,0) to[sV, l=\fonte] (0,\altura)
+            to[R, l=\resistor, i>^=$i(t)$] ({\largura/2},\altura)
+            to[L, l=\indutor] (\largura,\altura)
+            to[C, l=\capacitor] (\largura,0)
+            -- (0,0);
+\end{circuitikz}
+\end{document}
