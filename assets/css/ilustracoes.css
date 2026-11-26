@@ -1,0 +1,35 @@
+/* ÉguaTeX: ilustrações científicas (ilustracoes.html e ilustracao.html).
+   Aproveita a galeria e a página de modelo (modelos.css); aqui ficam só as partes próprias. */
+
+.ilus-rotulo { margin: 0 0 8px; font-family: var(--fonte-codigo); font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--fogo); }
+.ilus-titulo { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin: 0 0 10px; text-wrap: balance; }
+.ilus-texto { max-width: 62ch; margin: 0 0 clamp(20px, 4vw, 32px); }
+
+/* Desenho em fundo branco: as figuras são feitas para papel. */
+.ilus-miniatura { background: #fff; aspect-ratio: 1 / 1; }
+.ilus-miniatura img { padding: 8%; }
+.ilus-folha { margin: 0; background: #fff; border-radius: 14px; padding: clamp(10px, 2.5vw, 20px); }
+.ilus-folha img { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; }
+
+.ilus-topo { align-items: start; }
+.ilus-abas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.ilus-abas button { font: inherit; font-size: .95rem; font-weight: 700; color: var(--texto-suave); background: transparent; border: 1.5px solid var(--noite-3); border-radius: 10px; padding: 8px 14px; cursor: pointer; }
+.ilus-abas button:hover { color: var(--texto); border-color: var(--roxo-claro); }
+.ilus-abas button[aria-selected="true"] { color: var(--texto); background: var(--noite-2); border-color: var(--fogo); }
+.ilus-abas button:focus-visible { outline: 3px solid var(--chama); outline-offset: 2px; }
+
+.ilus-acoes { display: grid; gap: 10px; margin: 0 0 6px; }
+.ilus-acoes .botao { justify-content: center; text-align: center; overflow-wrap: anywhere; }
+.ilus-acoes button:disabled { opacity: .6; cursor: progress; }
+
+.ilus-passos { list-style: none; margin: 0 0 20px; padding: 0; counter-reset: passo; }
+.ilus-passos li { counter-increment: passo; position: relative; padding-left: 40px; margin-bottom: 12px; color: var(--texto-suave); }
+.ilus-passos li::before { content: counter(passo); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-family: var(--fonte-titulo); font-weight: 700; font-size: .9rem; color: var(--noite); background: var(--roxo-claro); }
+.ilus-passos b { color: var(--texto); }
+
+.ilus-codigo { margin-top: clamp(28px, 5vw, 44px); background: var(--noite-2); border: 1px solid var(--noite-3); border-radius: 12px; }
+.ilus-codigo summary { cursor: pointer; padding: 12px 16px; font-weight: 700; }
+.ilus-codigo summary:focus-visible { outline: 3px solid var(--chama); outline-offset: 2px; border-radius: 12px; }
+.ilus-codigo pre { margin: 0; padding: 14px 16px; max-height: 480px; overflow: auto; border-top: 1px solid var(--noite-3); font: 400 .82rem/1.55 var(--fonte-codigo); color: var(--texto); }
+.ilus-cmd { color: var(--chama); }
+.ilus-com { color: #a993c4; }

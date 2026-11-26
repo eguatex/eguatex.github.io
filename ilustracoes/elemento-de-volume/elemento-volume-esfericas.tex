@@ -1,0 +1,86 @@
+% Elemento de volume em coordenadas esféricas
+% Feito para o ÉguaTeX (eguatex.com.br). Uso livre (CC0 1.0).
+%
+% Compile e pronto: sai só a figura, em PDF.
+% Para pôr no seu trabalho, use o PDF com \includegraphics ou copie
+% o bloco tikzpicture para dentro de uma figure.
+%
+% Ângulo theta medido a partir do eixo z; phi no plano xy, a partir do eixo x.
+% Alguns livros de cálculo trocam os nomes theta e phi.
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usetikzlibrary{patterns.meta}
+
+% Para usar (esf cs:r=..., t=..., p=...) no seu documento, copie também estas linhas.
+\tikzset{esf/r/.store in=\esfr, esf/t/.store in=\esft, esf/p/.store in=\esfp}
+\tikzdeclarecoordinatesystem{esf}{%
+  \tikzset{esf/.cd,#1}%
+  \pgfpointxyz{\esfr*sin(\esft)*cos(\esfp)}{\esfr*sin(\esft)*sin(\esfp)}{\esfr*cos(\esft)}}
+
+\begin{document}
+\begin{tikzpicture}[
+  x={(-0.4435cm,-0.3663cm)}, y={(0.9768cm,-0.1715cm)}, z={(0cm,1cm)},
+  line cap=round, line join=round,
+  eixo/.style={line width=0.75pt},
+  aresta/.style={line width=0.8pt},
+  guia/.style={line width=0.55pt, black!27}]
+
+% Mude estes números e o desenho e os rótulos acompanham (ângulos em graus).
+\def\ra{4.1}  \def\rb{5.45} % r e r + dr
+\def\ta{41}   \def\tb{56}   % theta e theta + dtheta
+\def\pa{47.5} \def\pb{70}   % phi e phi + dphi
+
+\draw[eixo] (0,0,0) -- (5.06,0,0) node[below left] {$x$};
+\draw[eixo] (0,0,0) -- (0,5.54,0) node[right]      {$y$};
+\draw[eixo] (0,0,0) -- (0,0,4.93) node[above]      {$z$};
+
+\fill[pattern={Lines[distance=3.6pt, line width=0.5pt]}, pattern color=black!25]
+  plot[domain=\pa:\pb] (esf cs:r=\ra,t=90,p=\x) -- plot[domain=\pb:\pa] (esf cs:r=\rb,t=90,p=\x) -- cycle;
+\draw[guia] plot[domain=\pa:\pb] (esf cs:r=\ra,t=90,p=\x);
+\draw[guia] plot[domain=\pa:\pb] (esf cs:r=\rb,t=90,p=\x);
+\draw[guia] (esf cs:r=\ra,t=90,p=\pa) -- (esf cs:r=\rb,t=90,p=\pa);
+\draw[guia] (esf cs:r=\ra,t=90,p=\pb) -- (esf cs:r=\rb,t=90,p=\pb);
+
+\draw[guia] (0,0,0) -- (esf cs:r=\ra,t=90,p=\pa);
+\draw[guia] (0,0,0) -- (esf cs:r=\ra,t=90,p=\pb);
+\foreach \r in {\ra,\rb} \foreach \p in {\pa,\pb}
+  \draw[guia] plot[domain=\tb:90] (esf cs:r=\r,t=\x,p=\p);
+
+\draw[guia] (0,0,0) -- (esf cs:r=\ra,t=\ta,p=\pb);
+\draw[guia] (0,0,0) -- (esf cs:r=\ra,t=\tb,p=\pb);
+
+\filldraw[aresta, fill=black!8]
+  plot[domain=\pa:\pb] (esf cs:r=\ra,t=\tb,p=\x) -- plot[domain=\pb:\pa] (esf cs:r=\rb,t=\tb,p=\x) -- cycle;
+\filldraw[aresta, fill=black!5]
+  plot[domain=\ta:\tb] (esf cs:r=\ra,t=\x,p=\pa) -- plot[domain=\tb:\ta] (esf cs:r=\rb,t=\x,p=\pa) -- cycle;
+\filldraw[aresta, fill=black!14]
+  plot[domain=\pa:\pb] (esf cs:r=\rb,t=\ta,p=\x) -- plot[domain=\ta:\tb] (esf cs:r=\rb,t=\x,p=\pb)
+  -- plot[domain=\pb:\pa] (esf cs:r=\rb,t=\tb,p=\x) -- plot[domain=\tb:\ta] (esf cs:r=\rb,t=\x,p=\pa) -- cycle;
+\draw[guia] plot[domain=\pa:\pb] (esf cs:r=\ra,t=\ta,p=\x) -- (esf cs:r=\rb,t=\ta,p=\pb);
+\draw[guia] plot[domain=\ta:\tb] (esf cs:r=\ra,t=\x,p=\pb);
+
+\draw[aresta] (0,0,0) -- (esf cs:r=\ra,t=\ta,p=\pa);
+\draw[aresta] (0,0,0) -- (esf cs:r=\ra,t=\tb,p=\pa);
+\fill (esf cs:r=\ra,t=\ta,p=\pa) circle[radius=1.9pt];
+\draw[eixo] plot[domain=0:\ta]   (esf cs:r=1.7,t=\x,p=\pa);
+\draw[eixo] plot[domain=\ta:\tb] (esf cs:r=2.2,t=\x,p=\pa);
+\draw[eixo] plot[domain=0:\pa]   (esf cs:r=1.65,t=90,p=\x);
+\draw[eixo] plot[domain=\pa:\pb] (esf cs:r=2,t=90,p=\x);
+
+\node at (esf cs:r=1.25,t={\ta/2},p=\pa) {$\theta$};
+\node at (esf cs:r=2.85,t={(\ta+\tb)/2},p=\pa) {$\mathrm{d}\theta$};
+\path (0,0,0) -- (esf cs:r=\ra,t=\ta,p=\pa) node[pos=0.7, left] {$r$};
+\path (esf cs:r=\ra,t=\ta,p=\pa) -- (esf cs:r=\rb,t=\ta,p=\pa) node[midway, above left] {$\mathrm{d}r$};
+\node at (esf cs:r=1.2,t=90,p={\pa/2}) {$\phi$};
+\node at (esf cs:r=2.5,t=90,p={(\pa+\pb)/2}) {$\mathrm{d}\phi$};
+\node at (esf cs:r=\rb,t={(\ta+\tb)/2},p={(\pa+\pb)/2}) {$\mathrm{d}V$};
+\path (esf cs:r=\rb,t=\ta,p=\pb) -- (esf cs:r=\rb,t=\tb,p=\pb)
+  node[midway, sloped, above] {$r\,\mathrm{d}\theta$};
+\path (esf cs:r=\rb,t=\tb,p=\pa) -- (esf cs:r=\rb,t=\tb,p=\pb)
+  node[midway, sloped, below=2pt] {$r\sin\theta\,\mathrm{d}\phi$};
+
+\node[align=center] at (3.6cm,4.6cm) {\textit{Coordenadas esféricas}\\[2pt] $(r,\theta,\phi)$};
+\node at (1.7cm,-3.2cm) {$\mathrm{d}V=r^2\sin\theta\,\mathrm{d}r\,\mathrm{d}\theta\,\mathrm{d}\phi$};
+\end{tikzpicture}
+\end{document}

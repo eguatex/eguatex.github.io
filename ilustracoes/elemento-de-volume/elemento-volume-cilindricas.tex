@@ -1,0 +1,83 @@
+% Elemento de volume em coordenadas cilíndricas
+% Feito para o ÉguaTeX (eguatex.com.br). Uso livre (CC0 1.0).
+%
+% Compile e pronto: sai só a figura, em PDF.
+% Para pôr no seu trabalho, use o PDF com \includegraphics ou copie
+% o bloco tikzpicture para dentro de uma figure.
+%
+% Ângulo phi medido no plano xy, a partir do eixo x.
+\documentclass[tikz,border=4pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usetikzlibrary{patterns.meta}
+
+% Para usar (cil cs:r=..., p=..., z=...) no seu documento, copie também estas linhas.
+\tikzset{cil/r/.store in=\cilr, cil/p/.store in=\cilp, cil/z/.store in=\cilz}
+\tikzdeclarecoordinatesystem{cil}{%
+  \tikzset{cil/.cd,#1}%
+  \pgfpointxyz{\cilr*cos(\cilp)}{\cilr*sin(\cilp)}{\cilz}}
+
+\begin{document}
+\begin{tikzpicture}[
+  x={(-0.4435cm,-0.3663cm)}, y={(0.9768cm,-0.1715cm)}, z={(0cm,1cm)},
+  line cap=round, line join=round,
+  eixo/.style={line width=0.75pt},
+  aresta/.style={line width=0.8pt},
+  guia/.style={line width=0.55pt, black!27}]
+
+% Mude estes números e o desenho e os rótulos acompanham (ângulos em graus).
+\def\ra{4.05}  \def\rb{5.4}  % rho e rho + drho
+\def\pa{47.75} \def\pb{65}   % phi e phi + dphi
+\def\za{2.49}  \def\zb{3.72} % z e z + dz
+
+\draw[eixo] (0,0,0) -- (5.06,0,0) node[below left] {$x$};
+\draw[eixo] (0,0,0) -- (0,5.6,0)  node[right]      {$y$};
+\draw[eixo] (0,0,0) -- (0,0,4.97) node[above]      {$z$};
+
+\fill[pattern={Lines[distance=3.6pt, line width=0.5pt]}, pattern color=black!25]
+  plot[domain=\pa:\pb] (cil cs:r=\ra,p=\x,z=0)
+  -- plot[domain=\pb:\pa] (cil cs:r=\rb,p=\x,z=0) -- cycle;
+\draw[guia] plot[domain=\pa:\pb] (cil cs:r=\ra,p=\x,z=0);
+\draw[guia] plot[domain=\pa:\pb] (cil cs:r=\rb,p=\x,z=0);
+\foreach \p in {\pa,\pb} {
+  \draw[guia] (0,0,0) -- (cil cs:r=\rb,p=\p,z=0);
+  \draw[guia] (0,0,\zb) -- (cil cs:r=\ra,p=\p,z=\zb);
+}
+
+\draw[guia] (cil cs:r=\ra,p=\pa,z=0) -- (cil cs:r=\ra,p=\pa,z=\za);
+\draw[guia] (cil cs:r=\rb,p=\pa,z=0) -- (cil cs:r=\rb,p=\pa,z=\za);
+\draw[guia] (cil cs:r=\ra,p=\pb,z=0) -- (cil cs:r=\ra,p=\pb,z=\za);
+\draw[aresta] (cil cs:r=\rb,p=\pb,z=0) -- (cil cs:r=\rb,p=\pb,z=\za);
+
+\filldraw[aresta, fill=black!5]
+  (cil cs:r=\ra,p=\pa,z=\za) -- (cil cs:r=\rb,p=\pa,z=\za)
+  -- (cil cs:r=\rb,p=\pa,z=\zb) -- (cil cs:r=\ra,p=\pa,z=\zb) -- cycle;
+\filldraw[aresta, fill=black!9]
+  plot[domain=\pa:\pb] (cil cs:r=\ra,p=\x,z=\zb)
+  -- plot[domain=\pb:\pa] (cil cs:r=\rb,p=\x,z=\zb) -- cycle;
+\filldraw[aresta, fill=black!14]
+  plot[domain=\pa:\pb] (cil cs:r=\rb,p=\x,z=\za)
+  -- plot[domain=\pb:\pa] (cil cs:r=\rb,p=\x,z=\zb) -- cycle;
+\draw[guia] plot[domain=\pa:\pb] (cil cs:r=\ra,p=\x,z=\za);
+\draw[guia] (0,0,\za) -- (cil cs:r=\rb,p=\pb,z=\za);
+\draw[guia] (cil cs:r=\ra,p=\pb,z=\za) -- (cil cs:r=\ra,p=\pb,z=\zb);
+
+\draw[aresta] (0,0,\za) -- (cil cs:r=\ra,p=\pa,z=\za);
+\fill (cil cs:r=\ra,p=\pa,z=\za) circle[radius=1.9pt];
+\draw[eixo] plot[domain=0:\pa]   (cil cs:r=1.65,p=\x,z=0);
+\draw[eixo] plot[domain=\pa:\pb] (cil cs:r=1.95,p=\x,z=0);
+
+\path (0,0,\za) -- (cil cs:r=\ra,p=\pa,z=\za) node[midway, above] {$\rho$};
+\path (cil cs:r=\ra,p=\pa,z=\za) -- (cil cs:r=\rb,p=\pa,z=\za)
+  node[midway, below left] {$\mathrm{d}\rho$};
+\node at (cil cs:r={(\ra+\rb)/2},p={(\pa+\pb)/2},z={(\za+\zb)/2}) {$\mathrm{d}V$};
+\path (cil cs:r=\rb,p=\pb,z=\za) -- (cil cs:r=\rb,p=\pb,z=\zb) node[midway, right] {$\mathrm{d}z$};
+\path (cil cs:r=\rb,p=\pb,z=0)   -- (cil cs:r=\rb,p=\pb,z=\za) node[midway, right] {$z$};
+\node[below] at (cil cs:r=\rb,p={(\pa+\pb)/2},z=\za) {$\rho\,\mathrm{d}\phi$};
+\node at (cil cs:r=1.2,p={\pa/2},z=0) {$\phi$};
+\node at (cil cs:r=2.45,p={(\pa+\pb)/2},z=0) {$\mathrm{d}\phi$};
+
+\node[align=center] at (3.6cm,4.6cm) {\textit{Coordenadas cilíndricas}\\[2pt] $(\rho,\phi,z)$};
+\node at (1.7cm,-3.2cm) {$\mathrm{d}V=\rho\,\mathrm{d}\rho\,\mathrm{d}\phi\,\mathrm{d}z$};
+\end{tikzpicture}
+\end{document}
