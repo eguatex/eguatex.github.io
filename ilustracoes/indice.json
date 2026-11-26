@@ -302,62 +302,6 @@
       ]
     },
     {
-      "id": "vetores-unitarios",
-      "publicado": true,
-      "nome": "Vetores unitários",
-      "descricao": "Os vetores da base em cartesianas, cilíndricas e esféricas.",
-      "texto": "Os vetores unitários num ponto P, em coordenadas cartesianas, cilíndricas e esféricas. Mude o ponto e os vetores acompanham.",
-      "areas": [
-        "fisica",
-        "calculo"
-      ],
-      "ferramenta": "TikZ",
-      "pacotes": "tikz e amsmath",
-      "motores": "pdfLaTeX, XeLaTeX ou LuaLaTeX",
-      "licenca": "CC0-1.0",
-      "capa": "esfericas",
-      "inicial": "esfericas",
-      "busca": "vetor unitario versor base coordenadas cartesianas cilindricas esfericas 3d eletromagnetismo",
-      "variantes": [
-        {
-          "id": "cartesianas",
-          "nome": "Cartesianas",
-          "alt": "Vetores unitários em coordenadas cartesianas",
-          "tex": "ilustracoes/vetores-unitarios/vetores-unitarios-cartesianas.tex",
-          "pdf": "ilustracoes/vetores-unitarios/vetores-unitarios-cartesianas.pdf",
-          "imagem": "ilustracoes/vetores-unitarios/vetores-unitarios-cartesianas.webp",
-          "dimensoes": [
-            759,
-            668
-          ]
-        },
-        {
-          "id": "cilindricas",
-          "nome": "Cilíndricas",
-          "alt": "Vetores unitários em coordenadas cilíndricas",
-          "tex": "ilustracoes/vetores-unitarios/vetores-unitarios-cilindricas.tex",
-          "pdf": "ilustracoes/vetores-unitarios/vetores-unitarios-cilindricas.pdf",
-          "imagem": "ilustracoes/vetores-unitarios/vetores-unitarios-cilindricas.webp",
-          "dimensoes": [
-            759,
-            668
-          ]
-        },
-        {
-          "id": "esfericas",
-          "nome": "Esféricas",
-          "alt": "Vetores unitários em coordenadas esféricas",
-          "tex": "ilustracoes/vetores-unitarios/vetores-unitarios-esfericas.tex",
-          "pdf": "ilustracoes/vetores-unitarios/vetores-unitarios-esfericas.pdf",
-          "imagem": "ilustracoes/vetores-unitarios/vetores-unitarios-esfericas.webp",
-          "dimensoes": [
-            759,
-            668
-          ]
-        }
-      ]
-    },
-    {
       "id": "optica",
       "publicado": true,
       "nome": "Lentes e espelhos",
